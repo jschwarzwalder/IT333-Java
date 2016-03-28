@@ -16,14 +16,26 @@ public class Selection {
         Integer[] test2 = new Integer[] {1, 9, 8, 3, 0, 8, 1, 3, 0};
         Integer[] test3 = new Integer[] {2, 0, 0, 4, 2, 0, 1, 7, 0};
         Integer[] test4 = new Integer[] {0, 0, 0, 0, 1, 2, 2, 2, 2};
+        Integer[] test5 = new Integer[] {0, 0, 0, 0, 1, 2, 2, 2};
 
-       System.out.println(selection(test4));
+        System.out.println(selection(test1)); // Should be 5
+        System.out.println(selection(test2)); // Should be 3
+        System.out.println(selection(test3)); // Should be 2
+        System.out.println(selection(test4)); // Should be 2
+        System.out.println(selection(test5)); // Should be 1
     }
 
     public static Comparable selection ( Comparable[] list){
         //make an array with length of K
         int inputLength = list.length;
         int medianPosition = inputLength/2;
+
+        if (inputLength < 1){
+            return null;
+        }
+        if (inputLength == 1){
+            return list[0];
+        }
 
         Comparable[] highestValues = new Comparable[medianPosition];
         for (int i = 0; i < medianPosition; i++){
