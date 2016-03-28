@@ -29,6 +29,7 @@ public class RandomSort {
     public static void main(String[] args) {
 
         randomSort(new int[]{}, 0);
+        randomSort(new int[]{0, 1, 1, 0, 0}, -5);
         randomSort(new int[]{0, 1, 1, 0, 0}, 1);
         randomSort(new int[]{0, 1, 1, 2, 3}, 3);
         randomSort(new int[]{9, 0, 7, 6, 5, 4, 3, 2, 1}, 9);
@@ -37,29 +38,30 @@ public class RandomSort {
 
     public static void randomSort(int[] numbers, int k) {
 
-        //make an array of k+1
-        int[] temp = new int[k + 1];
-        //Java already sets every value equal to 0
-       // System.out.println(Arrays.toString(temp));
+        //make an array of k+1 if k is a non negative number
+        if (k >= 0) {
+            int[] temp = new int[k + 1];
+            //Java already sets every value equal to 0
+            // System.out.println(Arrays.toString(temp));
 
-        //look at current element (m) and increase value at that index by 1
-        for (int i = 0; i < numbers.length; i++){
-            int m = numbers[i];
-            temp[m]+= 1;
-        }
+            //look at current element (m) and increase value at that index by 1
+            for (int i = 0; i < numbers.length; i++) {
+                int m = numbers[i];
+                temp[m] += 1;
+            }
 
-        //print values based on how many of each integer was in original array.
-       System.out.print("[");
-        for (int i = 0; i <= k; i++){
-            if (temp[i] > 0) {
-                for (int j=0; j < temp[i]; j++){
-                    System.out.print(i);
-                    System.out.print(", ");
+            //print values based on how many of each integer was in original array.
+            System.out.print("[");
+            for (int i = 0; i <= k; i++) {
+                if (temp[i] > 0) {
+                    for (int j = 0; j < temp[i]; j++) {
+                        System.out.print(i);
+                        System.out.print(", ");
+                    }
                 }
             }
+            System.out.print("]\n");
+
         }
-        System.out.print("]\n");
-
-
     }
 }
