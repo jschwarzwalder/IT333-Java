@@ -55,6 +55,10 @@ public class Selection {
                         break;
                     }
                 }
+                //check if list[i] is bigger than the last value in highestValues
+                if (list[i].compareTo(highestValues[medianPosition-1]) > 0 ) {
+                    highestValues[medianPosition-1] = list[i];
+                }
             }
         } //all of list has been added to highestValue in order
         //highestValue[0] should be the kth largest element
