@@ -1,12 +1,16 @@
 package edu.greenriver.it.fibonacci;
 
+import java.util.Arrays;
+
 /**
  * Created by Jami on 3/28/2016.
  */
 public class Fibonacci {
     public static void main (String[] args ){
-
-
+        System.out.println(Arrays.toString(fibonacci(0)));
+        System.out.println(Arrays.toString(fibonacci(1)));
+        System.out.println(Arrays.toString(fibonacci(5)));
+        System.out.println(Arrays.toString(fibonacci(12)));
     }
 
     private static int[] fibonacci (int n){
