@@ -25,9 +25,12 @@
       <file leaf-file-name="Fibonacci.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/greenriver/it/fibonacci/Fibonacci.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5085995">
-              <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-              <folding />
+            <state vertical-scroll-proportion="0.66584766">
+              <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
+              <folding>
+                <element signature="method#fibonacci#0;class#Fibonacci#0" expanded="false" />
+                <element signature="method#fibonacciAt#0;class#Fibonacci#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -447,9 +450,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/greenriver/it/fibonacci/Fibonacci.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5085995">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding />
+        <state vertical-scroll-proportion="0.66584766">
+          <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
+          <folding>
+            <element signature="method#fibonacci#0;class#Fibonacci#0" expanded="false" />
+            <element signature="method#fibonacciAt#0;class#Fibonacci#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

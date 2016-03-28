@@ -18,7 +18,7 @@ import java.util.Arrays;
  * Write a function that returns an array of the first n fibonacci numbers.
  * (ie. the input to the function should be an integer n,
  * and the output should be an array of integers of size n that contains the first n numbers in the fibonacci sequence).
- * 
+ *
  * 2b. Write a function that returns the nth fibonacci number (ie. fib(n)).
  * Your function should use iteration and not recursion.
  * We will discuss later how recursion can be a pitfall here.
@@ -32,8 +32,10 @@ public class Fibonacci {
         System.out.println(fibonacciAt(0));
         System.out.println(Arrays.toString(fibonacci(5)));
         System.out.println(fibonacciAt(4));
+        System.out.println(fibonacciAtArray(4));
         System.out.println(Arrays.toString(fibonacci(12)));
         System.out.println(fibonacciAt(11));
+        System.out.println(fibonacciAtArray(11));
     }
 
     private static int[] fibonacci (int n){
@@ -94,5 +96,17 @@ public class Fibonacci {
 
         //return the value of fib
         return  fib;
+    }
+
+    private static int fibonacciAtArray (int n){
+
+        //Calculate an array the length requested plus 1
+        //so we can have an index n since fibonacci array has index 0
+        int[] sequence = fibonacci(n+1);
+
+        return sequence[n];
+
+        //this takes up more memory since we have to store a continuous array instead of just 3 variables
+
     }
 }
