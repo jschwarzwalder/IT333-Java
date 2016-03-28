@@ -98,6 +98,9 @@ public class Fibonacci {
         return  fib;
     }
 
+    //3. Is it possible to use your solution to (2a) to solve (2b)? Yes
+    // If this is not possible, make an argument why.
+    // If it is possible, then write the function and argue about why this is a good or bad design.
     private static int fibonacciAtArray (int n){
 
         //Calculate an array the length requested plus 1
@@ -106,7 +109,7 @@ public class Fibonacci {
 
         return sequence[n];
 
-        //this takes up more memory since we have to store a continuous array instead of just 3 variables
+        //(Bad design) - This takes up more memory since we have to store a continuous array instead of just 3 variables
 
     }
 }
