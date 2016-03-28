@@ -11,6 +11,15 @@ import java.util.Arrays;
  */
 public class Selection {
 
+    public static void main (String[] args){
+        Integer[] test1 = new Integer[] {2, 2, 4, 4, 5, 5, 8, 8, 0};
+        Integer[] test2 = new Integer[] {1, 9, 8, 3, 0, 8, 1, 3, 0};
+        Integer[] test3 = new Integer[] {2, 0, 0, 4, 2, 0, 1, 7, 0};
+        Integer[] test4 = new Integer[] {0, 0, 0, 0, 1, 2, 2, 2, 2};
+
+       System.out.println(selection(test4));
+    }
+
     public static Comparable selection ( Comparable[] list){
         //make an array with length of K
         int inputLength = list.length;
@@ -41,14 +50,17 @@ public class Selection {
                     } else {
                         //if list[i] is equal or less than highestValue[j]
                         // add value from list[i] in that spot.
-                        highestValues[j]= list[i];
+                        highestValues[j-1]= list[i];
+                        //Check next number in list
+                        break;
                     }
-                    //Check next number
-
                 }
-
             }
-        }
+        } //all of list has been added to highestValue in order
+        //highestValue[0] should be the kth largest element
+
+        return highestValues[0];
+
 
 
 
