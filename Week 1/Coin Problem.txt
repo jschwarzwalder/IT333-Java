@@ -1,0 +1,22 @@
+
+3. Counterfeit coin problem Suppose you are given 10 stacks of 10 coins each. 9 stacks out of 10 have coins that weigh 1 gram each. The other stack has counterfeit coins that weigh 0.9 grams each. Given a scale to weigh coins, can you determine which stack of coins is counterfeit in one weighing.
+
+Note: you can put any number of coins on the scale at once.
+
+Take the number of coins from each stack that represents its number and weigh it. 
+The counterfeit stack will be total - .1 * counterfeit stack number.
+
+Example
+Take 1 from stack 1
+Take 2 from stack 2
+Take 3 from stack 3
+Take 4 from stack 4
+Take 5 from stack 5
+Take 6 from stack 6
+Take 7 from stack 7
+Take 8 from stack 8
+Take 9 from stack 9
+
+Option to include 10th stack
+if you do not include and stack = 45 then 10th stack is counterfeit
+if you do not include and stack = 44.3 then 7th stack is counterfeit.

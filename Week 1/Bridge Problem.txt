@@ -1,0 +1,17 @@
+2. New world puzzle There are four people who want to cross a bridge; they all begin on the same side. You have 17 minutes to get them all across to the other side. It is night, and they have one flashlight. A maximum of two people can cross the bridge at one time. Any party that crosses, either one or two people, must have the flashlight with them. The flashlight must be walked back and forth; it cannot be thrown, for example. Person 1 takes 1 minute to cross the bridge, person 2 takes 2 minutes, person 3 takes 5 minutes and person 4 takes 10 minutes. A pair must walk together at the rate of the slower person's pace. For example, if person 1 and person 4 walk across first, 10 minutes have elapsed when they get to the other side of the bridge. If person 4 returns the flashlight, a total of 20 minutes have passed and you have failed the mission.
+
+ 
+Trip 1) Person 1 & 2
+2 minutes
+
+Trip 2) Person 1 (Returning)
+1 minutes
+
+Trip 3) Person 3 & 4
+10 minutes
+
+Trip 4) Person 2 (returning)
+2 minutes
+
+Trip 5) Person 1 & 2
+2 minutes

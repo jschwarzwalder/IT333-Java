@@ -1,0 +1,11 @@
+1. Old world puzzle A peasant finds himself on a riverbank with a wolf, a goat and a head of cabbage. He needs to transport all three to the other side of the river in his boat. However, the boat has room for only the peasant himself and one other item (either the wolf, the goat, or the cabbage). In his absence, the wolf would eat the goat, and the goat would eat the cabbage. Solve this problem for the peasant or prove it has no solution.
+
+ 
+
+Trip 1 Take Goat Over
+Trip 2 Empty (return)
+Trip 3 Take Wolf
+Trip 4 Take Goat Back (return)
+Trip 5 Take Cabbage 
+Trip 6 Empty (return)
+Trip 7 Take Goat and stay 
