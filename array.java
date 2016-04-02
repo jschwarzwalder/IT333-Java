@@ -7,7 +7,7 @@ import java.util.ArrayList; // The ArrayList library
 import java.util.Iterator; // The Iterator Library
 import java.util.Arrays; // The Arrays Library
 
-public class LessonEleven {
+public class ArrayListExample {
 	
 	public static void main(String[] args)
 	{

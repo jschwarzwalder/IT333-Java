@@ -12,7 +12,7 @@
 import java.util.Arrays;
 import java.util.LinkedList; // LinkedList Library methods
 
-public class LessonTwelve {
+public class LinkedListExample {
 	
 	public static void main(String[] args){
 		
