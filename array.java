@@ -90,15 +90,15 @@ public class LessonEleven {
 		nameCopy.addAll(names);
 		System.out.println(nameCopy);
 		
-		String paulYoung = "Paul Young";
+		String myPersonalString = "Paul Schwarzwalder";
 		
 		// You can add variable values to an ArrayList
-		names.add(paulYoung);
+		names.add(myPersonalString);
 		
 		// contains returns a boolean value based off of whether
 		// the ArrayList contains the specified object
 		
-		if(names.contains(paulYoung))
+		if(names.contains(myPersonalString))
 		{
 			System.out.println("Paul is here");
 		}
