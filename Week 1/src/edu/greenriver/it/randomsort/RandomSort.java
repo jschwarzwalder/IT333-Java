@@ -36,27 +36,30 @@ public class RandomSort {
         randomSort(new int[]{7, 2, 9, 0, 1, 2, 0, 9, 7, 4, 4, 6, 9, 1, 0, 9, 3, 2, 5, 9}, 9);
     }
 
-    public static void randomSort(int[] numbers, int k) {
+    public static void randomSort(int[] numbers, int max) {
 
-        //make an array of k+1 if k is a non negative number
-        if (k >= 0) {
-            int[] temp = new int[k + 1];
+        //make an array of max+1 if max is a non negative number
+        if (max >= 0) {
+            int[] temp = new int[max + 1];
             //Java already sets every value equal to 0
             // System.out.println(Arrays.toString(temp));
 
-            //look at current element (m) and increase value at that index by 1
+            //look at current element (number) and increase value at that index by 1
             for (int i = 0; i < numbers.length; i++) {
-                int m = numbers[i];
-                temp[m] += 1;
+                int number = numbers[i];
+                temp[number] += 1;
             }
 
             //print values based on how many of each integer was in original array.
             System.out.print("[");
-            for (int i = 0; i <= k; i++) {
+            for (int i = 0; i <= max; i++) {
                 if (temp[i] > 0) {
                     for (int j = 0; j < temp[i]; j++) {
                         System.out.print(i);
-                        System.out.print(", ");
+						if (j != temp[i]-1){
+							//only add a , and space when not the last int in the array.
+							System.out.print(", ");
+						}
                     }
                 }
             }
