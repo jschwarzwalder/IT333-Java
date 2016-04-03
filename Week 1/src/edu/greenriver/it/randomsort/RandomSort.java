@@ -24,7 +24,7 @@ import java.util.Arrays;
 * (ie. if temp[2] = 4, then print 2, 2, 2, 2 as part of your sorted output).
 *
 */
-public class RandomSort {
+public class PrintSorted {
 
     public static void main(String[] args) {
 
@@ -36,7 +36,7 @@ public class RandomSort {
         randomSort(new int[]{7, 2, 9, 0, 1, 2, 0, 9, 7, 4, 4, 6, 9, 1, 0, 9, 3, 2, 5, 9}, 9);
     }
 
-    public static void randomSort(int[] numbers, int max) {
+    public static void PrintSorted(int[] numbers, int max) {
 
         //make an array of max+1 if max is a non negative number
         if (max >= 0) {
