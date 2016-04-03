@@ -24,15 +24,6 @@ import java.util.Arrays;
  * We will discuss later how recursion can be a pitfall here.
  * You should also use no more than a few temporary variables.
  * The solution you provide should not use arrays of any other data structure.
- * 
- * 3. See Below
- */
-
-/**
- * This class calculates values in the Fibonacci Sequence
- *
- * @author Jami Schwarzwalder
- * @version 1.0
  */
 public class Fibonacci {
     public static void main (String[] args ){
@@ -46,16 +37,9 @@ public class Fibonacci {
         System.out.println(fibonacciAt(11));
         System.out.println(fibonacciAtArray(11));
     }
-    
-    /**
-     * Returns an array of the fibonacci sequence of length num
-     *
-     * @param num an integer indicating desired length of fibonacci sequence.
-     * @return an array of fibonacci numbers length num
-     * 
-     */
-    public static int[] fibonacci (int num){
-        //create an int array that is the length of num
+
+    private static int[] fibonacci (int num){
+        //create an int array that is the length of n
         int[] fibonacciSequence = new int[num];
 
         //if they asked for length of 0 give them an empty array
@@ -76,7 +60,7 @@ public class Fibonacci {
         fibonacciSequence[1] = 1;
 
         // we already set the first two values
-        //now keep adding values until the length is num
+        //now keep adding values until the length is n
         for (int i = 2; i < num; i++){
             //value at index i is the sum of the previous two values
            fibonacciSequence[i] = fibonacciSequence[i-1] +  fibonacciSequence[i-2];
@@ -84,16 +68,9 @@ public class Fibonacci {
 
         return fibonacciSequence;
     }
-    
-    /**
-     * Returns a specific value in the fibonacci sequence
-     *
-     * @param num an integer indicating which value of fibonacci desired.
-     * @return the numth value of fibonacci
-     * 
-     */
-    public static int fibonacciAt (int num){
-        //Value of fibonacci at length num
+
+    private static int fibonacciAt (int num){
+        //Value of fibonacci at length n
         int fib = 0;
 
         //if they want length 0 return first number
@@ -121,18 +98,10 @@ public class Fibonacci {
         return  fib;
     }
 
-    
-    /**
-     * Returns a specific value in the fibonacci sequence
-     *
-     * @param num an integer indicating which value of fibonacci desired.
-     * @return value of fibonacci at index num
-     * 
-     */
     //3. Is it possible to use your solution to (2a) to solve (2b)? Yes
     // If this is not possible, make an argument why.
     // If it is possible, then write the function and argue about why this is a good or bad design.
-    public static int fibonacciAtArray (int num){
+    private static int fibonacciAtArray (int num){
 
         //Calculate an array the length requested plus 1
         //so we can have an index n since fibonacci array has index 0

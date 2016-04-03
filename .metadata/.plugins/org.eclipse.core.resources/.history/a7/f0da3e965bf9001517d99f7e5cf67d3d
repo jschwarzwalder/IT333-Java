@@ -39,11 +39,10 @@ public class KthLargest {
 	    }
 
 	/**
-     * Returns the kth largest element 
-     * Where k is the length of the list divided by 2
+     * Creates a new Person with a name and nickname.
      *
-     * @param list the list of integers to search
-     * @returns the kth largest element
+     * @param name the name of the new person
+     * @param nickname the nickname of the new person
      */
 	public static Comparable kthLargest ( Comparable[] list){
         //make an array with length of K

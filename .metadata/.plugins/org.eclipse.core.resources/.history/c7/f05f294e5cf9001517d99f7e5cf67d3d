@@ -41,14 +41,6 @@ public class PrintSorted {
     	printSorted(new int[]{7, 2, 9, 0, 1, 2, 0, 9, 7, 4, 4, 6, 9, 1, 0, 9, 3, 2, 5, 9}, 9);
     }
 
-
-    /**
-     * Prints a sorted array when you pass in an int array 
-     *
-     * @param numbers an integer array of numbers
-     * @param max the largest value that is in the int array
-     * 
-     */
     public static void printSorted(int[] numbers, int max) {
 
         //make an array of max+1 if max is a non negative number

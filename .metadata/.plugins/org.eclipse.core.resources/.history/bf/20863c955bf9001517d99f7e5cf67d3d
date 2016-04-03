@@ -22,13 +22,6 @@ package edu.greenriver.it.printedsort;
 * (ie. if temp[2] = 4, then print 2, 2, 2, 2 as part of your sorted output).
 *
 */
-
-/**
- * This class sorts and prints out an Integer array
- *
- * @author Jami Schwarzwalder
- * @version 1.0
- */
 public class PrintSorted {
 
     public static void main(String[] args) {
@@ -41,14 +34,6 @@ public class PrintSorted {
     	printSorted(new int[]{7, 2, 9, 0, 1, 2, 0, 9, 7, 4, 4, 6, 9, 1, 0, 9, 3, 2, 5, 9}, 9);
     }
 
-
-    /**
-     * Prints a sorted array when you pass in an int array 
-     *
-     * @param numbers an integer array of numbers
-     * @param max the largest value that is in the int array
-     * 
-     */
     public static void printSorted(int[] numbers, int max) {
 
         //make an array of max+1 if max is a non negative number
