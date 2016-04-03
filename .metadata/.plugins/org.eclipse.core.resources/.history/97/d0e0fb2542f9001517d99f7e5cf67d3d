@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package net.greenrivertech.jschwarzwalder;
+
+/**
+ * @author Eiseldora
+ *
+ */
+public abstract class HelloWorld {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
