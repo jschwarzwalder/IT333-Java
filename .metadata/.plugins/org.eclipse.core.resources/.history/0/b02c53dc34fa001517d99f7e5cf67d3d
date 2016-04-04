@@ -92,13 +92,13 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 		}
 
 		public boolean hasNext() {
-			return current < theList.size();
+			return current < size();
 		}
 
 		public AnyType next() {
 			if (!hasNext())
 				throw new java.util.NoSuchElementException();
-			return theList.theItems[current++];
+			return theItems[current++];
 		}
 
 		public void remove() {

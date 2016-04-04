@@ -1,99 +1,108 @@
 package net.greenrivertech.jschwarzwalder;
 
-public class MyArrayList<AnyType> implements Iterable<AnyType>
-{
-private static final int DEFAULT_CAPACITY = 10;
+public class MyArrayList<AnyType> implements Iterable<AnyType> {
+	private static final int DEFAULT_CAPACITY = 10;
 
-private int theSize;
-private AnyType [ ] theItems;
+	private int theSize;
+	private AnyType[] theItems;
 
-public MyArrayList( )
-{ doClear( ); }
+	public MyArrayList() {
+		doClear();
+	}
 
- public void clear( )
- { doClear( ); }
+	public void clear() {
+		doClear();
+	}
 
- private void doClear( )
- { theSize = 0; ensureCapacity( DEFAULT_CAPACITY ); }
+	private void doClear() {
+		theSize = 0;
+		ensureCapacity(DEFAULT_CAPACITY);
+	}
 
- public int size( )
- { return theSize; }
- public boolean isEmpty( )
- { return size( ) == 0; }
- public void trimToSize( )
- { ensureCapacity( size( ) ); }
+	public int size() {
+		return theSize;
+	}
 
- public AnyType get( int idx )
- {
- if( idx < 0 || idx >= size( ) )
- throw new ArrayIndexOutOfBoundsException( );
- return theItems[ idx ];
- }
+	public boolean isEmpty() {
+		return size() == 0;
+	}
 
- public AnyType set( int idx, AnyType newVal )
- {
- if( idx < 0 || idx >= size( ) )
- throw new ArrayIndexOutOfBoundsException( );
- AnyType old = theItems[ idx ];
- theItems[ idx ] = newVal;
- return old;
- }
+	public void trimToSize() {
+		ensureCapacity(size());
+	}
 
- public void ensureCapacity( int newCapacity )
- {
- if( newCapacity < theSize )
- return;
+	public AnyType get(int idx) {
+		if (idx < 0 || idx >= size())
+			throw new ArrayIndexOutOfBoundsException();
+		return theItems[idx];
+	}
 
- AnyType [ ] old = theItems;
- theItems = (AnyType []) new Object[ newCapacity ];
- for( int i = 0; i < size( ); i++ )
- theItems[ i ] = old[ i ];
- }
-public boolean add( AnyType x )
- {
- add( size( ), x );
- return true;
- }
+	public AnyType set(int idx, AnyType newVal) {
+		if (idx < 0 || idx >= size())
+			throw new ArrayIndexOutOfBoundsException();
+		AnyType old = theItems[idx];
+		theItems[idx] = newVal;
+		return old;
+	}
 
- public void add( int idx, AnyType x )
- {
- if( theItems.length == size( ) )
- ensureCapacity( size( ) * 2 + 1 );
- for( int i = theSize; i > idx; i-- )
- theItems[ i ] = theItems[ i - 1 ];
- theItems[ idx ] = x;
+	public void ensureCapacity(int newCapacity) {
+		if (newCapacity < theSize)
+			return;
 
- theSize++;
- }
+		AnyType[] old = theItems;
+		theItems = (AnyType[]) new Object[newCapacity];
+		for (int i = 0; i < size(); i++)
+			theItems[i] = old[i];
+	}
 
- public AnyType remove( int idx )
- {
- AnyType removedItem = theItems[ idx ];
- for( int i = idx; i < size( ) - 1; i++ )
- theItems[ i ] = theItems[ i + 1 ];
+	public boolean add(AnyType x) {
+		add(size(), x);
+		return true;
+	}
 
- theSize--;
- return removedItem;
- }
+	public void add(int idx, AnyType x) {
+		if (theItems.length == size())
+			ensureCapacity(size() * 2 + 1);
+		for (int i = theSize; i > idx; i--)
+			theItems[i] = theItems[i - 1];
+		theItems[idx] = x;
 
- public java.util.Iterator<AnyType> iterator( )
- { return new ArrayListIterator( ); }
+		theSize++;
+	}
 
- private class ArrayListIterator implements java.util.Iterator<AnyType>
- {
- private int current = 0;
+	public AnyType remove(int idx) {
+		AnyType removedItem = theItems[idx];
+		for (int i = idx; i < size() - 1; i++)
+			theItems[i] = theItems[i + 1];
 
- public boolean hasNext( )
- { return current < size( ); }
+		theSize--;
+		return removedItem;
+	}
 
- public AnyType next( )
- {
- if( !hasNext( ) )
- throw new java.util.NoSuchElementException( );
- return theItems[ current++ ];
- }
+	public java.util.Iterator<AnyType> iterator() {
+		return new ArrayListIterator(this);
+	}
 
- public void remove( )
- { MyArrayList.this.remove( --current ); }
- }
- }
+	private class ArrayListIterator implements java.util.Iterator<AnyType> {
+		private int current = 0;
+		private MyArrayList<AnyType> theList;
+
+		public ArrayListIterator(MyArrayList<AnyType> list) {
+			theList = list;
+		}
+
+		public boolean hasNext() {
+			return current < theList.size();
+		}
+
+		public AnyType next() {
+			if (!hasNext())
+				throw new java.util.NoSuchElementException();
+			return theList.theItems[current++];
+		}
+
+		public void remove() {
+			MyArrayList.this.remove(--current);
+		}
+	}
+}

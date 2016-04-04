@@ -87,18 +87,14 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 		private int current = 0;
 		private MyArrayList<AnyType> theList;
 
-		public ArrayListIterator(MyArrayList<AnyType> list) {
-			theList = list;
-		}
-
 		public boolean hasNext() {
-			return current < theList.size();
+			return current < size();
 		}
 
 		public AnyType next() {
 			if (!hasNext())
 				throw new java.util.NoSuchElementException();
-			return theList.theItems[current++];
+			return theItems[current++];
 		}
 
 		public void remove() {
