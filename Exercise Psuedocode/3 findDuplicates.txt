@@ -1,0 +1,11 @@
+3. Give the pseudocode for an algorithm that takes as an input a list of n integers in increasing order and produces a list of all values that occur more than once.
+algorithm findDuplicates(arrayInt)
+//input: sorted array of integers arrayInt
+//output: array of values that appear more than once in arrayInt
+create new integer array called duplicates
+for each value in arrayInt
+	compare value to next value in array until you reach end of arrayInt
+	if the same look at last value in duplicates array
+		If not in duplicates array 
+			add to duplicates array
+when done return duplicates array.

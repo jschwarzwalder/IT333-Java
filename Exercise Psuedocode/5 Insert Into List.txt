@@ -1,0 +1,18 @@
+5. Give the pseudocode for an algorithm that inserts an integer x in the appropriate position of a list of sorted integers.
+Example inputs: A = [2, 5, 13, 21],   x = 10        
+Example list after the algorithm completes: A = [2, 5, 10, 13, 21]
+algorithm insertIntoList(IntList, intX)
+//input: sorted list of integers IntList
+//input: single integer intX
+//output: sorted array with intX value included
+Get size of IntList and save to variable int sizeIntList
+Create a variable int insertIndex, set it equal to sizeIntList/2
+While insertIndex < sizeIntList - 1:
+Get the value in the list at insertIndex and save to compareInt
+Compare compareInt to intX
+if intX is greater than compareInt
+	add (sizeIntList-insertIndex)/2 to the insertIndex
+else if intX is less than compareInt
+	
+	subtract (sizeIntList/2 - insertIndex)/2 to the insertIndex
+

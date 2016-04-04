@@ -1,0 +1,18 @@
+4. Give the pseudocode for an algorithm that takes as an input a list of n integers in increasing order and returns the mode of the list (the value that appears most often).
+algorithm intMode(arrayInt)
+//input: sorted array of integers arrayInt
+//output: integer value of the value that appears the most often
+create new integer count and set to 0
+create new integer modeCount and set to 0
+create new integer modeValue and set to 0
+for each value in arrayInt
+	compare value to next value in array until you reach end - 1 of arrayInt
+	If value is the same as next value
+		increase count by 1
+	else 
+		compare count to modeCount
+		if count is larger than modeCount
+			set modeCount to count
+			set modeValue to current value
+			set count to 0
+return modeValue

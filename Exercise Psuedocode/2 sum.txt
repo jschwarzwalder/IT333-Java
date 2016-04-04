@@ -1,0 +1,8 @@
+2. Give the pseudocode for an algorithm that finds the sum of all integers in an array.
+ algorithm sum(arrayInt)
+//input: array of integers arrayInt
+//output: the sum all the values in arrayInt
+create new int variable total equal to 0.
+For each element in arrayInt
+add the value to total
+return total

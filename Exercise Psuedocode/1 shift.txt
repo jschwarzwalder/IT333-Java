@@ -1,0 +1,12 @@
+1. Give the pseudocode for an algorithm that reorders the elements of the following array:
+ A = [x, y, z]  --> A = [y, z, x]
+ What is the minimum number of assignment statements needed? 4
+algorithm shift(arrayXYZ)
+//input: arrayXYZ 
+//output: arrayXYZ shifted
+store value of element in index 0 as variable holdValue
+For length of arrayXYZ where i starts at 1
+	move arrayXYZ[i] to arrayXYZ [i-1]
+When finished assign variable holdValue to arrayXYZ 
+at index of (length of arrayXYZ - 1)
+return arrayXYZ
