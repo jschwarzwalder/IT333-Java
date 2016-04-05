@@ -1,6 +1,11 @@
 package net.greenrivertech.jschwarzwalder;
 
 public class MyLinkedList<AnyType> implements Iterable<AnyType> {
+	private int theSize;
+	private int modCount = 0;
+	private Node<AnyType> beginMarker;
+	private Node<AnyType> endMarker;
+	
 	private static class Node<AnyType> {
 		public Node(AnyType d, Node<AnyType> p, Node<AnyType> n) {
 			data = d;
@@ -93,21 +98,86 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 		return p.data;
 	}
 
+	/**
+	 * Gets the Node at position idx, which must range from 0 to size( ) - 1.
+	 * 
+	 * @param idx
+	 *            index to search at.
+	 * @return internal node corresponding to idx.
+	 * @throws IndexOutOfBoundsException
+	 *             if idx is not between 0 and size( ) - 1, inclusive.
+	 */
 	private Node<AnyType> getNode(int idx) {
-		/* Figure 3.31 */ }
+		return getNode(idx, 0, size() - 1);
+	}
 
+	/**
+	 * Gets the Node at position idx, which must range from lower to upper.
+	 * 
+	 * @param idx
+	 *            index to search at.
+	 * @param lower
+	 *            lowest valid index.
+	 * @param upper
+	 *            highest valid index.
+	 * @return internal node corresponding to idx.
+	 * @throws IndexOutOfBoundsException
+	 *             if idx is not between lower and upper, inclusive.
+	 */
 	private Node<AnyType> getNode(int idx, int lower, int upper) {
-		/* Figure 3.31 */ }
+		Node<AnyType> p;
+
+		if (idx < lower || idx > upper)
+			throw new IndexOutOfBoundsException();
+
+		if (idx < size() / 2) {
+			p = beginMarker.next;
+			for (int i = 0; i < idx; i++)
+				p = p.next;
+		} else {
+			p = endMarker;
+			for (int i = size(); i > idx; i--)
+				p = p.prev;
+		}
+
+		return p;
+	}
 
 	public java.util.Iterator<AnyType> iterator() {
 		return new LinkedListIterator();
 	}
 
 	private class LinkedListIterator implements java.util.Iterator<AnyType> {
-		/* Figure 3.32 */ }
+		private Node<AnyType> current = beginMarker.next;
+		private int expectedModCount = modCount;
+		private boolean okToRemove = false;
 
-	private int theSize;
-	private int modCount = 0;
-	private Node<AnyType> beginMarker;
-	private Node<AnyType> endMarker;
+		public boolean hasNext() {
+			return current != endMarker;
+		}
+
+		public AnyType next() {
+			if (modCount != expectedModCount)
+				throw new java.util.ConcurrentModificationException();
+			if (!hasNext())
+				throw new java.util.NoSuchElementException();
+
+			AnyType nextItem = current.data;
+			current = current.next;
+			okToRemove = true;
+			return nextItem;
+		}
+
+		public void remove() {
+			if (modCount != expectedModCount)
+				throw new java.util.ConcurrentModificationException();
+			if (!okToRemove)
+				throw new IllegalStateException();
+
+			MyLinkedList.false.remove(current.prev);
+			expectedModCount++;
+			okToRemove = false;
+		}
+	}
+
 }
