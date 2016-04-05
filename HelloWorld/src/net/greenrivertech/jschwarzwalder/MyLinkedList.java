@@ -76,8 +76,22 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 		modCount++;
 	}
 
+	 
+	/**
+	 * Removes the object contained in Node p.
+	 * 
+	 * @param p
+	 *            the Node containing the object.
+	 * @return the item was removed from the collection.
+	 */
 	private AnyType remove(Node<AnyType> p) {
-		/* Figure 3.30 */ }
+		p.next.prev = p.prev;
+		p.prev.next = p.next;
+		theSize--;
+		modCount++;
+
+		return p.data;
+	}
 
 	private Node<AnyType> getNode(int idx) {
 		/* Figure 3.31 */ }
