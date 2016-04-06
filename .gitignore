@@ -100,3 +100,7 @@ Temporary Items
 *.class
 *.zip
 .metadata/.plugins/org.eclipse.core.resources/.projects/HelloWorld/.markers.snap
+*.gen
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/segments.gen
+*.gen
+.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/segments.gen

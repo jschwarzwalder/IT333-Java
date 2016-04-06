@@ -174,7 +174,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 			if (!okToRemove)
 				throw new IllegalStateException();
 
-			MyLinkedList.false.remove(current.prev);
+			MyLinkedList.this.remove(current.prev);
 			expectedModCount++;
 			okToRemove = false;
 		}
