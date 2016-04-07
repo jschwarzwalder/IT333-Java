@@ -45,7 +45,7 @@ public class TheKthLargest {
      * @param list the list of integers to search
      * @returns the kth largest element
      */
-	public static Comparable kthLargest ( Comparable[] list){
+	public static <T extends Comparable<T>> T kthLargest ( T[] list){
         //make an array with length of K
         int inputLength = list.length;
         int medianPosition = inputLength/2;
@@ -56,8 +56,9 @@ public class TheKthLargest {
         if (inputLength == 1){
             return list[0];
         }
-
-        Comparable[] highestValues = new Comparable[medianPosition];
+        
+       @SuppressWarnings("unchecked")  
+       T[] highestValues = (T[])new Comparable[medianPosition];
         for (int i = 0; i < medianPosition; i++){
             highestValues[i] = list[i];
         }
