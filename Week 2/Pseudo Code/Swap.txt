@@ -1,0 +1,8 @@
+Algorithm Swap (A[0...n-1], first, second)
+	// INPUTS: An ARRAY A, indices first, second
+	// OUTPUTS: none
+
+	temp <-- A[first]
+	A[first]<-- A[second]
+	A[second] <-- temp
+	

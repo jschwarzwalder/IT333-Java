@@ -1,0 +1,9 @@
+Algorithm Sequential Search (A [0...n-1], Search)
+	//INPUT An ARRAY A and A Search Value
+	//OUTPUT index where search was found, 
+			Otherwise -1
+	for i <-- to n-1
+		if A[i] = Search
+			return i
+	
+	return -1
