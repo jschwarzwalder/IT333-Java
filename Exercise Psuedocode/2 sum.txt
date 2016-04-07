@@ -1,8 +1,11 @@
 2. Give the pseudocode for an algorithm that finds the sum of all integers in an array.
- algorithm sum(arrayInt)
-//input: array of integers arrayInt
-//output: the sum all the values in arrayInt
-create new int variable total equal to 0.
-For each element in arrayInt
-add the value to total
-return total
+
+algorithm sum(A[0...n-1])
+//input: An ARRAY A
+//output: An int that is the sum of all values in ARRAY A
+t1 <-- 0
+
+for i <-- 0 to n-1
+	t1 <-- t1 + A[i]
+
+return t1

@@ -1,11 +1,12 @@
 3. Give the pseudocode for an algorithm that takes as an input a list of n integers in increasing order and produces a list of all values that occur more than once.
-algorithm findDuplicates(arrayInt)
-//input: sorted array of integers arrayInt
-//output: array of values that appear more than once in arrayInt
-create new integer array called duplicates
-for each value in arrayInt
-	compare value to next value in array until you reach end of arrayInt
-	if the same look at last value in duplicates array
-		If not in duplicates array 
-			add to duplicates array
-when done return duplicates array.
+
+algorithm findDuplicates(A[0...n-1])
+//input: A sorted ARRAY A
+//output: An ARRAY D of duplicate ints in Array A
+D[] <-- new ARRAY
+
+for i <-- 1 to n-1
+	if A[i-1] = A[i]
+		if A[i] != D[ D.length - 1 ] 
+			D[ D.length -1 ] <-- A[i]	
+return D[]
