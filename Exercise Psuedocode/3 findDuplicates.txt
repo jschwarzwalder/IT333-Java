@@ -3,10 +3,16 @@
 algorithm findDuplicates(A[0...n-1])
 //input: A sorted ARRAY A
 //output: An ARRAY D of duplicate ints in Array A
+
+//new array to store duplicate values if found.
 D[] <-- new ARRAY
 
 for i <-- 1 to n-1
 	if A[i-1] = A[i]
+		// if duplicate found, see if already stored in D[]
+		// Since A[] is sorted and we are adding values to D[] in order
+		// we only need to check last value added to D[]
+		
 		if A[i] != D[ D.length - 1 ] 
 			D[ D.length -1 ] <-- A[i]	
 return D[]

@@ -1,18 +1,30 @@
 4. Give the pseudocode for an algorithm that takes as an input a list of n integers in increasing order and returns the mode of the list (the value that appears most often).
-algorithm intMode(arrayInt)
-//input: sorted array of integers arrayInt
-//output: integer value of the value that appears the most often
-create new integer count and set to 0
-create new integer modeCount and set to 0
-create new integer modeValue and set to 0
-for each value in arrayInt
-	compare value to next value in array until you reach end - 1 of arrayInt
-	If value is the same as next value
-		increase count by 1
-	else 
-		compare count to modeCount
-		if count is larger than modeCount
-			set modeCount to count
-			set modeValue to current value
-			set count to 0
-return modeValue
+
+algorithm findDuplicates(A[0...n-1])
+	//input: A sorted ARRAY A
+	//output: An the int that appears the most
+	
+	if A.length = 1
+		return A[0]
+
+	count <-- 0
+	modeCount <-- 0
+	modeValue <-- 0
+
+	for i <-- 1 to n - 1
+		if A[i-1] = A[i]
+			count <-- count + 1
+		else
+			// if values are not the same, 
+			// check to see if A[i-1] is mode
+			
+			if count > modeCount
+				modeCount <-- count
+				modeValue <-- A[i-1]
+				count <-- 0
+				
+	//check whether A[n-1] is mode
+	
+	if count > modeCount
+		modeValue <-- A[n-1]
+	return modeValue
