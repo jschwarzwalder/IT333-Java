@@ -35,7 +35,7 @@ public class Algorithm3 {
 		System.out.println(Arrays.toString(randomInts(2)));
 		System.out.println(Arrays.toString(randomInts(10)));
 		
-		int[] input = {100000, 200000, 400000, 800000, 1600000, 3200000, 6400000};
+		int[] input = {250, 500, 1000, 2000, 25000, 50000, 100000, 200000, 400000, 800000, 1600000, 3200000, 6400000};
 		for (int i = 0; i < input.length; i++){
 			System.out.print(input[i]);
 			System.out.print(" average number of operations: ");
