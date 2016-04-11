@@ -1,0 +1,29 @@
+Algorithm #1
+ 250 average number of operations:   171621 
+ 500 average number of operations:   734502 
+1000 average number of operations:  3600276 
+2000 average number of operations: 15347885 
+
+Algorithm #2
+ 25000 average number of operations:   288630 
+ 50000 average number of operations:   616095 
+100000 average number of operations:  1314800 
+200000 average number of operations:  2829350 
+400000 average number of operations:  5789254 
+800000 average number of operations: 11885052 
+
+ 25000 average number of operations:   287571 
+ 50000 average number of operations:   658426 
+100000 average number of operations:  1313056 
+200000 average number of operations:  2595811 
+400000 average number of operations:  5980548 
+800000 average number of operations: 11951098 
+
+Algorithm #3
+ 100000 average number of operations:   499996 
+ 200000 average number of operations:   999996 
+ 400000 average number of operations:  1999996 
+ 800000 average number of operations:  3999996 
+1600000 average number of operations:  7999996 
+3200000 average number of operations: 15999996 
+6400000 average number of operations: 31999996 

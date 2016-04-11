@@ -35,13 +35,13 @@ public class Algorithm3 {
 		System.out.println(Arrays.toString(randomInts(2)));
 		System.out.println(Arrays.toString(randomInts(10)));
 		
-//		int[] input = {25000, 50000, 100000, 200000, 400000, 800000};
-//		for (int i = 0; i < input.length; i++){
-//			System.out.print(input[i]);
-//			System.out.print(" average number of operations: ");
-//			System.out.print(numOfOperations(input[i]));
-//			System.out.print(" \n");
-//		}
+		int[] input = {100000, 200000, 400000, 800000, 1600000, 3200000, 6400000};
+		for (int i = 0; i < input.length; i++){
+			System.out.print(input[i]);
+			System.out.print(" average number of operations: ");
+			System.out.print(numOfOperations(input[i]));
+			System.out.print(" \n");
+		}
 
 	}
 	
@@ -87,13 +87,17 @@ public class Algorithm3 {
 		Random randomInt = new Random ();
 		for (int i = 0; i < lengthOfArray; i++){			
 			randomInts[i]= i+1;
+			count++;
 		}
 		
-		for (int i = 0; i < lengthOfArray; i++){			
+		for (int i = 1; i < lengthOfArray; i++){			
 			int number = randomInt.nextInt(i);
 			int temp = randomInts[i];
+			count++;
 			randomInts[i] = randomInts[number];
+			count += 2;
 			randomInts[number] = temp;
+			count++;
 		}
 		
 		return count;									
