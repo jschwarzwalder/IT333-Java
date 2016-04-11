@@ -40,13 +40,18 @@ public class Algorithm1 {
 		int[] randomInts = new int[lengthOfArray];
 		Random randomInt = new Random ();
 		//for each element in the array, generate a random integer
-		for (int i = 0; i < lengthOfArray-1; ){
+		for (int i = 0; i< lengthOfArray-1; i++){
 			int number = randomInt.nextInt(lengthOfArray);
-			//if int is already in the array then generate a new int
-			
+			while (inArray(randomInts, number)) {
+				//if int is already in the array then generate a new int
+				number = randomInt.nextInt(lengthOfArray);
+			}	
+			if (inArray(randomInts, number)){
+				randomInts[i]=number;
+			}
 		}
 		
-		return randomInt;
+		return randomInts;
 	}
 	
 	/**
