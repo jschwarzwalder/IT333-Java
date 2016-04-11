@@ -100,7 +100,7 @@ public class Algorithm1 {
 		count = 0;
 		//Create array to store integers					
 		int[] randomInts = new int[lengthOfArray];
-		count++;
+		count += lengthOfArray;
 		Random randomInt = new Random (); 					
 		//for each element in the array, generate a random integer
 		for (int i = 0; i < lengthOfArray; i++){ 			
@@ -112,7 +112,7 @@ public class Algorithm1 {
 				count++;
 			}	
 			randomInts[i]=number;								
-			
+			count++;
 		}
 		
 		return count;									
