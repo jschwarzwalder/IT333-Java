@@ -29,8 +29,6 @@ import java.util.Random;
  */
 
 public class Algorithm2 {
-	//count the number of operations in each execution
-	private static int count = 0;
 	
 	public static void main(String[] args) {
 		// testing the algorithm
@@ -88,7 +86,7 @@ public class Algorithm2 {
 	private static int bigOhOfRandomInts (int lengthOfArray){
 		//count will keep track of the number of array access
 		//set to 0 each time we create a new array 
-		count = 0;
+		int count = 0;
 		//Create array to store integers					
 		int[] randomInts = new int[lengthOfArray];
 		boolean[] used = new boolean[lengthOfArray];
