@@ -22,7 +22,7 @@ import java.util.Random;
 
 /**
  * @author Jami Schwarzwalder
- * @version 1.0
+ * @version 3.0
  */
 
 public class Algorithm3 {
@@ -50,9 +50,11 @@ public class Algorithm3 {
      * @returns an array of integers the length lengthOfArray
      *  			ordered randomly
      */
+	//This algorithm runs with a Big Oh T(n)= O(n) 
+	// n for the assignment of a random value into the array
 	public static int[] randomInts (int lengthOfArray){
-		//Create array to store integers					//Big Oh = n^2
-		int[] randomInts = new int[lengthOfArray]; 			//c * lengthofArray
+		//Create array to store integers					//Big Oh = n
+		int[] randomInts = new int[lengthOfArray]; 			//c 
 		Random randomInt = new Random ();
 		for (int i = 0; i < lengthOfArray; i++){			// lengthofArray
 			randomInts[i]= i+1;

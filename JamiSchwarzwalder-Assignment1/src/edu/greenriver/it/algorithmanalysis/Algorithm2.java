@@ -25,7 +25,7 @@ import java.util.Random;
 
 /**
  * @author Jami Schwarzwalder
- * @version 1.0
+ * @version 2.0
  */
 
 public class Algorithm2 {
@@ -53,6 +53,9 @@ public class Algorithm2 {
      * @returns an array of integers the length lengthOfArray
      *  			ordered randomly
      */
+	//This algorithm runs with a Big Oh T(n)= O(n^2) 
+	// n for the assignment of a random value into the array
+	// up to n for recalculating the random value in the event already in array
 	public static int[] randomInts (int lengthOfArray){
 		//Create array to store integers					//Big Oh = n^2
 		int[] randomInts = new int[lengthOfArray]; 			//c * lengthofArray

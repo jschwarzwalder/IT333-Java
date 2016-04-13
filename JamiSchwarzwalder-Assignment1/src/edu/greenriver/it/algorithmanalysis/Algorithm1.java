@@ -48,6 +48,11 @@ public class Algorithm1 {
      * @returns an array of integers the length lengthOfArray
      *  			ordered randomly
      */
+	
+	//This algorithm runs with a Big Oh T(n)= O(n^3) 
+	// n for the assignment of a random value into the array
+	// n for looking in the array to see if random value is already in array
+	// up to n for recalculating the random value in the event already in array
 	public static int[] randomInts (int lengthOfArray){
 		//Create array to store integers					//Big Oh = n^3
 		int[] randomInts = new int[lengthOfArray]; 			//c * lengthofArray
