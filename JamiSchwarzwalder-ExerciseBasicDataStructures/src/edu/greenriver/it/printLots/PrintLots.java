@@ -5,7 +5,18 @@ package edu.greenriver.it.printLots;
  * 4/14/2016
  * PrintLots.java
  * Exercises - Basic Data Structures
- * 
+ *  You are given a list, L, and another list, P, containing integers sorted in ascending order. 
+ *  The operation printLots(L, P) will print the elements in L that are in positions specified by P. 
+ *  For instance, if P = 1, 3, 4, 6, the elements in positions 1, 2, 4, and 6 in L are printed.
+ */
+
+/**
+ * The operation printLots(L, P) 
+ * will print the elements in L 
+ * that are in positions specified by P
+ *
+ * @author Jami Schwarzwalder
+ * @version 1.0
  */
 public class PrintLots {
 
@@ -13,9 +24,15 @@ public class PrintLots {
 		// TODO Auto-generated method stub
 
 	}
-	// You are given a list, L, and another list, P, containing integers sorted in ascending order. 
-	// The operation printLots(L, P) will print the elements in L that are in positions specified by P. 
-	// For instance, if P = 1, 3, 4, 6, the elements in positions 1, 2, 4, and 6 in L are printed.
+	
+	/**
+     * Prints the elements in L that are in positions specified by P
+     *
+     * @param L a list of elements
+     * @param P a list of integers specifying positions in L
+     * @return none
+     * 
+     */
 	
 	public static void printLots(List L, List P){
 		
