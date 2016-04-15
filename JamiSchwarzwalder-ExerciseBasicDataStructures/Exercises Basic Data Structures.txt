@@ -1,0 +1,33 @@
+Exercises - Basic Data Structures
+
+Answer the following questions by implementing the code samples and/or answering the questions in a word document. Upload all project files and word documents zipped to the exercise dropbox.
+
+ 
+
+1a. You are given a list, L, and another list, P, containing integers sorted in ascending order. The operation printLots(L, P) will print the elements in L that are in positions specified by P. For instance, if P = 1, 3, 4, 6, the elements in positions 1, 2, 4, and 6 in L are printed.
+
+Write the procedure printLots(L, P) and test it thoroughly. You may use only the public Collections API container operations.
+
+1b. What is the running time of your procedure?
+
+ 
+
+2. Write a method that accepts a List object (using the List interface) and returns the list in reverse order (your return type should be List). You should not create any other data structure or array. You should write the routine only using methods from the List interface.
+
+ 
+
+3a. The Josephus problem is the following game: N people, numbered 1 to N, are sitting in a circle. Starting at person 1, a hot potato is passed. After M passes, the person holding the hot potato is eliminated, the circle closes ranks, and the game continues with the person who was sitting after the eliminated person picking up the hot potato. The last remaining person wins. Thus, if M = 0 and N = 5, players are eliminated in order, and player 5 wins. If M = 1 and N = 5, the order of elimination is 2, 4, 1, 5.
+
+Write a program to solve the Josephus problem for general values of M and N. Try to make your program as efficient as possible.
+
+3b. What is the running time of your program?
+
+ 
+
+4a. An alternative to the deletion strategy we have given is to use lazy deletion. To delete an element, we merely mark it deleted (using a boolean field). The number of deleted and non-deleted elements in the list is kept as part of the data structure. If there are as many deleted elements as non-deleted elements, we traverse the entire list, performing the standard deletion algorithm on all marked nodes.
+
+List the advantages and disadvantages of lazy deletion.
+
+4b. Write routines to implement the standard linked list operations using lazy deletion. As a minimum you should write the add(x), remove(x), size(), isEmpty() and contains(x) methods.
+
+Previous Next
