@@ -1,6 +1,7 @@
 package edu.greenriver.it.printLots;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 /*
  * Jami Schwarzwalder
@@ -39,8 +40,19 @@ public class PrintLots {
      */
 	
 	public static <E> void printLots( Collection<E> inputList,  Collection<E> positions){
-		for (int i = 0; i < positions.size(); i++);
+		if ((!positions.isEmpty()) && (!inputList.isEmpty())){
 			
+			//I want to use the List interface here and use get!
+			//Do I need to us iterator
+			Iterator<E> position = positions.iterator();
+			if (position.hasNext()){
+				Iterator<E> inputListIterator = inputList.iterator();
+				if inputListIterator.hasNext(){
+					
+				}
+				}	
+		}
 	}
 
 }
+
