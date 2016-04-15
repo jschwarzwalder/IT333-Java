@@ -1,5 +1,7 @@
 package edu.greenriver.it.printLots;
 
+import java.util.Collection;
+
 /*
  * Jami Schwarzwalder
  * 4/14/2016
@@ -28,14 +30,16 @@ public class PrintLots {
 	/**
      * Prints the elements in L that are in positions specified by P
      *
-     * @param L a list of elements
-     * @param P a list of integers specifying positions in L
+     * @param inputList a list of elements
+     * @param positions a list of integers specifying positions in L
+     * 					sorted in ascending order
      * @return none
      * 
      */
 	
-	public static void printLots(List L, List P){
-		
+	public static void printLots( Collection<E> inputList,  Collection<E> positions){
+		for (i = 0; i < positions.size; i++);
+			System.out.println(inputList[positions[i]]);
 	}
 
 }
