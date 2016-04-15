@@ -26,10 +26,10 @@ public class PrintLots {
 	public static <E> void main(String[] args) {
 		// Testing code
 		
-		List<E> Inputs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		Collection<E> Inputs = new Collection(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 		
-		List<E> Test1 = {1,2,3};
-		List<E> Test2 = {7,8,9};
+		List<E> Test1 = new List(1,2,3);
+		List<E> Test2 = new List(7,8,9);
 
 		printLots (Inputs, Test1);
 		printLots (Inputs, Test2);
