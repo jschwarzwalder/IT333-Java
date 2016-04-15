@@ -23,8 +23,13 @@ import java.util.Iterator;
  */
 public class PrintLots {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static <E> void main(String[] args) {
+		// Testing code
+		
+		List<E> Inputs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		
+		List<E> Test1 = {1,2,3};
+		List<E> Test2 = {7,8,9};
 
 	}
 	
@@ -41,17 +46,19 @@ public class PrintLots {
 	
 	public static <E> void printLots( Collection<E> inputList,  Collection<E> positions){
 		if ((!positions.isEmpty()) && (!inputList.isEmpty())){
-			
-			//I want to use the List interface here and use get!
-			//Do I need to us iterator
-			Iterator<E> position = positions.iterator();
-			if (position.hasNext()){
-				Iterator<E> inputListIterator = inputList.iterator();
-				if inputListIterator.hasNext(){
-					
+			//create iterator for the input List
+			Iterator<E> inputListIterator = inputList.iterator();
+			//go through each element in list and see if it is contained in position.
+			//if is print
+			if (inputListIterator.hasNext()){
+				Object currentValue = inputListIterator.next();
+				if (positions.contains(currentValue)){
+					System.out.println(currentValue);
 				}
-				}	
+			}
 		}
+			
+			
 	}
 
 }
