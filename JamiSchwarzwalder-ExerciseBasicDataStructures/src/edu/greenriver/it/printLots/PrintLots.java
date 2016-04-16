@@ -21,7 +21,7 @@ import java.util.LinkedList;
  * that are in positions specified by P
  *
  * @author Jami Schwarzwalder
- * @version 1.0
+ * @version 2.0
  */
 public class PrintLots {
 
@@ -95,21 +95,23 @@ public class PrintLots {
 	
 	public static <E> void printLots( Collection<E> inputList,  Collection<E> positions){
 		if ((!positions.isEmpty()) && (!inputList.isEmpty())){
+			//create a count for the current position
+			int indexOf = 0;
 			//create iterator for the input List
-			Iterator<E> inputListIterator = inputList.iterator();
-			//go through each element in list and see if it is contained in position.
-			//if is print
-			if (inputListIterator.hasNext()){
-				Object currentValue = inputListIterator.next();
-				if (positions.contains(currentValue)){
+			for (E currentValue: inputList)
+				//go through each element in list and see if it is contained in position.
+				//if is print
+				indexOf ++;
+				
+				if (positions.contains(indexOf)){
 					System.out.print(currentValue);
 				}
-			}
+				
 		}
 		System.out.println();
+	}		
 			
-			
-	}
-
 }
+
+
 
