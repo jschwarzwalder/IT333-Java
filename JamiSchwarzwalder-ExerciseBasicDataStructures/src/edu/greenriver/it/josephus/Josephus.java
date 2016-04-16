@@ -42,6 +42,7 @@ public class Josephus {
 		System.out.println(Arrays.toString(josephus(5,0)));
 		System.out.println(Arrays.toString(josephus(1,1)));
 		System.out.println(Arrays.toString(josephus(5,1)));
+		System.out.println(Arrays.toString(josephus(5,1)));
 
 	}
 	
@@ -76,8 +77,9 @@ public class Josephus {
 			//pass the potato
 			currentIndex += potatoPasses;
 		};
+		//Optional: uncomment below
 		//add the last player standing to the eliminated list before returning
-		eliminated[numPlayers-1] = players.getFirst();
+		//eliminated[numPlayers-1] = players.getFirst();
 		
 		
 		return eliminated;
