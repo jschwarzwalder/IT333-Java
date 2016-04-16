@@ -91,8 +91,8 @@ public class PrintLots {
 	
 	/**
      * Prints the elements in L that are in positions specified by P
-	 * @param <E>
-     *
+	 * 
+     * @param <E> Type in the Collection 
      * @param inputList a list of elements
      * @param positions a list of integers specifying positions in L
      * 					sorted in ascending order
