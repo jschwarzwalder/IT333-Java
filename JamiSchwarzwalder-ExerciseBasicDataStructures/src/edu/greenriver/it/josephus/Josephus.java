@@ -53,7 +53,8 @@ public class Josephus {
 			players.add(i);
 		}
 		//create a list to store each player as they are eliminated
-		Integer[]  eliminated = new Integer[numPlayers] ;
+		//if you want to include last player remove the -1
+		Integer[]  eliminated = new Integer[numPlayers-1] ;
 		
 		//set value to store which player has been removed
 		int removedPlayerIndex = 0;
