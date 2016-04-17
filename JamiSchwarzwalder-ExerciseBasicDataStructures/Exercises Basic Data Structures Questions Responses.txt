@@ -1,0 +1,14 @@
+ 1b) What is the running time of your program?
+	Running time of the procedure is Length of L * Length of P ie Omega n and BigOh n^2
+
+ 3b) What is the running time of your program?
+	Big O = 2n or  O(n) it goes through num of players to build the players list
+	then again removing each player when Potato is passed. 
+
+ 4a) An alternative to the deletion strategy we have given is to use lazy deletion. To delete an element, we merely mark it deleted (using a boolean field). The number of deleted and non-deleted elements in the list is kept as part of the data structure. If there are as many deleted elements as non-deleted elements, we traverse the entire list, performing the standard deletion algorithm on all marked nodes.
+
+	Advantage - You do not need to shift the arrayList when you add and remove elements
+	Disadvantage- Can waste memory if you don't plan to add elements back into list
+				More complicated to iterate through since you have to check if value is false
+				
+				
