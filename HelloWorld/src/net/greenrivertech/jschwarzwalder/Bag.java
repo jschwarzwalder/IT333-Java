@@ -1,10 +1,11 @@
 package net.greenrivertech.jschwarzwalder;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 // stores a fixed size array, but elements can be added
 // at will without specifying an index
-public class Bag {
+public class Bag implements Iterable<Object>{
 	
 	//fields
 	private static final int DEFAULT_BAG_SIZE = 10;
@@ -42,5 +43,34 @@ public class Bag {
 	
 	public String toString(){
 		return Arrays.toString(data);
+	}
+	
+	//this method declares that our class has an iterator,
+	// and it returns an iterator
+	@Override
+	public Iterator<Object> iterator() {
+		
+		return new BagIterator(data);
+	}
+	
+	//inner classes...
+	private static class BagIterator implements Iterator<Object> {
+		private Object[] outerClassData;
+		
+		public BagIterator(Object[] outerClassData){
+			this.outerClassData = outerClassData;
+		}
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public Object next() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
 	}
 }
