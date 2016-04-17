@@ -8,29 +8,73 @@ import java.util.ListIterator;
 public class LinkedList<T> implements List<T>
 {
 	// part #1 methods below...
+	public Node head;
+	public Node tail;
+	public int size;
+	
+	
+	private class Node{
+		private T value;
+		private Node next;
+		private boolean deleted;
+		
+		public boolean isDeleted() {
+			return deleted;
+		}
+		public void setDeleted(boolean deleted) {
+			this.deleted = deleted;
+		}
+		public T getValue() {
+			return value;
+		}
+		public void setValue(T value) {
+			this.value = value;
+		}
+		public Node getNext() {
+			return next;
+		}
+		public void setNext(Node next) {
+			this.next = next;
+		}
+		
+		
+		
+	}
 
 	@Override
 	public boolean add(T newElement)
 	{
-		return false;
+		Node element = new Node();
+		element.setValue(newElement);
+		element.setNext(null);
+		element.setDeleted(false);
+		if (size==0){
+			head = element;
+		} else {
+			tail.setNext(element);
+		}
+		tail = element;
+		size++;
+		
+		return true;
 	}
 
 	@Override
 	public void add(int index, T newElement)
 	{
-
+		
 	}
 
 	@Override
 	public boolean isEmpty()
 	{
-		return false;
+		return size == 0;
 	}
 
 	@Override
 	public int size()
 	{
-		return 0;
+		return size;
 	}
 
 	@Override
@@ -48,6 +92,15 @@ public class LinkedList<T> implements List<T>
 	@Override
 	public boolean contains(Object search)
 	{
+		Node currentNode = head;
+		while (currentNode  != null){
+			if (currentNode.getValue() == search){
+				if (!currentNode.isDeleted()){
+					return true;
+				}
+			}
+			currentNode = currentNode.getNext();
+		}
 		return false;
 	}
 
@@ -66,6 +119,16 @@ public class LinkedList<T> implements List<T>
 	@Override
 	public boolean remove(Object search)
 	{
+		Node currentNode = head;
+		while (currentNode  != null){
+			if (currentNode.getValue() == search){
+				if (!currentNode.isDeleted()){
+					currentNode.setDeleted(true);
+					return true;
+				}
+			}
+			currentNode = currentNode.getNext();
+		}
 		return false;
 	}
 
