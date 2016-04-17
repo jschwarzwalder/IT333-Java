@@ -28,7 +28,11 @@ public class BagTest {
 			System.out.println(title);
 		}
 		
-		//for-each loop, enhanced for loop
+		for(Object title: myBag){
+			System.out.println(title);
+		}
+		
+		//for-each loop, enhanced for loop (SYNTACTIC SUGAR)
 		ArrayList<String> colors = new ArrayList<String>();
 		
 		colors.add("red");
@@ -44,9 +48,15 @@ public class BagTest {
 		
 		//for each loops use iterators internally
 		for(String color : colors){
-			System.out.println(color);
+			System.out.print(color);
+			System.out.print(", ");
 		}
+		System.out.println(" ");
 		
+		Iterator<String> iterator = colors.iterator();
+		while (iterator.hasNext()){
+			System.out.println(iterator.next());
+		}
 		
 		
 		
