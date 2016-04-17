@@ -1,5 +1,7 @@
 package net.greenrivertech.jschwarzwalder;
 
+import java.util.Arrays;
+
 // stores a fixed size array, but elements can be added
 // at will without specifying an index
 public class Bag {
@@ -7,6 +9,7 @@ public class Bag {
 	//fields
 	private static final int DEFAULT_BAG_SIZE = 10;
 	private Object[] data;
+	private int currentNumberOfElements = 0;
 	
 	//constructors
 	public Bag(){
@@ -25,10 +28,19 @@ public class Bag {
 			if (data[i] == null) {
 				//add the element and exit the method
 				data[i] = newElement;
+				currentNumberOfElements++;
 				return true;
 			}
 		}
 		//bag is full
 		return false;
+	}
+	
+	public int size(){
+		return currentNumberOfElements;
+	}
+	
+	public String toString(){
+		return Arrays.toString(data);
 	}
 }
