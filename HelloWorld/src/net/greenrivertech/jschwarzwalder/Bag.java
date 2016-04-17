@@ -1,0 +1,34 @@
+package net.greenrivertech.jschwarzwalder;
+
+// stores a fixed size array, but elements can be added
+// at will without specifying an index
+public class Bag {
+	
+	//fields
+	private static final int DEFAULT_BAG_SIZE = 10;
+	private Object[] data;
+	
+	//constructors
+	public Bag(){
+		data = new Object[DEFAULT_BAG_SIZE];
+	}
+	
+	public Bag(int sizeOfBag){
+		data = new Object[sizeOfBag];
+	}
+	
+	//methods
+	public boolean add(Object newElement){
+		//search for a spot to place our new element
+		for (int i= 0; i < data.length; i++){
+			//is the current spot empty?
+			if (data[i] == null) {
+				//add the element and exit the method
+				data[i] = newElement;
+				return true;
+			}
+		}
+		//bag is full
+		return false;
+	}
+}
