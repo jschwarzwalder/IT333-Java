@@ -48,6 +48,17 @@ public class Josephus {
 
 	}
 	
+	/**
+     * Returns a list of eliminated players
+     * 
+	 * @param numPlayers integer indicating how many players are participating
+     * @param potatoPasses an integer indicating how many times the potato is passed 
+     * 							before a player is eliminated
+     * 
+     * @return an Integer array of the eliminated players
+     * 	ordered by when eliminated
+     * 
+     */
 	public static Integer[] josephus(int numPlayers , int potatoPasses ){
 		//create a list of players represented by integers
 		LinkedList<Integer> players = new LinkedList<Integer>() ;
