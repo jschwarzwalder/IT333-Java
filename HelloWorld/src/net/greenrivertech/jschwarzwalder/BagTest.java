@@ -1,5 +1,7 @@
 package net.greenrivertech.jschwarzwalder;
 
+import java.util.Iterator;
+
 public class BagTest {
 	public static void main(String[] args) {
 		//create a bag
@@ -12,12 +14,20 @@ public class BagTest {
 		myBag.add("Grave Mercy");
 		myBag.add("Little Brother");
 		
-		System.out.println(myBag.toString());
+//		System.out.println(myBag.toString());
 		
 		//this doesn't work! we need iterators!
-		for (int i; i < myBag.size(); i++){
-			System.out.println(myBag.get(i));
+//		for (int i; i < myBag.size(); i++){
+//			System.out.println(myBag.get(i));
+//		}
+		
+		Iterator<Object> it = myBag.iterator();
+		while (it.hasNext()){
+			String word = (String)it.next();
+			System.out.println(word);
 		}
+		
+		
 		
 		
 		
