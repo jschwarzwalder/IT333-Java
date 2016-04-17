@@ -1,6 +1,7 @@
 package net.greenrivertech.jschwarzwalder;
 
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 // stores a fixed size array, but elements can be added
@@ -11,6 +12,11 @@ public class Bag implements Iterable<Object>{
 	private static final int DEFAULT_BAG_SIZE = 10;
 	private Object[] data;
 	private int currentNumberOfElements = 0;
+	
+	//modification count variable: increment every time there is a change
+	//(add, remove, insert)
+	private int modCount = 0;
+	
 	
 	//constructors
 	public Bag(){
@@ -30,6 +36,7 @@ public class Bag implements Iterable<Object>{
 				//add the element and exit the method
 				data[i] = newElement;
 				currentNumberOfElements++;
+				modCount++;
 				return true;
 			}
 		}
@@ -50,19 +57,33 @@ public class Bag implements Iterable<Object>{
 	@Override
 	public Iterator<Object> iterator() {
 		
-		return new BagIterator(data);
+		return new BagIterator(data, this);
 	}
 	
 	//inner classes...
 	private static class BagIterator implements Iterator<Object> {
 		private Object[] outerClassData;
-		public int currentPosition = 0;
+		private int currentPosition = 0;
+		private Bag parentBag;
+		private int currentModCount;
 		
-		public BagIterator(Object[] outerClassData){
+		public BagIterator(Object[] outerClassData, Bag parentBag){
 			this.outerClassData = outerClassData;
+			this.parentBag = parentBag;
+
+			//save the current state of the bag
+			currentModCount = parentBag.modCount;
 		}
+		
 		@Override
 		public boolean hasNext() {
+			//ensure the data hasn't changed while we are iterating
+			if(parentBag.modCount != currentModCount){
+				throw new ConcurrentModificationException(
+						"You cannot change a bag while iterating over it!");
+			}
+			
+			
 			//make sure we still have a valid index and the current element is not empty (null)
 			return currentPosition < outerClassData.length && 
 					outerClassData[currentPosition] != null;
@@ -70,6 +91,12 @@ public class Bag implements Iterable<Object>{
 
 		@Override
 		public Object next() {
+			//ensure the data hasn't changed while we are iterating
+			if(parentBag.modCount != currentModCount){
+				throw new ConcurrentModificationException(
+						"You cannot change a bag while iterating over it!");
+			}
+			
 			//return the current element, and we need to increment
 			//currentPosition so that it points to the next element
 			Object nextElement = outerClassData[currentPosition];
