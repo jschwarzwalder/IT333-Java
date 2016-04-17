@@ -1,5 +1,7 @@
 package edu.greenriver.it.lazydeletion;
 
+import java.util.LinkedList;
+
 /*
  * Jami Schwarzwalder
  * 4/15/2016
@@ -29,6 +31,15 @@ public class LazyDeletion {
 	public static void main(String[] args) {
 		
 
+	}
+	
+	public static <E> LinkedList<E> lazyAdd(LinkedList<E> inputList , E valueToAdd){
+		for (E currentValue: inputList){
+			if (!currentValue);
+			currentValue = valueToAdd;
+			return inputList;
+		}
+		return inputList.add(valueToAdd);
 	}
 
 }

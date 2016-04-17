@@ -30,4 +30,3 @@ List the advantages and disadvantages of lazy deletion.
 
 4b. Write routines to implement the standard linked list operations using lazy deletion. As a minimum you should write the add(x), remove(x), size(), isEmpty() and contains(x) methods.
 
-Previous Next
