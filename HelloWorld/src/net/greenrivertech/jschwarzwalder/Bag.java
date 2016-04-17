@@ -56,20 +56,25 @@ public class Bag implements Iterable<Object>{
 	//inner classes...
 	private static class BagIterator implements Iterator<Object> {
 		private Object[] outerClassData;
+		public int currentPosition = 0;
 		
 		public BagIterator(Object[] outerClassData){
 			this.outerClassData = outerClassData;
 		}
 		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
-			return false;
+			//make sure we still have a valid index and the current element is not empty (null)
+			return currentPosition < outerClassData.length && 
+					outerClassData[currentPosition] != null;
 		}
 
 		@Override
 		public Object next() {
-			// TODO Auto-generated method stub
-			return null;
+			//return the current element, and we need to increment
+			//currentPosition so that it points to the next element
+			Object nextElement = outerClassData[currentPosition];
+			currentPosition++;
+			return nextElement;
 		}
 		
 	}
