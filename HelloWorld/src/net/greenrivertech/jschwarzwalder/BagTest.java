@@ -1,5 +1,6 @@
 package net.greenrivertech.jschwarzwalder;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class BagTest {
@@ -23,8 +24,27 @@ public class BagTest {
 		
 		Iterator<Object> it = myBag.iterator();
 		while (it.hasNext()){
-			String word = (String)it.next();
-			System.out.println(word);
+			String title = (String)it.next();
+			System.out.println(title);
+		}
+		
+		//for-each loop, enhanced for loop
+		ArrayList<String> colors = new ArrayList<String>();
+		
+		colors.add("red");
+		colors.add("yellow");
+		colors.add("blue");
+		colors.add("orange");
+		colors.add("green");
+		colors.add("violet");
+		colors.add("black");
+		colors.add("white");
+		colors.add("magenta");
+		
+		
+		//for each loops use iterators internally
+		for(String color : colors){
+			System.out.println(color);
 		}
 		
 		
