@@ -25,6 +25,8 @@ import java.util.LinkedList;
  * 	Write a program to solve the Josephus problem for general values of M and N. 
  *  Try to make your program as efficient as possible. 
  *  
+ *  Big O = 2n or  O(n) it goes through num of players to build the players list
+ *  then again removing each player when Potato is passed. 
  *  
  */
 

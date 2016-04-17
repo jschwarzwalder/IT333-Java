@@ -99,7 +99,7 @@ public class PrintLots {
      * @return none
      * 
      */
-	//1b O(L.length*P.length) 
+	//1b O(L.length*P.length) inputList in the for loop, and positions when we use contains
 	public static <E> void printLots( Collection<E> inputList,  Collection<E> positions){
 		if ((!positions.isEmpty()) && (!inputList.isEmpty())){
 			//create a count for the current position
