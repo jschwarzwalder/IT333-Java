@@ -12,7 +12,7 @@ public class ListTester
 		//testClear();
 		//testIndexOf();
 		//testContains();
-		testGet();
+		//testGet();
 		testSet();
 		testRemoveElement();
 		testRemoveIndex();
@@ -195,11 +195,56 @@ public class ListTester
 	public static void testGet()
 	{
 		//this method tests list.get(index)
+		LinkedList<Integer> test8 = new LinkedList<Integer>();
+		System.out.print("Is 4 in the list? ");
+		try {
+			test8.get(4);
+		} catch (IndexOutOfBoundsException E) {
+			System.out.println("There was a Out of Bounds Exception");
+		}
+		
+		System.out.println("We make a new list of 10 elements with values 0 to 9 ");
+		for (int i = 0; i < 10; i++){
+			test8.add(i);
+		}
+		System.out.print("Is 0 in the list? ");
+		System.out.println(test8.get(0));
+		System.out.print("Is 4 in the list? ");
+		System.out.println(test8.get(4));
+		System.out.print("Is 7 in the list? ");
+		System.out.println(test8.get(7));
+		System.out.print("Is 9 in the list? ");
+		System.out.println(test8.get(9));
 	}
 	
 	public static void testSet()
 	{
 		//this method tests list.set(index, element)
+		LinkedList<Integer> test8 = new LinkedList<Integer>();
+		System.out.println("We make a new list of 10 elements with values 0 to 9 ");
+		for (int i = 0; i < 10; i++){
+			test8.add(i);
+		}
+		System.out.print("Is 0 in the list? ");
+		System.out.println(test8.contains(0));
+		System.out.print("Set 0 to be 42, what element did it replace? ");
+		System.out.println(test8.set(0, 42));
+		System.out.print("Is 0 in the list? ");
+		System.out.println(test8.contains(0));
+		System.out.print("What is the index of 42? ");
+		System.out.println(test8.indexOf(42));
+		
+		System.out.print("Is 9 in the list? ");
+		System.out.println(test8.contains(9));
+		System.out.print("Set 10 to be 10, what element did it replace? ");
+		System.out.println(test8.set(10, 10));
+		System.out.print("Is 9 in the list? ");
+		System.out.println(test8.contains(9));
+		System.out.print("Is 10 in the list? ");
+		System.out.println(test8.contains(10));
+		System.out.print("What is the index of 10? ");
+		System.out.println(test8.indexOf(42));
+		
 	}
 	
 	public static void testRemoveElement()
