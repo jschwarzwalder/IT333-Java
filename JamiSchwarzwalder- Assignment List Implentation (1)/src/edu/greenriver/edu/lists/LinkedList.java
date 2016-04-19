@@ -106,11 +106,13 @@ public class LinkedList<T> implements List<T>
      */
 	@Override
 	public void add(int index, T newElement) {
-		if (index >= size){
-			//if index is larger or equal to the size of list,
+		if (index == size){
+			//if index is  equal to the size of list,
 			//add element to the end of the list
 			add(newElement);
-		} else {
+		} else if((index <0) || (index > size)){ 
+			throw new IndexOutOfBoundsException("index is out of range");
+		}else{
 			Node prev = null;
 			Node currentNode = head;
 			for (int i = 0; i<index; i++){
@@ -295,6 +297,8 @@ public class LinkedList<T> implements List<T>
      */
 	@Override
 	public T set(int index, T value){
+		
+		
 		if ((index < size) && (index >= 0)){
 			//get first node in list
 			Node currentNode = head;
