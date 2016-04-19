@@ -27,11 +27,11 @@ import java.util.ListIterator;
 public class LinkedList<T> implements List<T>
 {
 	// mark the first node in the list
-	public Node head;
+	private Node head;
 	// mark the last node in the list
-	public Node tail;
+	private Node tail;
 	// store the number of nodes in the list
-	public int size;
+	private int size;
 	
 	//each element in the list is a node
 	private class Node{
@@ -39,16 +39,7 @@ public class LinkedList<T> implements List<T>
 		private T value;
 		//points to next node in the list
 		private Node next;
-		//for lazy Deletion, false if node has been deleted
-		//set to true when node is created/added
-		private boolean deleted;
 		
-		public boolean isDeleted() {
-			return deleted;
-		}
-		public void setDeleted(boolean deleted) {
-			this.deleted = deleted;
-		}
 		public T getValue() {
 			return value;
 		}
@@ -87,9 +78,6 @@ public class LinkedList<T> implements List<T>
 		//set point to next to null (it will not point anywhere)
 		element.setNext(null);
 		
-		//since we are adding to list it should not be deleted
-		element.setDeleted(false);
-		
 		//if first element in list, point head to this new node
 		if (size==0){
 			head = element;
@@ -106,10 +94,49 @@ public class LinkedList<T> implements List<T>
 		//we successfully added a node, so return true
 		return true;
 	}
-
+	
+	/**
+     *   Inserts newElement at the given index
+     * 
+     *
+     * @param index integer indicating where to add newElement
+     * @param newElement Object to be stored in List 
+     * @returns true if element was added to list
+     * 			
+     */
 	@Override
-	public void add(int index, T newElement)
-	{
+	public void add(int index, T newElement) {
+		if (index >= size){
+			//if index is larger or equal to the size of list,
+			//add element to the end of the list
+			add(newElement);
+		} else {
+			Node prev = null;
+			Node currentNode = head;
+			for (int i = 0; i<index; i++){
+				//loop through list until we get to correct index
+				prev = currentNode;
+				currentNode = currentNode.getNext();
+			}
+			//create new Node
+			Node element = new Node();
+			
+			//store newElement in node
+			element.setValue(newElement);
+			
+			//point prev node to this new node
+			if (index == 0){
+				head = element;
+			} else {
+				prev.setNext(element);
+			} 
+			//set point new node to next node in list 
+			element.setNext(currentNode);
+			
+			//since we added a node increase size by one
+			size++;
+		}
+		
 		
 	}
 	
@@ -141,18 +168,58 @@ public class LinkedList<T> implements List<T>
 		//return stored size value
 		return size;
 	}
+	
+	
+	/**
+     * Removes all elements in the list.
+     *
+     * 
+     * 
+     * 			
+     */
 
 	@Override
 	public void clear()
 	{
-
+		head = null;
+		tail = null;
+		size = 0;
 	}
+
+	/**
+     * Returns the index of the first occurrence of search in the list.
+     * If search is not found, then indexOf() should return -1.
+     *
+     *
+     * @param search Object that might be stored in list
+     * @returns integer that represents index of the Object search 
+     * 	 			
+     */
 
 	@Override
 	public int indexOf(Object search)
 	{
-		return 0;
+		//get first node in list
+		Node currentNode = head;
+		
+		//int to keep track of index
+		int index = 0;
+				
+		//go through all nodes until you reach the end
+		//where next would be null
+		while (currentNode  != null){
+			//compare object stored in current node with 
+			//Object passed into this method
+			if (currentNode.getValue().equals(search)){
+				return index;
+			}
+			//advance to next node
+			index ++;
+			currentNode = currentNode.getNext();
+		}
+		return -1;
 	}
+
 	
 	/**
      * Returns true if passed in object is found in list
@@ -175,10 +242,7 @@ public class LinkedList<T> implements List<T>
 			//Object passed into this method
 			if (currentNode.getValue().equals(search)){
 				
-				//if they are the same, check to see if it was previously deleted
-				if (!currentNode.isDeleted()){
-					return true;
-				}
+				return true;
 			}
 			//advance to next node
 			currentNode = currentNode.getNext();
@@ -186,51 +250,123 @@ public class LinkedList<T> implements List<T>
 		return false;
 	}
 
+	/**
+     * Returns the element at the given index. 
+     * Your method should validate the given index.
+     *
+     *
+     * @param index integer representing location of desired Value
+     * @returns T the Value in the node at Index
+     * 	 			
+     */
 	@Override
-	public T get(int index)
-	{
-		return null;
+	public T get(int index)	{
+		if ((index < size) && (index >= 0)){
+			//get first node in list
+			Node currentNode = head;
+			
+			//int to keep track of index
+			int listIndex = 0;
+					
+			//go through all nodes until you reach the end
+			//where next would be null
+			while (currentNode  != null){
+				// compare list passed into method with listIndex
+				if (listIndex == index ){
+					return currentNode.getValue();
+				}
+				//advance to next node
+				listIndex ++;
+				currentNode = currentNode.getNext();
+			}			
+		}
+		throw new IndexOutOfBoundsException("index is out of range");
 	}
-
+	
+	/**
+     * Returns the element at the given index. 
+     * Your method should validate the given index.
+     *
+     *
+     * @param index integer representing location of desired Value
+     * @param value Object to be stored in List at specified index
+     * @returns T the Value in the node at Index
+     * 	 			
+     */
 	@Override
-	public T set(int index, T value)
-	{
-		return null;
+	public T set(int index, T value){
+		if ((index < size) && (index >= 0)){
+			//get first node in list
+			Node currentNode = head;
+			
+			//int to keep track of index
+			int listIndex = 0;
+					
+			//go through all nodes until you reach the end
+			//where next would be null
+			while (currentNode  != null){
+				// compare list passed into method with listIndex
+				// if the same replace value in currentNode with passed in value
+				if (listIndex == index ){
+					T oldValue = currentNode.getValue();
+					currentNode.setValue(value);
+					return oldValue;
+				}
+				//advance to next node
+				listIndex ++;
+				currentNode = currentNode.getNext();
+			}			
+		}
+		throw new IndexOutOfBoundsException("index is out of range");
 	}
 	
 	/**
      * Returns true if passed in object is removed from list
      *
      * @param search Object that might be stored in list
-     * @returns true if Object is removed from list
-     * 		
-     * 			
+     * @returns true if Object is removed from list			
      */
 	@Override
-	public boolean remove(Object search)
-	{
+	public boolean remove(Object search) {
 		//get first node in list
 		Node currentNode = head;
+		Node prev = null;
+		
+		if ((size == 1) && (currentNode.getValue().equals(search))){
+			clear();
+			return true;
+		}
 		
 		//go through all nodes until you reach the end
 		//where next would be null
 		while (currentNode  != null){
+			
 			//compare object stored in current node with 
 			//Object passed into this method
 			if (currentNode.getValue().equals(search)){
-				
-				//if they are the same, check to see if it was previously deleted
-				if (!currentNode.isDeleted()){
-					//set Deleted to true
-					currentNode.setDeleted(true);
-					//reduce size since we removed a node
-					size --;
-					//since we removed a node return true
-					return true;
+				//if node is at first in the list move head pointer
+				if (prev == null) {
+					head = currentNode.getNext();
+				} else if (tail == currentNode) {
+					//if node is at end in the list move tail pointer and next point in previous node
+					tail = prev;
+					prev.setNext(null);
+				} else {
+					//change the prev node to point to the next node
+					prev.setNext(currentNode.getNext());
 				}
+							
+				//reduce size since we removed a node
+				size --;
+				//since we removed a node return true
+				return true;
+				
 			}
+			//store current node as previous
+			prev = currentNode;
 			//advance to next node
 			currentNode = currentNode.getNext();
+			
 		}
 		return false;
 	}
