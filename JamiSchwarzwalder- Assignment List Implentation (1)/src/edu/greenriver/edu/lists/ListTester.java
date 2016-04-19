@@ -13,7 +13,7 @@ public class ListTester
 		//testIndexOf();
 		//testContains();
 		//testGet();
-		testSet();
+		//testSet();
 		testRemoveElement();
 		testRemoveIndex();
 	}
@@ -237,13 +237,17 @@ public class ListTester
 		System.out.print("Is 9 in the list? ");
 		System.out.println(test8.contains(9));
 		System.out.print("Set 10 to be 10, what element did it replace? ");
-		System.out.println(test8.set(10, 10));
+		try {
+			System.out.println(test8.set(10, 10));
+		} catch (IndexOutOfBoundsException E) {
+			System.out.println("10 is not an vaild index");
+		}
 		System.out.print("Is 9 in the list? ");
 		System.out.println(test8.contains(9));
 		System.out.print("Is 10 in the list? ");
 		System.out.println(test8.contains(10));
 		System.out.print("What is the index of 10? ");
-		System.out.println(test8.indexOf(42));
+		System.out.println(test8.indexOf(10));
 		
 	}
 	
