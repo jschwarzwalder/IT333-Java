@@ -175,7 +175,7 @@ public class LinkedList<T> implements List<T>
 	/**
      * Removes all elements in the list.
      *
-     * 
+     * Sets size to 0
      * 
      * 			
      */
@@ -378,8 +378,32 @@ public class LinkedList<T> implements List<T>
 	@Override
 	public T remove(int index)
 	{
-		return null;
+		if ((index <0) || (index > size)){ 
+			throw new IndexOutOfBoundsException("index is out of range");
+		}else{
+			Node prev = null;
+			Node currentNode = head;
+			for (int i = 0; i< index; i++){
+				//loop through list until we get to correct index
+				prev = currentNode;
+				currentNode = currentNode.getNext();
+			}
+						
+			//set point previous node to next node in list
+			if (prev == null){
+				head = currentNode.getNext();
+			} else {
+				 prev.setNext(currentNode.getNext());
+			} 
+						
+			//since we removed a node decrease size by one
+			size--;
+			return currentNode.getValue();
+		}
+		
+		
 	}
+
 
 	// part #2 methods below...
 

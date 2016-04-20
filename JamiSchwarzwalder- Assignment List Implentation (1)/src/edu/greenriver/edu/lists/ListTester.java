@@ -15,7 +15,7 @@ public class ListTester
 		//testGet();
 		//testSet();
 		//testRemoveElement();
-		testRemoveIndex();
+		//testRemoveIndex();
 	}
 	
 	public static void testAdd()
@@ -282,5 +282,33 @@ public class ListTester
 	public static void testRemoveIndex()
 	{
 		//this method tests list.remove(index)
+		
+		System.out.println("We make a new list of strings ");
+		LinkedList<String> test11 = new LinkedList<String>();
+		test11.add("test 1");
+		System.out.print("Size:  " );
+		System.out.println(test11.size());
+		System.out.println("We remove an element at 0. It should return test 1");
+		System.out.println(test11.remove(0));
+		System.out.print("Size:  " );
+		System.out.println(test11.size());
+		System.out.print("Is the list Empty? ");
+		System.out.println(test11.isEmpty());
+		
+		LinkedList<Integer> test12 = new LinkedList<Integer>();
+		System.out.println("We make a new list of 10 elements with values 0 to 9 ");
+		for (int i = 0; i < 10; i++){
+			test12.add(i);
+		}
+		System.out.print("Size:  " );
+		System.out.println(test12.size());
+		System.out.print("We remove an element at index 5: ");
+		System.out.println(test12.remove(5));
+		System.out.print("Size:  " );
+		System.out.println(test12.size());
+		System.out.print("We remove an element at index 0: ");
+		System.out.println(test12.remove(0));
+		System.out.print("Size:  " );
+		System.out.println(test12.size());
 	}
 }
