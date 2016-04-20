@@ -14,7 +14,7 @@ public class ListTester
 		//testContains();
 		//testGet();
 		//testSet();
-		testRemoveElement();
+		//testRemoveElement();
 		testRemoveIndex();
 	}
 	
@@ -254,6 +254,29 @@ public class ListTester
 	public static void testRemoveElement()
 	{
 		//this method tests list.remove(element)
+		System.out.println("We make a new list of strings ");
+		LinkedList<String> test9 = new LinkedList<String>();
+		test9.add("test 1");
+		System.out.print("Size:  " );
+		System.out.println(test9.size());
+		System.out.print("We remove an element ");
+		System.out.println(test9.remove("test 1"));
+		System.out.print("Size:  " );
+		System.out.println(test9.size());
+		System.out.print("Is the list Empty? ");
+		System.out.println(test9.isEmpty());
+		
+		LinkedList<Integer> test10 = new LinkedList<Integer>();
+		System.out.println("We make a new list of 10 elements with values 0 to 9 ");
+		for (int i = 0; i < 10; i++){
+			test10.add(i);
+		}
+		System.out.print("Size:  " );
+		System.out.println(test10.size());
+		System.out.print("We remove an element ");
+		System.out.println(test10.remove(new Integer(2)));
+		System.out.print("Size:  " );
+		System.out.println(test10.size());
 	}
 	
 	public static void testRemoveIndex()
