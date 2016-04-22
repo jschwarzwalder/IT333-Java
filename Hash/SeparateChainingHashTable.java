@@ -76,8 +76,24 @@ public class SeparateChainingHashTable<AnyType>
  private List<AnyType> [ ] theLists;
  private int currentSize;
 
+/**
+ * Rehashing for separate chaining hash table.
+ */
  private void rehash( )
- { /* Figure 5.22 */ }
+ {
+ List<AnyType> [ ] oldLists = theLists;
+
+ // Create new double-sized, empty table
+ theLists = new List[ nextPrime( 2 * theLists.length ) ];
+ for( int j = 0; j < theLists.length; j++ )
+ theLists[ j ] = new LinkedList<>( );
+
+ // Copy table over
+ currentSize = 0;
+ for( int i = 0; i < oldLists.length; i++ )
+ for( AnyType item : oldLists[ i ] )
+ insert( item );
+ }
  private int myhash( AnyType x )  {
 	 int hashVal = x.hashCode( );
 
