@@ -1,11 +1,41 @@
 public class QuadraticProbingHashTable<AnyType>
 	{
+	/**
+	* Construct the hash table.
+	*/
 	public QuadraticProbingHashTable( )
-	{ /* Figure 5.15 */ }
+	{
+	this( DEFAULT_TABLE_SIZE );
+	}
+	
+	/**
+	* Construct the hash table.
+	* @param size the approximate initial size.
+	*/
 	public QuadraticProbingHashTable( int size )
-	{ /* Figure 5.15 */ }
+	{
+	allocateArray( size );
+	makeEmpty( );
+	}
+	
+	/**
+	* Make the hash table logically empty.
+	*/
 	public void makeEmpty( )
-	{ /* Figure 5.15 */ }
+	{
+	currentSize = 0;
+	for( int i = 0; i < array.length; i++ )
+	array[ i ] = null;
+	}
+	
+	/**
+	* Internal method to allocate array.
+	* @param arraySize the size of the array.
+	*/
+	private void allocateArray( int arraySize )
+	{
+	array = new HashEntry[ nextPrime( arraySize ) ];
+	}
 	
 	public boolean contains( AnyType x )
 	{ /* Figure 5.16 */ }
