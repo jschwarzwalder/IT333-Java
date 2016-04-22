@@ -3,8 +3,8 @@ package net.greenrivertech.jschwarzwalder;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SeperateChainingHashTable {
-	
+public class SeperateChainingHashTable<AnyType> {
+
 	/**
 	 * Construct the hash table.
 	 */
@@ -58,14 +58,13 @@ public class SeperateChainingHashTable {
 	 * Remove from the hash table.
 	 * @param x the item to remove.
 	 */
-	 public void remove( AnyType x )
-	 {
-	 List<AnyType> whichList = theLists[ myhash( x ) ];
-	 if( whichList.contains( x ) )
-	 {
-	 whichList.remove( x );
-	 currentSize--;
-	 }
+	public void remove(AnyType x) {
+		List<AnyType> whichList = theLists[myhash(x)];
+		if (whichList.contains(x)) {
+			whichList.remove(x);
+			currentSize--;
+		}
+	}
 
 	/**
 	 * Make the hash table logically empty.
