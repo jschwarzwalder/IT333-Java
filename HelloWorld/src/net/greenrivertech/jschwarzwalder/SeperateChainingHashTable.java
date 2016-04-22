@@ -1,9 +1,10 @@
 package net.greenrivertech.jschwarzwalder;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class SeperateChainingHashTable {
-
+	
 	/**
 	 * Construct the hash table.
 	 */
