@@ -1,11 +1,11 @@
 package edu.greenriver.it.address;
 
 public class Address {
-	private static int number;
-    private static String street;
-    private static String city;
-    private static String state;
-    private static int zip;
+	private int number;
+    private String street;
+    private String city;
+    private String state;
+    private int zip;
 	    
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -20,9 +20,9 @@ public class Address {
     
     public static int  hashcode(){
     	int hash = this.number + this.zip;
-    	hash += this.street.hash();
-    	hash += this.city.hash();
-    	hash += this.state.hash();
+    	hash += this.street.hashCode();
+    	hash += this.city.hashCode();
+    	hash += this.state.hashCode();
 		
     			
     	return hash;
