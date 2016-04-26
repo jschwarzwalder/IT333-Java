@@ -1,0 +1,152 @@
+1. Given input {4371, 1323, 6173, 4199, 4344, 9679, 1989}, a hash table of length 10 and a hash function h(x) = x mod 10, show the resulting:
+
+a) Separate chaining hash table
+0: null
+1: 4371
+2: null
+3: 1323, 6173
+4: 4344
+5: null
+6: null
+7: null
+8: null
+9: 4199, 9679, 1989
+
+b) Hash table using linear probing
+0: 9679
+1: 4371
+2: 1989
+3: 1323
+4: 6173
+5: 4344
+6: null
+7: null
+8: null
+9: 4199
+
+c) Hash table using quadratic probing
+0: 9679
+1: 4371
+2: null 
+3: 1323
+4: 6173
+5: 4344
+6: null 
+7: null 
+8: 1989
+9: 4199
+
+ 
+
+2. Show the result of rehashing the hash tables in (1). Assume the size of each hash table is doubled.
+//I used h(x) = x mod 20 for my new hash function
+
+a) Separate chaining hash table
+0: null
+1: null
+2: null
+3: 1323 
+4: 4344
+5: null
+6: null
+7: null
+8: null
+9: 1989
+10: null 
+11: 4371
+12: null 
+13: 6173 
+14: null 
+15: null 
+16: null 
+17: null 
+18: null 
+19: 4199, 9679
+
+
+b) Hash table using linear probing
+0: 4199
+1: null 
+2: null 
+3: 1323
+4: 4344
+5: null 
+6: null
+7: null
+8: null
+9: 1989			
+10: null 
+11: 4371
+12: null 
+13: 6173
+14: null 
+15: null 
+16: null 
+17: null 
+18: null 
+19: 9679 
+
+
+c) Hash table using quadratic probing
+0: 4199
+1: null
+2: null 
+3: 1323
+4: 4344
+5: null
+6: null 
+7: null 
+8: null
+9: 1989
+10: null
+11: 4371
+12: null
+13: 6173
+14: null
+15: null
+16: null
+17: null
+18: null
+19: 9679
+
+ 
+
+3. For the following class, write a custom hashcode() and equals() method. Both should be based on the fields of the class.
+
+public class Address
+{
+    private int number;
+    private String street;
+    private String city;
+    private String state;
+    private int zip;
+
+    //constructors, getters, setters, toString()...
+}
+
+Note: Your equals method should address null parameters, the case of a.equals(a), and non-Address objects (see the article above).
+
+Note: Your hash codes should be generated directly from the fields in the Address class. If the fields in two Address objects are the same, then their hash codes should be the same. Use your creativity to find a solution!
+
+Note: You should not be using Eclipse to generate your hashcode() method. It should be based on your own design!
+
+ 
+
+4. Make an argument for why you think your hashcode() function from (3) is a strong or weak candidate.
+
+ 
+
+5a. Write a class called HashSet that stores an internal hash table of Objects and uses linear probing to address collisions. Assume your hash table is never resized. If a new element is added to a full table, then throw a new IllegalStateException. You class should have the following methods:
+
+a)   add(x)
+b)   contains(x)
+c)   size()
+d)   isEmpty()
+
+ 
+
+5b. Add the remove(x) method to your HashSet class above. This will require you to support a placeholder value in your hash table for removed elements.
+
+ 
+
+Previous Next
