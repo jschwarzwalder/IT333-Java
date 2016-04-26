@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package edu.greenriver.it.algorithmanalysis;
 
 import java.util.Arrays;
