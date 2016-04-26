@@ -137,6 +137,8 @@ Note: You should not be using Eclipse to generate your hashcode() method. It sho
 I think my hashcode function is weak because just combining the numeric values of the fields can result in collisions depending on how well the string hashCode function works.
 
 If you are calculating people that all live on the same street the only difference in their address would be the number. This makes it predictible for anyone who is trying to find the pattern. 
+
+We will also primarily end up with numbers greater than 10,000 since all zipcodes outside New England are 5 digits. The smallest zip code is 00501.
  
 
 5a. Write a class called HashSet that stores an internal hash table of Objects and uses linear probing to address collisions. Assume your hash table is never resized. If a new element is added to a full table, then throw a new IllegalStateException. You class should have the following methods:
