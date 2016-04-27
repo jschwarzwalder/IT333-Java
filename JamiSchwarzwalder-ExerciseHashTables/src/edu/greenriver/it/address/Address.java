@@ -105,7 +105,7 @@ public class Address {
 		} 
 		
 		//check if passed in object is an Address
-		if (!(object instanceof Address)){
+		if (!(this.getClass().equals(object.getClass()))){
 			return false;
 		} 
 		
