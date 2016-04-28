@@ -60,5 +60,30 @@ public class HashSet <AnyType> {
 			return true;
 		}
 	}
+	
+	public boolean contains(AnyType value){
+		if (value ==null) {
+			return false;
+		} else {
+			int hash = value.hashCode();
+			int hashIndex = hash%length;
+			int probes = 0;
+			while (probes < length){
+				if (hashTable[hashIndex] == value){
+					return true;
+				} else if(hashTable[hashIndex] != null){
+					return false;
+				}
+				else {
+					hashIndex = (hashIndex + 1) % length;
+					probes ++;
+				}
+			}
+			return false;
+			
+		}
+	}
+	
+	
 
 }
