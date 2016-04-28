@@ -62,8 +62,17 @@ public class HashTable<T> implements Set<T> {
 		return true;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void rehash(){
 		//resize our table and re-hash (place) our element in a new table;
+		HashTableElement[] oldTable = table;
+		table = new HashTableElement[oldTable.length *2];
+		
+		for (int i = 0; i < oldTable.length; i++){
+			if (oldTable[i] !=null && !oldTable[i].isEmpty){
+				add((T)oldTable[i].element);
+			}
+		}
 	}
 
 	@Override
