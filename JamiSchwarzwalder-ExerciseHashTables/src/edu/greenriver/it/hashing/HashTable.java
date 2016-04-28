@@ -76,8 +76,25 @@ public class HashTable<T> implements Set<T> {
 	}
 
 	@Override
-	public boolean remove(Object arg0) {
-		// TODO Auto-generated method stub
+	public boolean remove(Object element) {
+		//we know now that we have space for a new element
+		int index = Math.abs(element.hashCode()) % table.length;
+		HashTableElement current = table[index];
+		
+		//search for the element to remove
+		while (current != null) {
+			// is this the element to remove?
+			if (current.element.equals(element) && !current.isEmpty) {
+				//delete the element
+				current.isEmpty = true; //lazy deletion
+				size--;
+				//not decreasing usedSpace because element is not set to null
+			}
+
+			// we may search off the end of our table
+			index = (index + 1) % table.length;
+			current = table[index];
+		}
 		return false;
 	}
 
