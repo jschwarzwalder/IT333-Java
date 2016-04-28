@@ -2,6 +2,7 @@ package edu.greenriver.it.hashing;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class HashTable<T> implements Set<T> {
@@ -178,6 +179,50 @@ public class HashTable<T> implements Set<T> {
 		}
 		
 		return result;
+	}
+	
+	private class HashTableIterator implements Iterator<T>{
+		private HashTableElement[] table;
+		private int nextIndex = -1;
+		
+		public HashTableIterator (HashTableElement[] table){
+			this.table = table;
+			findNextIndex(); //find the first valid element
+		}
+				
+		@Override
+		public boolean hasNext() {
+			
+			return nextIndex != -1;
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public T next() {
+			
+			if (!hasNext()){
+				throw new NoSuchElementException("There is no element to return");
+			}
+			
+			Object nextElement = table[nextIndex].element;
+			findNextIndex(); //get the next valid element
+			return (T)nextElement;
+		}
+		
+		//helper method
+		private void findNextIndex(){
+			//this method will move nextINdex to the next valid element
+			//valid - not null, not empty(deleted)
+			for (int i = nextIndex + 1; i < table.length; i++){
+				if (table[i] != null && !table[i].isEmpty){
+					nextIndex = i;
+					return; //exit now...
+				}
+			}
+			
+			nextIndex = -1; //invalid index (stop now!)
+		}
+		
 	}
 	
 	
