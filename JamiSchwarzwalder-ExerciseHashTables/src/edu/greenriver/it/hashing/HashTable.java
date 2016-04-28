@@ -1,6 +1,7 @@
 package edu.greenriver.it.hashing;
 
 import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -18,6 +19,7 @@ public class HashTable<T> implements Set<T> {
 	
 	private int size; //how many element are in our table?
 	private int usedSpace; //how many spots are used in our table?
+	private int modCount = 0; //keep track of changes in the hash table
 	
 	public HashTable() {
 		// uses  the defaults above
@@ -61,6 +63,7 @@ public class HashTable<T> implements Set<T> {
 		table[index] = new HashTableElement(element, false);
 		size ++;
 		usedSpace++;
+		modCount++;
 		
 		return true;
 	}
@@ -92,6 +95,7 @@ public class HashTable<T> implements Set<T> {
 				//delete the element
 				current.isEmpty = true; //lazy deletion
 				size--;
+				modCount++;
 				//not decreasing usedSpace because element is not set to null
 				return true;
 			}
@@ -141,13 +145,14 @@ public class HashTable<T> implements Set<T> {
 		
 		size = 0;
 		table = new HashTableElement[intialsize];
+		modCount++;
 
 	}
 	
 	@Override
 	public Iterator<T> iterator() {
 		// TODO Auto-generated method stub
-		return new HashTableIterator(table);
+		return new HashTableIterator(table, modCount);
 	}
 
 
@@ -191,15 +196,23 @@ public class HashTable<T> implements Set<T> {
 	private class HashTableIterator implements Iterator<T>{
 		private HashTableElement[] table;
 		private int nextIndex = -1;
+		private int modCountSnapshot;
+
 		
-		public HashTableIterator (HashTableElement[] table){
+		public HashTableIterator (HashTableElement[] table, int modCountSnapshot){
 			this.table = table;
+			this.modCountSnapshot = modCountSnapshot;
+			
 			findNextIndex(); //find the first valid element
 		}
 				
 		@Override
 		public boolean hasNext() {
 			
+			if (modCountSnapshot != HashTable.this.modCount){
+				throw new ConcurrentModificationException (
+						"You cannot change your hash table while using an iterator!");
+			}
 			return nextIndex != -1;
 		}
 
