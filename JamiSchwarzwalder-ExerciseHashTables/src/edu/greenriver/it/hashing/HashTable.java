@@ -68,6 +68,7 @@ public class HashTable<T> implements Set<T> {
 	private void rehash(){
 		//resize our table and re-hash (place) our element in a new table;
 		HashTableElement[] oldTable = table;
+		size = 0;
 		table = new HashTableElement[oldTable.length *2];
 		
 		for (int i = 0; i < oldTable.length; i++){
@@ -91,6 +92,7 @@ public class HashTable<T> implements Set<T> {
 				current.isEmpty = true; //lazy deletion
 				size--;
 				//not decreasing usedSpace because element is not set to null
+				return true;
 			}
 
 			// we may search off the end of our table
