@@ -44,11 +44,14 @@ public class HashTable<T> implements Set<T> {
 		
 		while (current != null){
 			//collision! we need to use linear probing to search for an empty spot
-			
 			//What can go wrong? the element might already be in the table - duplicate
+			if (current.element.equals(element) && !current.isEmpty){
+				return false;//-- duplicate!!
+			}
 			
-			//What can go wrong? we may search off the dend of our table
-			
+			//What can go wrong? we may search off the end of our table
+			index = (index + 1) % table.length;
+			current = table[index];
 		}
 		table[index] = new HashTableElement(element, false);
 		size ++;
@@ -101,6 +104,23 @@ public class HashTable<T> implements Set<T> {
 			return element.toString();
 		}
 	}
+	
+	@Override 
+	public String toString(){
+		String result = "";
+		
+		for (int i=0; i < table.length; i++){
+			if (i != 0){
+				result += ", ";
+			}
+			
+			result += table[i].toString();
+		}
+		
+		return result;
+	}
+	
+	
 	// we are not implementing beyond this point
 
 	@Override
