@@ -37,9 +37,11 @@ public class HashTable<T> implements Set<T> {
 			rehash();
 		}
 		//we know now that we have space for a new element
-		int index = element.hashCode() % table.length;
+
+		int index = Math.abs(element.hashCode()) % table.length;
 		
 		//search for a spot to place my new element using my index
+
 		HashTableElement current = table[index];
 		
 		while (current != null){
@@ -113,8 +115,13 @@ public class HashTable<T> implements Set<T> {
 			if (i != 0){
 				result += ", ";
 			}
+			if (table[i] != null) {
+				result += table[i].toString();
+			} else {
+				result += "null";
+			}
+				
 			
-			result += table[i].toString();
 		}
 		
 		return result;
@@ -166,9 +173,11 @@ public class HashTable<T> implements Set<T> {
 	}
 
 	@Override
-	public <T> T[] toArray(T[] arg0) {
+	public <A> A[] toArray(A[] a) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }
