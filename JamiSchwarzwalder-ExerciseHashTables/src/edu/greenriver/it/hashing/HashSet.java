@@ -1,4 +1,4 @@
-package edu.greenriver.it.hashset;
+package edu.greenriver.it.hashing;
 
 /*
  * Jami Schwarzwalder
