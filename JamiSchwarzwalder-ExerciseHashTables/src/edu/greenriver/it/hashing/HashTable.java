@@ -13,6 +13,7 @@ public class HashTable<T> implements Set<T> {
 	private HashTableElement[] table;
 	
 	private double loadFactor;
+	private int intialsize;
 	
 	private int size; //how many element are in our table?
 	private int usedSpace; //how many spots are used in our table?
@@ -25,6 +26,7 @@ public class HashTable<T> implements Set<T> {
 	public HashTable(int initialSize, double loadFactor) {
 		table = new HashTableElement[initialSize];
 		
+		this.loadFactor = initialSize;
 		this.loadFactor = loadFactor;
 		
 	}
@@ -99,21 +101,44 @@ public class HashTable<T> implements Set<T> {
 	}
 
 	@Override
-	public boolean contains(Object arg0) {
-		// TODO Auto-generated method stub
+	public boolean contains(Object element) {
+		//we know now that we have space for a new element
+		int index = Math.abs(element.hashCode()) % table.length;
+		HashTableElement current = table[index];
+		
+		//search for the element to remove
+		while (current != null) {
+			// is this the element to remove?
+			if (current.element.equals(element) && !current.isEmpty) {
+				//you found the element
+				return true;
+			}
+
+			// we may search off the end of our table
+			index = (index + 1) % table.length;
+			current = table[index];
+		}
 		return false;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return size;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return size == 0;
+	}
+	
+	@Override
+	public void clear() {
+		
+		size = 0;
+		table = new HashTableElement[intialsize];
+
 	}
 
 	private static class HashTableElement {
@@ -160,12 +185,6 @@ public class HashTable<T> implements Set<T> {
 	public boolean addAll(Collection<? extends T> arg0) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
