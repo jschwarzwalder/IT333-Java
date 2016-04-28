@@ -31,9 +31,34 @@ public class HashTable<T> implements Set<T> {
 
 	
 	@Override
-	public boolean add(T arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean add(T element) {
+		// is there always room to add a new element?
+		if ((double)usedSpace/table.length >= loadFactor){
+			rehash();
+		}
+		//we know now that we have space for a new element
+		int index = element.hashCode() % table.length;
+		
+		//search for a spot to place my new element using my index
+		HashTableElement current = table[index];
+		
+		while (current != null){
+			//collision! we need to use linear probing to search for an empty spot
+			
+			//What can go wrong? the element might already be in the table - duplicate
+			
+			//What can go wrong? we may search off the dend of our table
+			
+		}
+		table[index] = new HashTableElement(element, false);
+		size ++;
+		usedSpace++;
+		
+		return true;
+	}
+	
+	private void rehash(){
+		//resize our table and re-hash (place) our element in a new table;
 	}
 
 	@Override
