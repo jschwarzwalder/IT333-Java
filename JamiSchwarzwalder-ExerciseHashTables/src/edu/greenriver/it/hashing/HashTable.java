@@ -143,6 +143,13 @@ public class HashTable<T> implements Set<T> {
 		table = new HashTableElement[intialsize];
 
 	}
+	
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return new HashTableIterator(table);
+	}
+
 
 	private static class HashTableElement {
 		private Object element;
@@ -240,12 +247,7 @@ public class HashTable<T> implements Set<T> {
 		return false;
 	}
 
-	@Override
-	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public boolean removeAll(Collection<?> arg0) {
 		// TODO Auto-generated method stub

@@ -39,6 +39,12 @@ public class HashingPractice {
 		System.out.println("size(): " + wordsSet.size());
 		System.out.println("isEmpty():" + wordsSet.isEmpty());
 		
+		wordsSet.add("red");
+		
+		//use our iterator here...
+		for (String word: wordsSet){
+			System.out.println(word);
+		}
 
 	}
 
