@@ -85,5 +85,13 @@ public class HashSet <AnyType> {
 	}
 	
 	
-
+	public int size (){
+		return filled;
+	}
+	
+	public boolean isEmpty(){
+		return filled == 0;
+	}
+	
+	
 }
