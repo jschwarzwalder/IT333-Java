@@ -5,11 +5,31 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class HashTable<T> implements Set<T> {
-
+	
+	//constants control; initial table size, load factor
+	private static final int DEFAULT_SIZE = 10;
+	private static final double DEFAULT_LOAD_FACTOR = 0.6;	
+	
+	private HashTableElement[] table;
+	
+	private double loadFactor;
+	
+	private int size; //how many element are in our table?
+	private int usedSpace; //how many spots are used in our table?
+	
 	public HashTable() {
-		// TODO Auto-generated constructor stub
+		// uses  the defaults above
+		this(DEFAULT_SIZE, DEFAULT_LOAD_FACTOR); //Constructor chaining
 	}
 
+	public HashTable(int initialSize, double loadFactor) {
+		table = new HashTableElement[initialSize];
+		
+		this.loadFactor = loadFactor;
+		
+	}
+
+	
 	@Override
 	public boolean add(T arg0) {
 		// TODO Auto-generated method stub
