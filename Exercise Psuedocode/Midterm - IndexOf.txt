@@ -1,0 +1,12 @@
+Finding an element in an array of integers using sequential search.
+
+algorithm indexOf(A[0...n-1], value)
+//input: An ARRAY A of integers
+//input: an int value that might be in the array
+//output: An int that is the index of a specified int in the ARRAY A
+
+for i <-- 0 to n-1
+	if  A[i] = value
+		return i
+
+return -1

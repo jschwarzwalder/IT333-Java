@@ -1,0 +1,26 @@
+o	Finding an element in an array of integers using binary search.
+
+algorithm Find X(A[0...n-1], X)
+	//input: A sorted List A of integers
+	//input: An integer X
+	//output: Boolean of whether X is found in the array
+	
+	Low <-- 0
+	High <-- n-1
+	
+	
+	while Low <= High
+		SearchIndex <-- (High + Low) / 2
+		CompareValue <-- A[SearchIndex]
+		
+		if CompareValue = X
+			return true
+
+		if CompareValue < X
+			High <-- SearchIndex -1
+			
+		if CompareValue > X
+			Low <-- SearchIndex + 1
+			
+	return false
+	

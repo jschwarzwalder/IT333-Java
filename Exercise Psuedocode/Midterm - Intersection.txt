@@ -1,0 +1,15 @@
+o	Given two arrays of strings, call them A and B, return a new array with all string values in both A and B.
+
+algorithm Intersection(A[0...n-1], X)
+	//input: A List A of unique strings (no duplicates)
+	//input: A List B of unique strings (no duplicates)
+	//output: an array listing strings that were in both A and B
+	
+	t1[] <-- new ARRAY
+	
+	for i <-- 1 to n - 1
+		for j <-- 1 to n - 1
+			if A[i] = B[j]
+				t1.add(A[i])
+	
+	return t1

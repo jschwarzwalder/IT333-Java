@@ -1,0 +1,12 @@
+o	Given an array with the letters of the alphabet, print the vowels found in the array.
+
+algorithm printVowels(A[0...n-1])
+//input: ARRAY A of letters
+//output: prints vowels, no return value
+
+vowels <-- [a, e, i, o, u]
+
+for i <-- 1 to n - 1
+	if vowels.contains( A[i])
+		print  A[i]
+	

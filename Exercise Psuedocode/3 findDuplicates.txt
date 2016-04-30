@@ -14,5 +14,5 @@ for i <-- 1 to n-1
 		// we only need to check last value added to D[]
 		
 		if A[i] != D[ D.length - 1 ] 
-			D[ D.length -1 ] <-- A[i]	
+			D.add( A[i] )
 return D[]
