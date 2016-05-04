@@ -27,18 +27,18 @@ import java.util.ListIterator;
 public class LinkedList<T> implements List<T>
 {
 	// mark the first node in the list
-	private Node head;
+	private Node<T> head;
 	// mark the last node in the list
-	private Node tail;
+	private Node<T> tail;
 	// store the number of nodes in the list
 	private int size;
 	
 	//each element in the list is a node
-	private class Node{
+	private static class Node<T>{
 		//Object we want stored in the node
 		private T value;
 		//points to next node in the list
-		private Node next;
+		private Node<T> next;
 		
 		public T getValue() {
 			return value;
@@ -46,10 +46,10 @@ public class LinkedList<T> implements List<T>
 		public void setValue(T value) {
 			this.value = value;
 		}
-		public Node getNext() {
+		public Node<T> getNext() {
 			return next;
 		}
-		public void setNext(Node next) {
+		public void setNext(Node<T> next) {
 			this.next = next;
 		}
 		
@@ -69,7 +69,7 @@ public class LinkedList<T> implements List<T>
 	public boolean add(T newElement)
 	{	
 		//create new Node
-		Node element = new Node();
+		Node<T> element = new Node<T>();
 		
 		//store newElement in node
 		element.setValue(newElement);
@@ -113,15 +113,15 @@ public class LinkedList<T> implements List<T>
 		} else if((index <0) || (index > size)){ 
 			throw new IndexOutOfBoundsException("index is out of range");
 		}else{
-			Node prev = null;
-			Node currentNode = head;
+			Node<T> prev = null;
+			Node<T> currentNode = head;
 			for (int i = 0; i<index; i++){
 				//loop through list until we get to correct index
 				prev = currentNode;
 				currentNode = currentNode.getNext();
 			}
 			//create new Node
-			Node element = new Node();
+			Node<T> element = new Node<T>();
 			
 			//store newElement in node
 			element.setValue(newElement);
@@ -202,7 +202,7 @@ public class LinkedList<T> implements List<T>
 	public int indexOf(Object search)
 	{
 		//get first node in list
-		Node currentNode = head;
+		Node<T> currentNode = head;
 		
 		//int to keep track of index
 		int index = 0;
@@ -235,7 +235,7 @@ public class LinkedList<T> implements List<T>
 	public boolean contains(Object search)
 	{
 		//get first node in list
-		Node currentNode = head;
+		Node<T> currentNode = head;
 		
 		//go through all nodes until you reach the end
 		//where next would be null
@@ -265,7 +265,7 @@ public class LinkedList<T> implements List<T>
 	public T get(int index)	{
 		if ((index < size) && (index >= 0)){
 			//get first node in list
-			Node currentNode = head;
+			Node<T> currentNode = head;
 			
 			//int to keep track of index
 			int listIndex = 0;
@@ -301,7 +301,7 @@ public class LinkedList<T> implements List<T>
 		
 		if ((index < size) && (index >= 0)){
 			//get first node in list
-			Node currentNode = head;
+			Node<T> currentNode = head;
 			
 			//int to keep track of index
 			int listIndex = 0;
@@ -333,8 +333,8 @@ public class LinkedList<T> implements List<T>
 	@Override
 	public boolean remove(Object search) {
 		//get first node in list
-		Node currentNode = head;
-		Node prev = null;
+		Node<T> currentNode = head;
+		Node<T> prev = null;
 		
 		if ((size == 1) && (currentNode.getValue().equals(search))){
 			clear();
@@ -381,8 +381,8 @@ public class LinkedList<T> implements List<T>
 		if ((index <0) || (index > size)){ 
 			throw new IndexOutOfBoundsException("index is out of range");
 		}else{
-			Node prev = null;
-			Node currentNode = head;
+			Node<T> prev = null;
+			Node<T> currentNode = head;
 			for (int i = 0; i< index; i++){
 				//loop through list until we get to correct index
 				prev = currentNode;
@@ -479,18 +479,18 @@ public class LinkedList<T> implements List<T>
 	@Override
 	public ListIterator<T> listIterator()
 	{
-		LinkedList<T>.ListIterator<T> iterator = new ListIterator<T>(); 
+		LinkedList<T>.ListIterator<T> iterator = new ListIterator<T>(head); 
 		return iterator;
 	}
 	
-	public class ListIterator<T> implements Iterator<T>{
+	public static class ListIterator<T> implements Iterator<T>{
 		
-		private Node currentNode;
-		private Node prevNode;
+		private Node<T> currentNode;
+		private Node<T> prevNode;
 		private T data;
 		private int currentModCount;
 		
-		public ListIterator(){
+		public ListIterator(Node<T> head){
 			currentNode = head;
 		}
 		
