@@ -459,13 +459,14 @@ public class LinkedList<T> implements List<T>
 	@Override
 	public Iterator<T> iterator()
 	{
-		throw new UnsupportedOperationException("This method is not supported.");
+		ListIterator<T> iterator = new ListIterator<T>(head); 
+		return iterator;
 	}
 
 	// extra credit below...
 
 	@Override
-	public ListIterator<T> listIterator(int index)
+	public java.util.ListIterator<T> listIterator(int index)
 	{
 		throw new UnsupportedOperationException("This method is not supported.");
 	}
@@ -477,10 +478,10 @@ public class LinkedList<T> implements List<T>
 	}
 
 	@Override
-	public ListIterator<T> listIterator()
+	public java.util.ListIterator<T> listIterator()
 	{
-		LinkedList<T>.ListIterator<T> iterator = new ListIterator<T>(head); 
-		return iterator;
+		throw new UnsupportedOperationException("This method is not supported.");
+		
 	}
 	
 	public static class ListIterator<T> implements Iterator<T>{
@@ -498,7 +499,7 @@ public class LinkedList<T> implements List<T>
 			return !(currentNode.next == null);
 		}
 		
-		@SuppressWarnings("unchecked")
+		
 		public T next(){
 			if (!hasNext()){
 				throw new IllegalStateException ("No more Nodes");
@@ -507,11 +508,7 @@ public class LinkedList<T> implements List<T>
 				prevNode = currentNode;
 				currentNode = prevNode.next;
 				return data;
-				
-		}
-		
-		
-		
+			}
 		}
 		
 	}
