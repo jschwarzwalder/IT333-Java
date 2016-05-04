@@ -405,7 +405,7 @@ public class LinkedList<T> implements List<T>
 	}
 
 
-	// part #2 methods below...
+	// part #2 
 
 	@Override
 	public boolean addAll(Collection<? extends T> other)
@@ -479,6 +479,40 @@ public class LinkedList<T> implements List<T>
 	@Override
 	public ListIterator<T> listIterator()
 	{
-		throw new UnsupportedOperationException("This method is not supported.");
+		LinkedList<T>.ListIterator<T> iterator = new ListIterator<T>(); 
+		return iterator;
+	}
+	
+	public class ListIterator<T> implements Iterator<T>{
+		
+		private Node currentNode;
+		private Node prevNode;
+		private T data;
+		private int currentModCount;
+		
+		public ListIterator(){
+			currentNode = head;
+		}
+		
+		public boolean hasNext() {
+			return !(currentNode.next == null);
+		}
+		
+		@SuppressWarnings("unchecked")
+		public T next(){
+			if (!hasNext()){
+				throw new IllegalStateException ("No more Nodes");
+			}else{
+				data = (T) currentNode.getValue();
+				prevNode = currentNode;
+				currentNode = prevNode.next;
+				return data;
+				
+		}
+		
+		
+		
+		}
+		
 	}
 }
