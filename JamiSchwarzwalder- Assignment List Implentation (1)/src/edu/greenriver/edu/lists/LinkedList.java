@@ -504,7 +504,7 @@ public class LinkedList<T> implements List<T>
 			if (!hasNext()){
 				throw new IllegalStateException ("No more Nodes");
 			}else{
-				data = (T) currentNode.getValue();
+				data = currentNode.getValue();
 				prevNode = currentNode;
 				currentNode = prevNode.next;
 				return data;
