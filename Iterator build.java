@@ -12,16 +12,20 @@ public class Color
 
     //here is an inner class
     public class ColorIterator {
-	
-If (red != null) {
-	System.out.println (“red: “ + red);
-}
-If (green != null) {
-	System.out.println (“green: “ + green);
-}
-If (blue != null) {
-	System.out.println (“blue: “ + blue);
-}
-If (alpha != null) {
-	System.out.println (“alpha: “ + alpha);
-}
+		private int currentIndex = 0;
+		String[] colors = new String["red", "green", "blue", "alpha"];
+		
+		public ColorIterator ()
+			
+		If (0 != null) {
+			System.out.println (“red: “ + red);
+		}
+		If (1 != null) {
+			System.out.println (“green: “ + green);
+		}
+		If (2 != null) {
+			System.out.println (“blue: “ + blue);
+		}
+		If (3 != null) {
+			System.out.println (“alpha: “ + alpha);
+		}
