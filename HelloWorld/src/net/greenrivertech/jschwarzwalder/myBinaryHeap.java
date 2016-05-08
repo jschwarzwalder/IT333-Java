@@ -10,8 +10,23 @@ public BinaryHeap( int capacity )
 public BinaryHeap( AnyType [ ] items )
 { /* Figure 6.14 */ }
 
+	/**
+	 * Insert into the priority queue, maintaining heap order. Duplicates are
+	 * allowed.
+	 * 
+	 * @param x
+	 *            the item to insert.
+	 */
 	public void insert(AnyType x) {
-		/* Figure 6.8 */ }
+		if (currentSize == array.length - 1)
+			enlargeArray(array.length * 2 + 1);
+
+		// Percolate up
+		int hole = ++currentSize;
+		for (array[0] = x; x.compareTo(array[hole / 2]) < 0; hole /= 2)
+			array[hole] = array[hole / 2];
+		array[hole] = x;
+	}
 
 	public AnyType findMin() {
 		/* See online code */ }
