@@ -20,7 +20,7 @@ public class myAVLBinarySearchTree<AnyType extends Comparable<? super AnyType>> 
 		AvlNode<AnyType> right; // Right child
 		int height; // Height
 	}
-	
+
 	private AvlNode<AnyType> root;
 
 	/**
@@ -30,8 +30,9 @@ public class myAVLBinarySearchTree<AnyType extends Comparable<? super AnyType>> 
 		return t == null ? -1 : t.height;
 	}
 
-	public myAVLBinarySearchTree( )
-	 { root = null; }
+	public myAVLBinarySearchTree() {
+		root = null;
+	}
 
 	public void makeEmpty() {
 		root = null;
@@ -65,8 +66,15 @@ public class myAVLBinarySearchTree<AnyType extends Comparable<? super AnyType>> 
 		root = remove(x, root);
 	}
 
+	/**
+	 * Print the tree contents in sorted order.
+	 */
 	public void printTree() {
-		/* Figure 4.56 */ }
+		if (isEmpty())
+			System.out.println("Empty tree");
+		else
+			printTree(root);
+	}
 
 	/**
 	 * Internal method to find an item in a subtree.
@@ -77,7 +85,7 @@ public class myAVLBinarySearchTree<AnyType extends Comparable<? super AnyType>> 
 	 *            the node that roots the subtree.
 	 * @return true if the item is found; false otherwise.
 	 */
-	
+
 	private boolean contains(AnyType x, AvlNode<AnyType> t) {
 		if (t == null)
 			return false;
@@ -208,7 +216,7 @@ public class myAVLBinarySearchTree<AnyType extends Comparable<? super AnyType>> 
 		k1.height = Math.max(height(k1.left), k2.height) + 1;
 		return k1;
 	}
-	
+
 	/**
 	 * Rotate binary tree node with right child. For AVL trees, this is a single
 	 * rotation for case 4. Update heights, then return new root.
@@ -231,7 +239,7 @@ public class myAVLBinarySearchTree<AnyType extends Comparable<? super AnyType>> 
 		k3.left = rotateWithRightChild(k3.left);
 		return rotateWithLeftChild(k3);
 	}
-	
+
 	/**
 	 * Double rotate binary tree node: first left child with its right child;
 	 * then node k3 with new left child. For AVL trees, this is a double
@@ -241,6 +249,18 @@ public class myAVLBinarySearchTree<AnyType extends Comparable<? super AnyType>> 
 		k3.right = rotateWithLeftChild(k3.right);
 		return rotateWithRightChild(k3);
 	}
+
+	/**
+	 * Internal method to print a subtree in sorted order.
+	 * 
+	 * @param t
+	 *            the node that roots the subtree.
+	 */
 	private void printTree(AvlNode<AnyType> t) {
-		/* Figure 4.56 */ }
+		if (t != null) {
+			printTree(t.left);
+			System.out.println(t.element);
+			printTree(t.right);
+		}
+	}
 }
