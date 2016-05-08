@@ -151,11 +151,14 @@ public class QuadraticProbingHashTable<AnyType> {
 	}
 
 	private int myhash(AnyType x) {
-		/* See online code */ }
+		/* See online code */
+		return 1;}
 
 	private static int nextPrime(int n) {
-		/* See online code */ }
+		/* See online code */ 
+		return 1;}
 
 	private static boolean isPrime(int n) {
-		/* See online code */ }
+		/* See online code */ 
+		return false;}
 }
