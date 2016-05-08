@@ -528,7 +528,11 @@ public class LinkedList<T> implements List<T> {
 	public List<T> subList(int fromIndex, int toIndex) {
 		throw new UnsupportedOperationException("This method is not supported.");
 	}
-
+	/**
+	 * Returns an array containing all of the elements in this list in proper sequence (from first to last element).
+	 * 
+	 * @returns an array containing all of the elements in this list in proper sequence
+	 */
 	@Override
 	public Object[] toArray() {
 		Object[] arrayFromList = new Object[this.size];
@@ -545,10 +549,39 @@ public class LinkedList<T> implements List<T> {
 		return arrayFromList;
 	}
 
+	/**
+	 * Returns an array containing all of the elements in this list in proper sequence (from first to last element);
+	 * the runtime type of the returned array is that of the specified array. 
+	 * 
+	 * If the list fits in the specified array, it is returned therein. 
+	 * 
+	 * Otherwise, a new array is allocated with the runtime type of the specified array and the size of this list.
+	 *  
+	 * @returns an array containing all of the elements in this list in proper sequence
+	 */
 	@Override
 	@SuppressWarnings("hiding")
 	public <T> T[] toArray(T[] toFill) {
-		throw new UnsupportedOperationException("This method is not supported.");
+		//check to see items in list are same as array
+		if (this.get(0).getType() == toFill.getType() ){
+			throw new ArrayStoreException("List and Array are not the same type");
+		}
+			
+		int index = 0;
+		
+		Iterator<T> arrayIterator = (Iterator<T>) this.iterator();
+		
+		while (arrayIterator.hasNext()) {
+			toFill[index] = arrayIterator.next();
+			index++;
+		}
+		if (toFill.length > this.size())	{
+			for (int i = index; i < toFill.length; i++){
+				toFill[i] = null;
+			}
+		}
+			
+		return toFill;
 	}
 
 	@Override
