@@ -11,7 +11,7 @@ public class ListTesterPartTwo
 		//testAddAll();
 		//testInsertAll();
 		//testContainsAll();
-		testRemoveAll();
+		//testRemoveAll();
 		testRetainAll();
 		testSubList();
 		//testToArray();
@@ -264,25 +264,31 @@ public class ListTesterPartTwo
 		Object[] arrayTest5a2 = test5a.toArray();
 		System.out.println(Arrays.toString(arrayTest5a2));
 		
-		System.out.print("Retain all elements from third list that are in an empty list? ");
+		System.out.print("Retain all elements from first list that are in an empty list? ");
 		System.out.println(test5a.retainAll(test5d));
 		System.out.print("Size:  " );
 		System.out.println(test5a.size());
 		Object[] arrayTest5a3 = test5a.toArray();
 		System.out.println(Arrays.toString(arrayTest5a3));
 		
+		
+	
 		System.out.println("");
+		System.out.println("Rebuild a list 0-9 ");
+		for (int i = 0; i < 10; i++){
+			test5a.add(i);
+		}
+		System.out.print("Size:  " );
+		System.out.println(test5a.size());
+		arrayTest5a = test5a.toArray();
+		System.out.println(Arrays.toString(arrayTest5a));
+		
 		System.out.println("Build a third list with numbers 10 to 20 ");
 		System.out.print("Size:  " );
 		System.out.println(test5c.size());
 		Object[] arrayTest5c = test5c.toArray();
 		System.out.println(Arrays.toString(arrayTest5c));
-		System.out.print("Retain all elements from third list that are in an empty list? ");
-		System.out.println(test5c.retainAll(test5d));
-		System.out.print("Size:  " );
-		System.out.println(test5c.size());
-		Object[] arrayTest5c2 = test5c.toArray();
-		System.out.println(Arrays.toString(arrayTest5c2));
+		
 		System.out.print("Retain all elements from first list that are in third list? ");
 		System.out.println(test5a.retainAll(test5c));
 		System.out.print("Size:  " );

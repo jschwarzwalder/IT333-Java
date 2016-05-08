@@ -548,8 +548,9 @@ public class LinkedList<T> implements List<T> {
 	 */
 	@Override
 	public boolean retainAll(Collection<?> other) {
-		if (other.isEmpty()){
-			return false;
+		if (other.isEmpty() && !this.isEmpty()){
+			 this.clear();
+			 return true;
 		}
 		boolean doesChange = false;
 		Iterator<?> thisIterator = this.iterator();
@@ -564,10 +565,42 @@ public class LinkedList<T> implements List<T> {
 		return doesChange;
 	}
 
-
+	/**
+	 * Returns a new list that contains the elements in this list from fromIndex to toIndex.
+	 * 
+	 * @param fromIndex - low endpoint (inclusive) of the subList
+	 * @param toIndex - high endpoint (exclusive) of the subList
+	 * @returns a view of the specified range within this list
+	 */
 	@Override
 	public List<T> subList(int fromIndex, int toIndex) {
-		throw new UnsupportedOperationException("This method is not supported.");
+		if ((fromIndex < 0) || (fromIndex > size) || (toIndex < 0) || (toIndex > size)) {
+			throw new IndexOutOfBoundsException("index is out of range");
+		}
+		if (toIndex < fromIndex){
+			throw new IndexOutOfBoundsException("Did you really mean to get from " + fromIndex + " to " + toIndex + "?");
+		}
+		LinkedList<T> newList = new LinkedList<T>();
+		int counter = 0;
+		Iterator<T> originalListIterator =  iterator();
+		
+		while(originalListIterator.hasNext()){
+			if(counter < fromIndex){
+				originalListIterator.next();
+				counter++;
+			} else if (counter < toIndex) {
+				newList.add(originalListIterator.next());
+				counter++;
+			} else {
+				break;
+			}
+		}
+		
+		return newList;
+		
+		
+		
+		
 	}
 	/**
 	 * Returns an array containing all of the elements in this list in proper sequence (from first to last element).
@@ -729,6 +762,7 @@ public class LinkedList<T> implements List<T> {
 			if (!hasNext()){
 				list.tail = prevPrevNode;
 			}
+			list.size--;
 					
 		}
 	}
