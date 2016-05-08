@@ -401,7 +401,18 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	// part #2
-
+	/**
+	 * Appends all of the elements in the specified collection to the end of this list, 
+	 * in the order that they are returned by the specified collection's iterator (optional operation).
+	 *  
+	 * The behavior of this operation is undefined if the specified 
+	 * collection is modified while the operation is in progress. 
+	 * 
+	 * (Note that this will occur if the specified collection is this list, and it's nonempty.)
+	 *
+	 * @param other - collection containing elements to be added to this list
+	 * @returns true if this list changed as a result of the call
+	 */
 	@Override
 	public boolean addAll(Collection<? extends T> other) {
 		Iterator<? extends T> otherIterator = other.iterator();
@@ -416,10 +427,27 @@ public class LinkedList<T> implements List<T> {
 		tail = prevNode;
 		return true;
 	}
-
+	
+	/**
+	 * Inserts all of the elements in the specified collection into this list at the specified position (optional operation). 
+	 * 
+	 * Shifts the element currently at that position (if any) and any subsequent elements to the right (increases their indices). 
+	 * 
+	 * The new elements will appear in this list in the order that they are returned by the specified collection's iterator. 
+	 * 
+	 * The behavior of this operation is undefined if the specified collection is modified while the operation is in progress. 
+	 * 
+	 * (Note that this will occur if the specified collection is this list, and it's nonempty.)
+	 * 
+	 * @param index - index at which to insert the first element from the specified collection
+	 * @param other - collection containing elements to be added to this list
+	 * @returns true if this list changed as a result of the call
+	 */
 	@Override
 	public boolean addAll(int index, Collection<? extends T> other) {
 		if ((index < 0) || (index > size)) {
+			return false;
+		} else if (other.isEmpty()){
 			return false;
 		} else {
 			Node<T> prev = null;
@@ -429,10 +457,17 @@ public class LinkedList<T> implements List<T> {
 				prev = currentNode;
 				currentNode = currentNode.getNext();
 			}
-			Node<T> alpha = prev;
+			
 			Node<T> omega = currentNode;
 			Iterator<? extends T> otherIterator = other.iterator();
-
+			if (index == 0){
+				Node<T> newNode = new Node<T>();
+				newNode.setValue(otherIterator.next());
+				head = newNode; 
+				prev = newNode;
+				size++;
+				
+			}
 			while (otherIterator.hasNext()) {
 				Node<T> newNode = new Node<T>();
 				newNode.setValue(otherIterator.next());
@@ -440,13 +475,20 @@ public class LinkedList<T> implements List<T> {
 				prev = newNode;
 				size++;
 				
+				
 			}
 			
-			prev.setNext(omega);
-			//done?
+				
+			if (omega == null){
+				tail = prev;
+			} else {
+				prev.setNext(omega);
+			}
+			
+			return true;
 		}
 
-		throw new UnsupportedOperationException("This method is not supported.");
+		
 	}
 
 	@Override
@@ -516,7 +558,11 @@ public class LinkedList<T> implements List<T> {
 		}
 
 		public boolean hasNext() {
-			return !(currentNode.next == null);
+			if (currentNode == null) {
+				return false;
+			} else {
+				return !(currentNode.next == null);
+			}
 		}
 
 		public T next() {
