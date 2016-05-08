@@ -230,7 +230,7 @@ public class LinkedList<T> implements List<T> {
 	public boolean contains(Object search) {
 		// get first node in list
 		Node<T> currentNode = head;
-
+		System.out.print(search + ", ");
 		// go through all nodes until you reach the end
 		// where next would be null
 		while (currentNode != null) {
@@ -500,7 +500,7 @@ public class LinkedList<T> implements List<T> {
 	@Override
 	public boolean containsAll(Collection<?> other) {
 		if (other.isEmpty()){
-			return false;
+			return true;
 		}
 		
 		Iterator<?> otherIterator = other.iterator();
@@ -531,7 +531,18 @@ public class LinkedList<T> implements List<T> {
 
 	@Override
 	public Object[] toArray() {
-		throw new UnsupportedOperationException("This method is not supported.");
+		Object[] arrayFromList = new Object[this.size];
+		int index = 0;
+		
+		Iterator<?> arrayIterator = this.iterator();
+		
+		while (arrayIterator.hasNext()) {
+			arrayFromList[index] = arrayIterator.next();
+			index++;
+		}
+				
+			
+		return arrayFromList;
 	}
 
 	@Override
@@ -566,33 +577,65 @@ public class LinkedList<T> implements List<T> {
 
 	public static class ListIterator<T> implements Iterator<T> {
 
-		private Node<T> currentNode;
+		private Node<T> nextNode;
+		private Node<T> prevPrevNode;
 		private Node<T> prevNode;
 		private T data;
 		private int currentModCount;
-
+		
+		/**
+		 * Returns true if this list iterator has more elements when traversing the list in the forward direction. 
+		 * (In other words, returns true if next() would return an element rather than throwing an exception.)
+		 * 
+		 * 
+		 * @returns true if the list iterator has more elements when traversing the list in the forward direction
+		 */
 		public ListIterator(Node<T> head) {
-			currentNode = head;
+			prevPrevNode = null;
+			nextNode = head;
 		}
-
+		
+		/**
+		 * Returns true if this list contains all of the elements of the specified collection.
+		 * 
+		 * @param other - collection to be checked for containment in this list
+		 * @returns true if this list contains all of the elements of the specified collection
+		 */
 		public boolean hasNext() {
-			if (currentNode == null) {
-				return false;
-			} else {
-				return !(currentNode.next == null);
-			}
+			return (nextNode != null);
+		
 		}
-
+		
+		/**
+		 * Returns the next element in the list and advances the cursor position. 
+		 * This method may be called repeatedly to iterate through the list, 
+		 * or intermixed with calls to previous() to go back and forth. 
+		 * 
+		 * (Note that alternating calls to next and previous will return the same element repeatedly.)
+		 * 
+		 * @returns the next element in the list
+		 */
 		public T next() {
 			if (!hasNext()) {
 				throw new IllegalStateException("No more Nodes");
 			} else {
-				data = currentNode.getValue();
-				prevNode = currentNode;
-				currentNode = prevNode.next;
+				data = nextNode.getValue();
+				prevPrevNode = prevNode;
+				prevNode = nextNode;
+				nextNode = prevNode.next;
 				return data;
 			}
 		}
-
+		
+		/**
+		 * Removes from the list the last element that was returned by next() or previous() (optional operation). 
+		 * This call can only be made once per call to next or previous. 
+		 * It can be made only if add(E) has not been called after the last call to next or previous.
+		 */
+		public void remove(){
+			prevPrevNode.setNext(nextNode);
+			prevNode = prevPrevNode;
+					
+		}
 	}
 }

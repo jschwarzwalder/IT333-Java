@@ -7,7 +7,7 @@ public class ListTesterPartTwo
 		//run the tests
 		//testAddAll();
 		//testInsertAll();
-		testContainsAll();
+		//testContainsAll();
 		testRemoveAll();
 		testRetainAll();
 		testSubList();
@@ -136,7 +136,7 @@ public class ListTesterPartTwo
 			test3d.add(i);
 		}
 		LinkedList<Integer> test3e = new LinkedList<Integer>();
-		for (int i = 10; i > 20; i++){
+		for (int i = 5; i < 20; i++){
 			test3e.add(i);
 		}
 		LinkedList<Integer> test3f = new LinkedList<Integer>();
@@ -154,7 +154,7 @@ public class ListTesterPartTwo
 		System.out.println("Build a list with values 0 to -10 going down ");
 		System.out.print("Does the first list contain all these values? ");
 		System.out.println(test3a.containsAll(test3d));
-		System.out.println("Build a list with values 10 to 20 ");
+		System.out.println("Build a list with values 5 to 20 ");
 		System.out.print("Does the first list contain all these values? ");
 		System.out.println(test3a.containsAll(test3e));
 		System.out.println("Build an empty list");
@@ -180,6 +180,51 @@ public class ListTesterPartTwo
 	public static void testToArray()
 	{
 		//this method tests list.toArray()
+		LinkedList<Integer> test7a = new LinkedList<Integer>();
+		for (int i = 0; i < 10; i++){
+			test7a.add(i);
+		}
+		
+		LinkedList<Integer> test7b = new LinkedList<Integer>();
+		for (int i = 10; i > -1; i--){
+			test7b.add(i);
+		}
+		
+		LinkedList<Integer> test7c = new LinkedList<Integer>();
+		
+		System.out.println(test7a);
+		System.out.print("List Size:  " );
+		System.out.println(test7a.size());
+		System.out.println("We print as an array ");
+		Object[] arrayTest7a = test7a.toArray();
+		System.out.println(arrayTest7a);
+		for (int i = 0; i < arrayTest7a.length; i++){
+			System.out.print(arrayTest7a[i] + ", ");
+		}
+		System.out.println();
+		
+		System.out.println(test7b);
+		System.out.print("List Size:  " );
+		System.out.println(test7b.size());
+		System.out.println("We print as an array ");
+		Object[] arrayTest7b = test7b.toArray();
+		System.out.println(arrayTest7b);
+		for (int i = 0; i < arrayTest7b.length; i++){
+			System.out.print(arrayTest7b[i] + ", ");
+		}
+		System.out.println();
+		
+		System.out.println(test7c);
+		System.out.print("List Size:  " );
+		System.out.println(test7c.size());
+		System.out.println("We print as an array ");
+		Object[] arrayTest7c = test7c.toArray();
+		System.out.println(arrayTest7c);
+		for (int i = 0; i < arrayTest7c.length; i++){
+			System.out.print(arrayTest7c[i] + ", ");
+		}
+		System.out.println();
+		
 	}
 	
 	public static void testToGenericArray()
