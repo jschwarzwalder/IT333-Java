@@ -68,6 +68,7 @@ public class MyBinarySearchTree<AnyType extends Comparable<? super AnyType>> {
 	 *            the node that roots the subtree.
 	 * @return true if the item is found; false otherwise.
 	 */
+	
 	private boolean contains(AnyType x, BinaryNode<AnyType> t) {
 		if (t == null)
 			return false;
@@ -82,11 +83,35 @@ public class MyBinarySearchTree<AnyType extends Comparable<? super AnyType>> {
 			return true; // Match
 	}
 
+	/**
+	 * Internal method to find the smallest item in a subtree.
+	 * 
+	 * @param t
+	 *            the node that roots the subtree.
+	 * @return node containing the smallest item.
+	 */
 	private BinaryNode<AnyType> findMin(BinaryNode<AnyType> t) {
-		/* Figure 4.20 */ }
+		if (t == null)
+			return null;
+		else if (t.left == null)
+			return t;
+		return findMin(t.left);
+	}
 
+	/**
+	 * Internal method to find the largest item in a subtree.
+	 * 
+	 * @param t
+	 *            the node that roots the subtree.
+	 * @return node containing the largest item.
+	 */
 	private BinaryNode<AnyType> findMax(BinaryNode<AnyType> t) {
-		/* Figure 4.20 */ }
+		if (t != null)
+			while (t.right != null)
+				t = t.right;
+
+		return t;
+	}
 
 	private BinaryNode<AnyType> insert(AnyType x, BinaryNode<AnyType> t) {
 		/* Figure 4.22 */ }
