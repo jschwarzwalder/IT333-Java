@@ -446,7 +446,7 @@ public class LinkedList<T> implements List<T> {
 	@Override
 	public boolean addAll(int index, Collection<? extends T> other) {
 		if ((index < 0) || (index > size)) {
-			return false;
+			throw new IndexOutOfBoundsException("index is out of range");
 		} else if (other.isEmpty()){
 			return false;
 		} else {
@@ -490,10 +490,28 @@ public class LinkedList<T> implements List<T> {
 
 		
 	}
-
+	
+	/**
+	 * Returns true if this list contains all of the elements of the specified collection.
+	 * 
+	 * @param other - collection to be checked for containment in this list
+	 * @returns true if this list contains all of the elements of the specified collection
+	 */
 	@Override
 	public boolean containsAll(Collection<?> other) {
-		throw new UnsupportedOperationException("This method is not supported.");
+		if (other.isEmpty()){
+			return false;
+		}
+		
+		Iterator<?> otherIterator = other.iterator();
+		
+		while (otherIterator.hasNext()) {
+			if (!this.contains(otherIterator.next())){
+				return false;
+			}
+		}
+		
+		return true;
 	}
 
 	@Override

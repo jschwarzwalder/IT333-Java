@@ -6,7 +6,7 @@ public class ListTesterPartTwo
 	{
 		//run the tests
 		//testAddAll();
-		testInsertAll();
+		//testInsertAll();
 		testContainsAll();
 		testRemoveAll();
 		testRetainAll();
@@ -115,6 +115,51 @@ public class ListTesterPartTwo
 	public static void testContainsAll()
 	{
 		//this method tests list.containsAll(collection)
+		LinkedList<Integer> test3a = new LinkedList<Integer>();
+		for (int i = 0; i < 10; i++){
+			test3a.add(i);
+		}
+		LinkedList<Integer> test3aDup = new LinkedList<Integer>();
+		for (int i = 0; i < 10; i++){
+			test3aDup.add(i);
+		}
+		LinkedList<Integer> test3b = new LinkedList<Integer>();
+		for (int i = 3; i < 8; i++){
+			test3b.add(i);
+		}
+		LinkedList<Integer> test3c = new LinkedList<Integer>();
+		for (int i = 9; i > 2; i--){
+			test3c.add(i);
+		}
+		LinkedList<Integer> test3d = new LinkedList<Integer>();
+		for (int i = 0; i > -10 ; i--){
+			test3d.add(i);
+		}
+		LinkedList<Integer> test3e = new LinkedList<Integer>();
+		for (int i = 10; i > 20; i++){
+			test3e.add(i);
+		}
+		LinkedList<Integer> test3f = new LinkedList<Integer>();
+		
+		System.out.println("Build a list 1-10 ");
+		System.out.println("Build an identical second list ");
+		System.out.print("Do the two lists with the same values return true? ");
+		System.out.println(test3a.containsAll(test3aDup));
+		System.out.println("Build a list with values 3-8 ");
+		System.out.print("Does the first list contain all these values? ");
+		System.out.println(test3a.containsAll(test3b));
+		System.out.println("Build a list with values 9 to 2 going down ");
+		System.out.print("Does the first list contain all these values? ");
+		System.out.println(test3a.containsAll(test3c));
+		System.out.println("Build a list with values 0 to -10 going down ");
+		System.out.print("Does the first list contain all these values? ");
+		System.out.println(test3a.containsAll(test3d));
+		System.out.println("Build a list with values 10 to 20 ");
+		System.out.print("Does the first list contain all these values? ");
+		System.out.println(test3a.containsAll(test3e));
+		System.out.println("Build an empty list");
+		System.out.print("Does the first list contain all these values? ");
+		System.out.println(test3a.containsAll(test3f));
 	}
 	
 	public static void testRemoveAll()
