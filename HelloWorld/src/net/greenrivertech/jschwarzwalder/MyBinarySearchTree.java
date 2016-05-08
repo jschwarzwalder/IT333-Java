@@ -18,7 +18,6 @@ public class MyBinarySearchTree<AnyType extends Comparable<? super AnyType>> {
 		BinaryNode<AnyType> right; // Right child
 	}
 
-
 	private BinaryNode<AnyType> root;
 
 	public MyBinarySearchTree() {
@@ -60,8 +59,28 @@ public class MyBinarySearchTree<AnyType extends Comparable<? super AnyType>> {
 	public void printTree() {
 		/* Figure 4.56 */ }
 
+	/**
+	 * Internal method to find an item in a subtree.
+	 * 
+	 * @param x
+	 *            is item to search for.
+	 * @param t
+	 *            the node that roots the subtree.
+	 * @return true if the item is found; false otherwise.
+	 */
 	private boolean contains(AnyType x, BinaryNode<AnyType> t) {
-		/* Figure 4.18 */ }
+		if (t == null)
+			return false;
+
+		int compareResult = x.compareTo(t.element);
+
+		if (compareResult < 0)
+			return contains(x, t.left);
+		else if (compareResult > 0)
+			return contains(x, t.right);
+		else
+			return true; // Match
+	}
 
 	private BinaryNode<AnyType> findMin(BinaryNode<AnyType> t) {
 		/* Figure 4.20 */ }
