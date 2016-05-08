@@ -1,5 +1,6 @@
 package edu.greenriver.edu.lists;
 
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -566,10 +567,11 @@ public class LinkedList<T> implements List<T> {
 		K[] newtoFill;
 		
 		if (toFill.length < this.size()){
-			newtoFill = (K[]) new Object[size()];
+			newtoFill = (K[]) Array.newInstance(toFill.getClass().getComponentType(), size());
 		} else {
 			newtoFill = toFill;
 		}
+		
 
 		int index = 0;
 		
@@ -590,7 +592,7 @@ public class LinkedList<T> implements List<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-		ListIterator<T> iterator = new ListIterator<T>(head);
+		ListIterator<T> iterator = new ListIterator<T>(this);
 		return iterator;
 	}
 
@@ -619,6 +621,7 @@ public class LinkedList<T> implements List<T> {
 		private Node<T> prevNode;
 		private T data;
 		private int currentModCount;
+		private LinkedList<T> list;
 		
 		/**
 		 * Returns true if this list iterator has more elements when traversing the list in the forward direction. 
@@ -627,9 +630,10 @@ public class LinkedList<T> implements List<T> {
 		 * 
 		 * @returns true if the list iterator has more elements when traversing the list in the forward direction
 		 */
-		public ListIterator(Node<T> head) {
+		public ListIterator(LinkedList<T> list) {
 			prevPrevNode = null;
-			nextNode = head;
+			nextNode = list.head;
+			this.list = list;
 		}
 		
 		/**
@@ -670,8 +674,16 @@ public class LinkedList<T> implements List<T> {
 		 * It can be made only if add(E) has not been called after the last call to next or previous.
 		 */
 		public void remove(){
-			prevPrevNode.setNext(nextNode);
+			if (prevPrevNode == null){
+				list.head = nextNode;
+			} else {
+				prevPrevNode.setNext(nextNode);
+			}
 			prevNode = prevPrevNode;
+			
+			if (!hasNext()){
+				list.tail = prevPrevNode;
+			}
 					
 		}
 	}

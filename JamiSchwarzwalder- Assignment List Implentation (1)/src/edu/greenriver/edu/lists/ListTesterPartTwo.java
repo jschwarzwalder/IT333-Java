@@ -1,6 +1,7 @@
 package edu.greenriver.edu.lists;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class ListTesterPartTwo
 {
@@ -14,7 +15,7 @@ public class ListTesterPartTwo
 		testRetainAll();
 		testSubList();
 		//testToArray();
-		testToGenericArray();
+		//testToGenericArray();
 		testIterator();
 	}
 	
@@ -245,12 +246,13 @@ public class ListTesterPartTwo
 		LinkedList<String> test8c = new LinkedList<String>();
 		for (char i = 'a'; i < 'm'; i++){
 			test8c.add(Character.toString(i));
-			System.out.print(i + " = ");
-			System.out.println(Character.toString(i));
+//			System.out.print(i + " = ");
+//			System.out.println(Character.toString(i));
 		}
 		
 		Integer[] integer8a = new Integer[10];
 		String[] string8a = new String[10];
+		
 		
 		System.out.print("List Size:  " );
 		System.out.println(test8a.size());
@@ -264,8 +266,15 @@ public class ListTesterPartTwo
 			System.out.println(Arrays.toString(arrayTest8b));
 			System.out.println("Didn't throw an exception o.0");
 		} catch (ArrayStoreException ase){
-			System.out.println("Threw an expection");
+			System.out.println("Threw an expection " + ase);
 		}
+		System.out.println();
+		
+		System.out.print("List Size:  " );
+		System.out.println(test8b.size());
+		System.out.println("We print as an array ");
+		Integer[] arrayTest8 = test8b.toArray(integer8a);
+		System.out.println(Arrays.toString(arrayTest8));
 		System.out.println();
 		
 		System.out.print("List Size:  " );
@@ -274,19 +283,58 @@ public class ListTesterPartTwo
 		String[] arrayTest8c = test8c.toArray(string8a);
 		System.out.println(Arrays.toString(arrayTest8c));
 		System.out.println();
-		System.out.println("We try to convert to a String[] ");
+		System.out.println("We try to convert to a Integer[] ");
 		try {
 			Integer[] arrayTest8d = test8c.toArray(integer8a);
 			System.out.println(Arrays.toString(arrayTest8d));
 			System.out.println("Didn't throw an exception o.0");
 		} catch (ArrayStoreException ase){
-			System.out.println("Threw an expection");
+			System.out.println("Threw an expection " + ase);
 		}
 		System.out.println();
+		
+		System.out.println("What if we try to convert to a null array");
+		try {
+			System.out.println(test8c.toArray(null));
+		} catch (NullPointerException npe){
+			System.out.println("Threw an exception " + npe);
+		}
 	}
 	
 	public static void testIterator()
 	{
 		//this method tests list.iterator()
+		LinkedList<Integer> test9a = new LinkedList<Integer>();
+		for (int i = 0; i < 11; i++){
+			test9a.add(i);
+		}
+		
+		LinkedList<String> test9b = new LinkedList<String>();
+		for (char i = 'a'; i < 'm'; i++){
+			test9b.add(Character.toString(i));
+		}
+		
+		for (int num:test9a){
+			System.out.print(num + ", ");
+		}
+		System.out.println();
+		
+		for (String letter:test9b){
+			System.out.print(letter + ", ");
+		}
+		System.out.println();
+		
+		Iterator<Integer> interator = test9a.iterator();
+		
+		System.out.println("Removing the even numbers with .remove()");
+		while(interator.hasNext()){
+			if (interator.next()%2 == 0){
+				interator.remove();
+			}
+		}
+		for (int num:test9a){
+			System.out.print(num + ", ");
+		}
+		System.out.println();
 	}
 }
