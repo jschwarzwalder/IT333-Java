@@ -16,7 +16,7 @@ public class ListTesterPartTwo
 		testSubList();
 		//testToArray();
 		//testToGenericArray();
-		testIterator();
+		//testIterator();
 	}
 	
 	public static void testAddAll()
@@ -168,6 +168,64 @@ public class ListTesterPartTwo
 	public static void testRemoveAll()
 	{
 		//this method tests list.removeAll(collection)
+		LinkedList<Integer> test4a = new LinkedList<Integer>();
+		for (int i = 0; i < 10; i++){
+			test4a.add(i);
+		}
+		
+		LinkedList<Integer> test4b = new LinkedList<Integer>();
+		for (int i = 0; i < 11; i += 2){
+			test4b.add(i);
+		}
+		
+		LinkedList<Integer> test4c = new LinkedList<Integer>();
+		for (int i = 10; i < 21; i++){
+			test4c.add(i);
+		} 
+		
+		LinkedList<Integer> test4d = new LinkedList<Integer>();
+		
+		System.out.println("Build a list 0-9 ");
+		System.out.print("Size:  " );
+		System.out.println(test4a.size());
+		Object[] arrayTest4a = test4a.toArray();
+		System.out.println(Arrays.toString(arrayTest4a));
+		System.out.println("Build an second list with only even numbers ");
+		System.out.print("Size:  " );
+		System.out.println(test4b.size());
+		Object[] arrayTest4b = test4b.toArray();
+		System.out.println(Arrays.toString(arrayTest4b));
+		System.out.print("Remove all elements from first list that are in second list? ");
+		System.out.println(test4a.removeAll(test4b));
+		System.out.print("Size:  " );
+		System.out.println(test4a.size());
+		Object[] arrayTest4a2 = test4a.toArray();
+		System.out.println(Arrays.toString(arrayTest4a2));
+		
+		System.out.print("Remove all elements from third list that are in an empty list? ");
+		System.out.println(test4a.removeAll(test4d));
+		System.out.print("Size:  " );
+		System.out.println(test4a.size());
+		Object[] arrayTest4a3 = test4a.toArray();
+		System.out.println(Arrays.toString(arrayTest4a3));
+		System.out.println("");
+		System.out.println("Build a third list with numbers 10 to 20 ");
+		System.out.print("Size:  " );
+		System.out.println(test4c.size());
+		Object[] arrayTest4c = test4c.toArray();
+		System.out.println(Arrays.toString(arrayTest4c));
+		System.out.print("Remove all elements from third list that are in an empty list? ");
+		System.out.println(test4c.removeAll(test4d));
+		System.out.print("Size:  " );
+		System.out.println(test4c.size());
+		Object[] arrayTest4c2 = test4c.toArray();
+		System.out.println(Arrays.toString(arrayTest4c2));
+		System.out.print("Remove all elements from first list that are in third list? ");
+		System.out.println(test4a.removeAll(test4c));
+		System.out.print("Size:  " );
+		System.out.println(test4a.size());
+		Object[] arrayTest4a4 = test4a.toArray();
+		System.out.println(Arrays.toString(arrayTest4a4));
 	}
 	
 	public static void testRetainAll()

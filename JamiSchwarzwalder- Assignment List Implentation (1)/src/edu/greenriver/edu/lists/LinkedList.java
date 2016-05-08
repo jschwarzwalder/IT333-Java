@@ -231,7 +231,7 @@ public class LinkedList<T> implements List<T> {
 	public boolean contains(Object search) {
 		// get first node in list
 		Node<T> currentNode = head;
-		System.out.print(search + ", ");
+		//System.out.print(search + ", ");
 		// go through all nodes until you reach the end
 		// where next would be null
 		while (currentNode != null) {
@@ -514,11 +514,31 @@ public class LinkedList<T> implements List<T> {
 		
 		return true;
 	}
-
+	
+	/**
+	 * Removes from this list all of its elements that are contained in the specified collection (optional operation).
+	 * 
+	 * @param other - collection containing elements to be removed from this list
+	 * @returns true if this list changed as a result of the call
+	 */
 	@Override
 	public boolean removeAll(Collection<?> other) {
-		throw new UnsupportedOperationException("This method is not supported.");
+		if (other.isEmpty()){
+			return false;
+		}
+		boolean doesChange = false;
+		Iterator<?> thisIterator = this.iterator();
+		
+		while (thisIterator.hasNext()) {
+			if (other.contains(thisIterator.next())){
+				thisIterator.remove();
+				doesChange = true;
+			}
+		}
+		
+		return doesChange;
 	}
+
 
 	@Override
 	public boolean retainAll(Collection<?> other) {
@@ -589,7 +609,12 @@ public class LinkedList<T> implements List<T> {
 			
 		return newtoFill;
 	}
-
+	
+	/**
+	 * Returns an iterator over the elements in this list in proper sequence.
+	 * 
+	 * @returns an iterator over the elements in this list in proper sequence
+	 */
 	@Override
 	public Iterator<T> iterator() {
 		ListIterator<T> iterator = new ListIterator<T>(this);
