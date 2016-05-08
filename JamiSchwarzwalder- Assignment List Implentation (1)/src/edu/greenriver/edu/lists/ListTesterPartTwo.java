@@ -2,6 +2,7 @@ package edu.greenriver.edu.lists;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class ListTesterPartTwo
 {
@@ -12,8 +13,8 @@ public class ListTesterPartTwo
 		//testInsertAll();
 		//testContainsAll();
 		//testRemoveAll();
-		testRetainAll();
-		testSubList();
+		//testRetainAll();
+		//testSubList();
 		//testToArray();
 		//testToGenericArray();
 		//testIterator();
@@ -298,8 +299,77 @@ public class ListTesterPartTwo
 	}
 	
 	public static void testSubList()
-	{
+	{		
 		//this method tests list.sublist(from, to)
+
+		LinkedList<Integer> test6a = new LinkedList<Integer>();
+		for (int i = 0; i < 20; i++){
+			test6a.add(i);
+		}
+
+		LinkedList<Integer> test6b = new LinkedList<Integer>();
+		
+		System.out.println("Building a list 0-19");
+		System.out.print("Size: ");
+		System.out.println(test6a.size());
+		System.out.println(Arrays.toString(test6a.toArray()));
+		System.out.println("Returning Integers between index 5 and 15");
+		List<Integer> test6aSub = test6a.subList(5, 15);
+		System.out.print("Size: ");
+		System.out.println(test6aSub.size());
+		System.out.println(Arrays.toString(test6aSub.toArray()));
+		System.out.println("");
+		
+
+		System.out.println("Returning Integers between index -1 and 15");
+		try{
+			test6aSub = test6a.subList(-1, 15);
+			System.out.print("Size: ");
+			System.out.println(test6aSub.size());
+			System.out.println(Arrays.toString(test6aSub.toArray()));
+		} catch (IndexOutOfBoundsException outOfBounds){
+			System.out.println("Out of Bounds: " + outOfBounds);
+		}
+
+		System.out.println("Returning Integers between index 5 and 30");
+		try{
+			test6aSub = test6a.subList(5, 30);
+			System.out.print("Size: ");
+			System.out.println(test6aSub.size());
+			System.out.println(Arrays.toString(test6aSub.toArray()));
+		} catch (IndexOutOfBoundsException outOfBounds){
+			System.out.println("Out of Bounds: " + outOfBounds);
+		}
+		System.out.println("Returning Integers between index 15 and 5");
+		try{
+			test6aSub = test6a.subList(15, 5);
+			System.out.print("Size: ");
+			System.out.println(test6aSub.size());
+			System.out.println(Arrays.toString(test6aSub.toArray()));
+		} catch (IndexOutOfBoundsException outOfBounds){
+			System.out.println("Out of Bounds: " + outOfBounds);
+		}
+
+		
+		System.out.println("Returning from an empty list");
+		try{
+			List<Integer> test6bSub = test6b.subList(0, 0);
+			System.out.print("Size: ");
+			System.out.println(test6bSub.size());
+			System.out.println(Arrays.toString(test6bSub.toArray()));
+		} catch (IndexOutOfBoundsException outOfBounds){
+			System.out.println("Out of Bounds: " + outOfBounds);
+		}
+		
+		System.out.println("Returning from an empty list");
+		try{
+			List<Integer> test6bSub = test6b.subList(0, 1);
+			System.out.print("Size: ");
+			System.out.println(test6bSub.size());
+			System.out.println(Arrays.toString(test6bSub.toArray()));
+		} catch (IndexOutOfBoundsException outOfBounds){
+			System.out.println("Out of Bounds: " + outOfBounds);
+		}
 	}
 	
 	public static void testToArray()

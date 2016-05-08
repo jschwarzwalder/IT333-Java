@@ -2,6 +2,7 @@ package edu.greenriver.edu.lists;
 
 import java.lang.reflect.Array;
 import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -32,6 +33,8 @@ public class LinkedList<T> implements List<T> {
 	private Node<T> tail;
 	// store the number of nodes in the list
 	private int size;
+	// modCount tracking changes to list
+	private int modCount;
 
 	// each element in the list is a node
 	private static class Node<T> {
@@ -90,6 +93,7 @@ public class LinkedList<T> implements List<T> {
 
 		// since we added a node increase size by one
 		size++;
+		modCount++;
 
 		// we successfully added a node, so return true
 		return true;
@@ -139,6 +143,7 @@ public class LinkedList<T> implements List<T> {
 
 			// since we added a node increase size by one
 			size++;
+			modCount++;
 		}
 
 	}
@@ -231,7 +236,7 @@ public class LinkedList<T> implements List<T> {
 	public boolean contains(Object search) {
 		// get first node in list
 		Node<T> currentNode = head;
-		//System.out.print(search + ", ");
+		// System.out.print(search + ", ");
 		// go through all nodes until you reach the end
 		// where next would be null
 		while (currentNode != null) {
@@ -361,6 +366,7 @@ public class LinkedList<T> implements List<T> {
 
 				// reduce size since we removed a node
 				size--;
+				modCount++;
 				// since we removed a node return true
 				return true;
 
@@ -396,6 +402,7 @@ public class LinkedList<T> implements List<T> {
 
 			// since we removed a node decrease size by one
 			size--;
+			modCount++;
 			return currentNode.getValue();
 		}
 
@@ -403,15 +410,18 @@ public class LinkedList<T> implements List<T> {
 
 	// part #2
 	/**
-	 * Appends all of the elements in the specified collection to the end of this list, 
-	 * in the order that they are returned by the specified collection's iterator (optional operation).
-	 *  
-	 * The behavior of this operation is undefined if the specified 
-	 * collection is modified while the operation is in progress. 
+	 * Appends all of the elements in the specified collection to the end of
+	 * this list, in the order that they are returned by the specified
+	 * collection's iterator (optional operation).
 	 * 
-	 * (Note that this will occur if the specified collection is this list, and it's nonempty.)
+	 * The behavior of this operation is undefined if the specified collection
+	 * is modified while the operation is in progress.
+	 * 
+	 * (Note that this will occur if the specified collection is this list, and
+	 * it's nonempty.)
 	 *
-	 * @param other - collection containing elements to be added to this list
+	 * @param other
+	 *            - collection containing elements to be added to this list
 	 * @returns true if this list changed as a result of the call
 	 */
 	@Override
@@ -424,31 +434,40 @@ public class LinkedList<T> implements List<T> {
 			prevNode.setNext(currentNode);
 			prevNode = currentNode;
 			size++;
+			modCount++;
 		}
 		tail = prevNode;
 		return true;
 	}
-	
+
 	/**
-	 * Inserts all of the elements in the specified collection into this list at the specified position (optional operation). 
+	 * Inserts all of the elements in the specified collection into this list at
+	 * the specified position (optional operation).
 	 * 
-	 * Shifts the element currently at that position (if any) and any subsequent elements to the right (increases their indices). 
+	 * Shifts the element currently at that position (if any) and any subsequent
+	 * elements to the right (increases their indices).
 	 * 
-	 * The new elements will appear in this list in the order that they are returned by the specified collection's iterator. 
+	 * The new elements will appear in this list in the order that they are
+	 * returned by the specified collection's iterator.
 	 * 
-	 * The behavior of this operation is undefined if the specified collection is modified while the operation is in progress. 
+	 * The behavior of this operation is undefined if the specified collection
+	 * is modified while the operation is in progress.
 	 * 
-	 * (Note that this will occur if the specified collection is this list, and it's nonempty.)
+	 * (Note that this will occur if the specified collection is this list, and
+	 * it's nonempty.)
 	 * 
-	 * @param index - index at which to insert the first element from the specified collection
-	 * @param other - collection containing elements to be added to this list
+	 * @param index
+	 *            - index at which to insert the first element from the
+	 *            specified collection
+	 * @param other
+	 *            - collection containing elements to be added to this list
 	 * @returns true if this list changed as a result of the call
 	 */
 	@Override
 	public boolean addAll(int index, Collection<? extends T> other) {
 		if ((index < 0) || (index > size)) {
 			throw new IndexOutOfBoundsException("index is out of range");
-		} else if (other.isEmpty()){
+		} else if (other.isEmpty()) {
 			return false;
 		} else {
 			Node<T> prev = null;
@@ -458,16 +477,17 @@ public class LinkedList<T> implements List<T> {
 				prev = currentNode;
 				currentNode = currentNode.getNext();
 			}
-			
+
 			Node<T> omega = currentNode;
 			Iterator<? extends T> otherIterator = other.iterator();
-			if (index == 0){
+			if (index == 0) {
 				Node<T> newNode = new Node<T>();
 				newNode.setValue(otherIterator.next());
-				head = newNode; 
+				head = newNode;
 				prev = newNode;
 				size++;
-				
+				modCount++;
+
 			}
 			while (otherIterator.hasNext()) {
 				Node<T> newNode = new Node<T>();
@@ -475,101 +495,110 @@ public class LinkedList<T> implements List<T> {
 				prev.setNext(newNode);
 				prev = newNode;
 				size++;
-				
-				
+				modCount++;
+
 			}
-			
-				
-			if (omega == null){
+
+			if (omega == null) {
 				tail = prev;
 			} else {
 				prev.setNext(omega);
 			}
-			
+
 			return true;
 		}
 
-		
 	}
-	
+
 	/**
-	 * Returns true if this list contains all of the elements of the specified collection.
+	 * Returns true if this list contains all of the elements of the specified
+	 * collection.
 	 * 
-	 * @param other - collection to be checked for containment in this list
-	 * @returns true if this list contains all of the elements of the specified collection
+	 * @param other
+	 *            - collection to be checked for containment in this list
+	 * @returns true if this list contains all of the elements of the specified
+	 *          collection
 	 */
 	@Override
 	public boolean containsAll(Collection<?> other) {
-		if (other.isEmpty()){
+		if (other.isEmpty()) {
 			return true;
 		}
-		
+
 		Iterator<?> otherIterator = other.iterator();
-		
+
 		while (otherIterator.hasNext()) {
-			if (!this.contains(otherIterator.next())){
+			if (!this.contains(otherIterator.next())) {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
-	 * Removes from this list all of its elements that are contained in the specified collection (optional operation). 
+	 * Removes from this list all of its elements that are contained in the
+	 * specified collection (optional operation).
 	 * 
-	 * @param other - collection containing elements to be removed from this list
+	 * @param other
+	 *            - collection containing elements to be removed from this list
 	 * @returns true if this list changed as a result of the call
 	 */
 	@Override
 	public boolean removeAll(Collection<?> other) {
-		if (other.isEmpty()){
+		if (other.isEmpty()) {
 			return false;
 		}
 		boolean doesChange = false;
 		Iterator<?> thisIterator = this.iterator();
-		
+
 		while (thisIterator.hasNext()) {
-			if (other.contains(thisIterator.next())){
+			if (other.contains(thisIterator.next())) {
 				thisIterator.remove();
 				doesChange = true;
 			}
 		}
-		
+
 		return doesChange;
 	}
 
 	/**
-	 * Retains only the elements in this list that are contained in the specified collection (optional operation). 
-	 * In other words, removes from this list all of its elements that are not contained in the specified collection.
+	 * Retains only the elements in this list that are contained in the
+	 * specified collection (optional operation). In other words, removes from
+	 * this list all of its elements that are not contained in the specified
+	 * collection.
 	 * 
-	 * @param other - collection containing elements to be retained from this list
+	 * @param other
+	 *            - collection containing elements to be retained from this list
 	 * @returns true if this list changed as a result of the call
 	 */
 	@Override
 	public boolean retainAll(Collection<?> other) {
-		if (other.isEmpty() && !this.isEmpty()){
-			 this.clear();
-			 return true;
+		if (other.isEmpty() && !this.isEmpty()) {
+			this.clear();
+			return true;
 		}
 		boolean doesChange = false;
 		Iterator<?> thisIterator = this.iterator();
-		
+
 		while (thisIterator.hasNext()) {
-			if (!other.contains(thisIterator.next())){
+			if (!other.contains(thisIterator.next())) {
 				thisIterator.remove();
 				doesChange = true;
 			}
 		}
-		
+
 		return doesChange;
 	}
 
 	/**
-	 * Returns a new list that contains the elements in this list from fromIndex to toIndex.
+	 * Returns a new list that contains the elements in this list from fromIndex
+	 * to toIndex.
 	 * 
-	 * @param fromIndex - low endpoint (inclusive) of the subList
-	 * @param toIndex - high endpoint (exclusive) of the subList
+	 * @param fromIndex
+	 *            - low endpoint (inclusive) of the subList
+	 * @param toIndex
+	 *            - high endpoint (exclusive) of the subList
 	 * @returns a view of the specified range within this list
 	 */
 	@Override
@@ -577,15 +606,15 @@ public class LinkedList<T> implements List<T> {
 		if ((fromIndex < 0) || (fromIndex > size) || (toIndex < 0) || (toIndex > size)) {
 			throw new IndexOutOfBoundsException("index is out of range");
 		}
-		if (toIndex < fromIndex){
-			throw new IndexOutOfBoundsException("Did you really mean to get from " + fromIndex + " to " + toIndex + "?");
+		if (toIndex < fromIndex) {
+			throw new IndexOutOfBoundsException("Did you really mean to go from " + fromIndex + " to " + toIndex + "?");
 		}
 		LinkedList<T> newList = new LinkedList<T>();
 		int counter = 0;
-		Iterator<T> originalListIterator =  iterator();
-		
-		while(originalListIterator.hasNext()){
-			if(counter < fromIndex){
+		Iterator<T> originalListIterator = iterator();
+
+		while (originalListIterator.hasNext()) {
+			if (counter < fromIndex) {
 				originalListIterator.next();
 				counter++;
 			} else if (counter < toIndex) {
@@ -595,74 +624,75 @@ public class LinkedList<T> implements List<T> {
 				break;
 			}
 		}
-		
+
 		return newList;
-		
-		
-		
-		
+
 	}
+
 	/**
-	 * Returns an array containing all of the elements in this list in proper sequence (from first to last element).
+	 * Returns an array containing all of the elements in this list in proper
+	 * sequence (from first to last element).
 	 * 
-	 * @returns an array containing all of the elements in this list in proper sequence
+	 * @returns an array containing all of the elements in this list in proper
+	 *          sequence
 	 */
 	@Override
 	public Object[] toArray() {
 		Object[] arrayFromList = new Object[this.size];
 		int index = 0;
-		
+
 		Iterator<?> arrayIterator = this.iterator();
-		
+
 		while (arrayIterator.hasNext()) {
 			arrayFromList[index] = arrayIterator.next();
 			index++;
 		}
-				
-			
+
 		return arrayFromList;
 	}
 
 	/**
-	 * Returns an array containing all of the elements in this list in proper sequence (from first to last element);
-	 * the runtime type of the returned array is that of the specified array. 
+	 * Returns an array containing all of the elements in this list in proper
+	 * sequence (from first to last element); the runtime type of the returned
+	 * array is that of the specified array.
 	 * 
-	 * If the list fits in the specified array, it is returned therein. 
+	 * If the list fits in the specified array, it is returned therein.
 	 * 
-	 * Otherwise, a new array is allocated with the runtime type of the specified array and the size of this list.
-	 *  
-	 * @returns an array containing all of the elements in this list in proper sequence
+	 * Otherwise, a new array is allocated with the runtime type of the
+	 * specified array and the size of this list.
+	 * 
+	 * @returns an array containing all of the elements in this list in proper
+	 *          sequence
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 
 	public <K> K[] toArray(K[] toFill) {
 		K[] newtoFill;
-		
-		if (toFill.length < this.size()){
+
+		if (toFill.length < this.size()) {
 			newtoFill = (K[]) Array.newInstance(toFill.getClass().getComponentType(), size());
 		} else {
 			newtoFill = toFill;
 		}
-		
 
 		int index = 0;
-		
+
 		Iterator<T> arrayIterator = iterator();
-		
+
 		while (arrayIterator.hasNext()) {
 			newtoFill[index] = (K) arrayIterator.next();
 			index++;
 		}
-		if (newtoFill.length > this.size())	{
-			for (int i = index; i < newtoFill.length; i++){
+		if (newtoFill.length > this.size()) {
+			for (int i = index; i < newtoFill.length; i++) {
 				newtoFill[i] = null;
 			}
 		}
-			
+
 		return newtoFill;
 	}
-	
+
 	/**
 	 * Returns an iterator over the elements in this list in proper sequence.
 	 * 
@@ -700,41 +730,54 @@ public class LinkedList<T> implements List<T> {
 		private T data;
 		private int currentModCount;
 		private LinkedList<T> list;
-		
+
 		/**
-		 * Returns true if this list iterator has more elements when traversing the list in the forward direction. 
-		 * (In other words, returns true if next() would return an element rather than throwing an exception.)
+		 * Returns true if this list iterator has more elements when traversing
+		 * the list in the forward direction. (In other words, returns true if
+		 * next() would return an element rather than throwing an exception.)
 		 * 
 		 * 
-		 * @returns true if the list iterator has more elements when traversing the list in the forward direction
+		 * @returns true if the list iterator has more elements when traversing
+		 *          the list in the forward direction
 		 */
 		public ListIterator(LinkedList<T> list) {
 			prevPrevNode = null;
 			nextNode = list.head;
 			this.list = list;
+			currentModCount = list.modCount;
 		}
-		
+
 		/**
-		 * Returns true if this list contains all of the elements of the specified collection.
+		 * Returns true if this list contains all of the elements of the
+		 * specified collection.
 		 * 
-		 * @param other - collection to be checked for containment in this list
-		 * @returns true if this list contains all of the elements of the specified collection
+		 * @param other
+		 *            - collection to be checked for containment in this list
+		 * @returns true if this list contains all of the elements of the
+		 *          specified collection
 		 */
 		public boolean hasNext() {
+			if (currentModCount != list.modCount) {
+				throw new ConcurrentModificationException("You cannot change a list while iterating over it.");
+			}
 			return (nextNode != null);
-		
+
 		}
-		
+
 		/**
-		 * Returns the next element in the list and advances the cursor position. 
-		 * This method may be called repeatedly to iterate through the list, 
-		 * or intermixed with calls to previous() to go back and forth. 
+		 * Returns the next element in the list and advances the cursor
+		 * position. This method may be called repeatedly to iterate through the
+		 * list, or intermixed with calls to previous() to go back and forth.
 		 * 
-		 * (Note that alternating calls to next and previous will return the same element repeatedly.)
+		 * (Note that alternating calls to next and previous will return the
+		 * same element repeatedly.)
 		 * 
 		 * @returns the next element in the list
 		 */
 		public T next() {
+			if (currentModCount != list.modCount) {
+				throw new ConcurrentModificationException("You cannot change a list while iterating over it.");
+			}
 			if (!hasNext()) {
 				throw new IllegalStateException("No more Nodes");
 			} else {
@@ -745,25 +788,31 @@ public class LinkedList<T> implements List<T> {
 				return data;
 			}
 		}
-		
+
 		/**
-		 * Removes from the list the last element that was returned by next() or previous() (optional operation). 
-		 * This call can only be made once per call to next or previous. 
-		 * It can be made only if add(E) has not been called after the last call to next or previous.
+		 * Removes from the list the last element that was returned by next() or
+		 * previous() (optional operation). This call can only be made once per
+		 * call to next or previous. It can be made only if add(E) has not been
+		 * called after the last call to next or previous.
 		 */
-		public void remove(){
-			if (prevPrevNode == null){
+		public void remove() {
+			if (currentModCount != list.modCount) {
+				throw new ConcurrentModificationException("You cannot change a list while iterating over it.");
+			}
+			if (prevPrevNode == null) {
 				list.head = nextNode;
 			} else {
 				prevPrevNode.setNext(nextNode);
 			}
 			prevNode = prevPrevNode;
-			
-			if (!hasNext()){
+
+			if (!hasNext()) {
 				list.tail = prevPrevNode;
 			}
 			list.size--;
-					
+			currentModCount++;
+			list.modCount++;
+
 		}
 	}
 }
