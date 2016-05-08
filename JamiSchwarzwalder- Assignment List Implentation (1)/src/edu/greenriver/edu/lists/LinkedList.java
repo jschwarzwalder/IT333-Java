@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.ListIterator;
 /*
  * Jami Schwarzwalder
- * 4/16/2016
+ * 5/7/2016
  * LinkedList.java
- * Assignment - List Implementation (Part one)
+ * Assignment - List Implementation (Part two)
  * 
  * We will be implementing a list for this assignment. 
  * The goal is to understand the List<T> API in Java, 
