@@ -1,14 +1,14 @@
 package net.greenrivertech.jschwarzwalder;
 
 public class myBinaryHeap<AnyType extends Comparable<? super AnyType>> {
-public BinaryHeap( )
-{ /* See online code */ }
+	public myBinaryHeap() {
+		/* See online code */ }
 
-public BinaryHeap( int capacity )
-{ /* See online code */ }
+	public myBinaryHeap(int capacity) {
+		/* See online code */ }
 
-public BinaryHeap( AnyType [ ] items )
-{ /* Figure 6.14 */ }
+	public myBinaryHeap(AnyType[] items) {
+		/* Figure 6.14 */ }
 
 	/**
 	 * Insert into the priority queue, maintaining heap order. Duplicates are
@@ -31,8 +31,21 @@ public BinaryHeap( AnyType [ ] items )
 	public AnyType findMin() {
 		/* See online code */ }
 
+	/**
+	 * Remove the smallest item from the priority queue.
+	 * 
+	 * @return the smallest item, or throw UnderflowException, if empty.
+	 */
 	public AnyType deleteMin() {
-		/* Figure 6.12 */ }
+		if (isEmpty())
+			throw new UnderflowException();
+
+		AnyType minItem = findMin();
+		array[1] = array[currentSize--];
+		percolateDown(1);
+
+		return minItem;
+	}
 
 	public boolean isEmpty() {
 		/* See online code */ }
@@ -45,8 +58,27 @@ public BinaryHeap( AnyType [ ] items )
 	private int currentSize; // Number of elements in heap
 	private AnyType[] array; // The heap array
 
+	/**
+	 * Internal method to percolate down in the heap.
+	 * 
+	 * @param hole
+	 *            the index at which the percolate begins.
+	 */
 	private void percolateDown(int hole) {
-		/* Figure 6.12 */ }
+		int child;
+		AnyType tmp = array[hole];
+
+		for (; hole * 2 <= currentSize; hole = child) {
+			child = hole * 2;
+			if (child != currentSize && array[child + 1].compareTo(array[child]) < 0)
+				child++;
+			if (array[child].compareTo(tmp) < 0)
+				array[hole] = array[child];
+			else
+				break;
+		}
+		array[hole] = tmp;
+	}
 
 	private void buildHeap() {
 		/* Figure 6.14 */ }
