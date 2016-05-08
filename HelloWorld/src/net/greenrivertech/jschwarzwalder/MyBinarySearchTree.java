@@ -113,8 +113,29 @@ public class MyBinarySearchTree<AnyType extends Comparable<? super AnyType>> {
 		return t;
 	}
 
+	/**
+	 * Internal method to insert into a subtree.
+	 * 
+	 * @param x
+	 *            the item to insert.
+	 * @param t
+	 *            the node that roots the subtree.
+	 * @return the new root of the subtree.
+	 */
 	private BinaryNode<AnyType> insert(AnyType x, BinaryNode<AnyType> t) {
-		/* Figure 4.22 */ }
+		if (t == null)
+			return new BinaryNode<>(x, null, null);
+
+		int compareResult = x.compareTo(t.element);
+
+		if (compareResult < 0)
+			t.left = insert(x, t.left);
+		else if (compareResult > 0)
+			t.right = insert(x, t.right);
+		else
+			; // Duplicate; do nothing
+		return t;
+	}
 
 	private BinaryNode<AnyType> remove(AnyType x, BinaryNode<AnyType> t) {
 		/* Figure 4.25 */ }
