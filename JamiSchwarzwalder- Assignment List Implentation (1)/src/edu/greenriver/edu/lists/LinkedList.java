@@ -516,10 +516,9 @@ public class LinkedList<T> implements List<T> {
 	}
 	
 	/**
-	 * Retains only the elements in this list that are contained in the specified collection (optional operation). 
-	 * In other words, removes from this list all of its elements that are not contained in the specified collection.
+	 * Removes from this list all of its elements that are contained in the specified collection (optional operation). 
 	 * 
-	 * @param other - collection containing elements to be retained from this list
+	 * @param other - collection containing elements to be removed from this list
 	 * @returns true if this list changed as a result of the call
 	 */
 	@Override
@@ -540,7 +539,13 @@ public class LinkedList<T> implements List<T> {
 		return doesChange;
 	}
 
-
+	/**
+	 * Retains only the elements in this list that are contained in the specified collection (optional operation). 
+	 * In other words, removes from this list all of its elements that are not contained in the specified collection.
+	 * 
+	 * @param other - collection containing elements to be retained from this list
+	 * @returns true if this list changed as a result of the call
+	 */
 	@Override
 	public boolean retainAll(Collection<?> other) {
 		if (other.isEmpty()){
