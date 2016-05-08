@@ -1,5 +1,7 @@
 package edu.greenriver.edu.lists;
 
+import java.util.Arrays;
+
 public class ListTesterPartTwo
 {
 	public static void main(String[] args)
@@ -11,7 +13,7 @@ public class ListTesterPartTwo
 		testRemoveAll();
 		testRetainAll();
 		testSubList();
-		testToArray();
+		//testToArray();
 		testToGenericArray();
 		testIterator();
 	}
@@ -197,10 +199,10 @@ public class ListTesterPartTwo
 		System.out.println(test7a.size());
 		System.out.println("We print as an array ");
 		Object[] arrayTest7a = test7a.toArray();
-		System.out.println(arrayTest7a);
-		for (int i = 0; i < arrayTest7a.length; i++){
-			System.out.print(arrayTest7a[i] + ", ");
-		}
+		System.out.println(Arrays.toString(arrayTest7a));
+//		for (int i = 0; i < arrayTest7a.length; i++){
+//			System.out.print(arrayTest7a[i] + ", ");
+//		}
 		System.out.println();
 		
 		System.out.println(test7b);
@@ -208,10 +210,10 @@ public class ListTesterPartTwo
 		System.out.println(test7b.size());
 		System.out.println("We print as an array ");
 		Object[] arrayTest7b = test7b.toArray();
-		System.out.println(arrayTest7b);
-		for (int i = 0; i < arrayTest7b.length; i++){
-			System.out.print(arrayTest7b[i] + ", ");
-		}
+		System.out.println(Arrays.toString(arrayTest7b));
+//		for (int i = 0; i < arrayTest7b.length; i++){
+//			System.out.print(arrayTest7b[i] + ", ");
+//		}
 		System.out.println();
 		
 		System.out.println(test7c);
@@ -219,10 +221,10 @@ public class ListTesterPartTwo
 		System.out.println(test7c.size());
 		System.out.println("We print as an array ");
 		Object[] arrayTest7c = test7c.toArray();
-		System.out.println(arrayTest7c);
-		for (int i = 0; i < arrayTest7c.length; i++){
-			System.out.print(arrayTest7c[i] + ", ");
-		}
+		System.out.println(Arrays.toString(arrayTest7c));
+//		for (int i = 0; i < arrayTest7c.length; i++){
+//			System.out.print(arrayTest7c[i] + ", ");
+//		}
 		System.out.println();
 		
 	}
@@ -230,6 +232,57 @@ public class ListTesterPartTwo
 	public static void testToGenericArray()
 	{
 		//this method tests list.toArray(T[])
+		LinkedList<Integer> test8a = new LinkedList<Integer>();
+		for (int i = 0; i < 10; i++){
+			test8a.add(i);
+		}
+		
+		LinkedList<Integer> test8b = new LinkedList<Integer>();
+		for (int i = 10; i > -1; i--){
+			test8b.add(i);
+		}
+		
+		LinkedList<String> test8c = new LinkedList<String>();
+		for (char i = 'a'; i < 'm'; i++){
+			test8c.add(Character.toString(i));
+			System.out.print(i + " = ");
+			System.out.println(Character.toString(i));
+		}
+		
+		Integer[] integer8a = new Integer[10];
+		String[] string8a = new String[10];
+		
+		System.out.print("List Size:  " );
+		System.out.println(test8a.size());
+		System.out.println("We print as an array ");
+		Integer[] arrayTest8a = test8a.toArray(integer8a);
+		System.out.println(Arrays.toString(arrayTest8a));
+		System.out.println();
+		System.out.println("We try to convert to a String[] ");
+		try {
+			String[] arrayTest8b = test8a.toArray(string8a);
+			System.out.println(Arrays.toString(arrayTest8b));
+			System.out.println("Didn't throw an exception o.0");
+		} catch (ArrayStoreException ase){
+			System.out.println("Threw an expection");
+		}
+		System.out.println();
+		
+		System.out.print("List Size:  " );
+		System.out.println(test8c.size());
+		System.out.println("We print as an array ");
+		String[] arrayTest8c = test8c.toArray(string8a);
+		System.out.println(Arrays.toString(arrayTest8c));
+		System.out.println();
+		System.out.println("We try to convert to a String[] ");
+		try {
+			Integer[] arrayTest8d = test8c.toArray(integer8a);
+			System.out.println(Arrays.toString(arrayTest8d));
+			System.out.println("Didn't throw an exception o.0");
+		} catch (ArrayStoreException ase){
+			System.out.println("Threw an expection");
+		}
+		System.out.println();
 	}
 	
 	public static void testIterator()

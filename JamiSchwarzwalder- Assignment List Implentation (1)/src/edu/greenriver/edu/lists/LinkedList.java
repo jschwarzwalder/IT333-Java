@@ -559,29 +559,33 @@ public class LinkedList<T> implements List<T> {
 	 *  
 	 * @returns an array containing all of the elements in this list in proper sequence
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	@SuppressWarnings("hiding")
-	public <T> T[] toArray(T[] toFill) {
-		//check to see items in list are same as array
-		if (this.get(0).getType() == toFill.getType() ){
-			throw new ArrayStoreException("List and Array are not the same type");
+
+	public <K> K[] toArray(K[] toFill) {
+		K[] newtoFill;
+		
+		if (toFill.length < this.size()){
+			newtoFill = (K[]) new Object[size()];
+		} else {
+			newtoFill = toFill;
 		}
-			
+
 		int index = 0;
 		
-		Iterator<T> arrayIterator = (Iterator<T>) this.iterator();
+		Iterator<T> arrayIterator = iterator();
 		
 		while (arrayIterator.hasNext()) {
-			toFill[index] = arrayIterator.next();
+			newtoFill[index] = (K) arrayIterator.next();
 			index++;
 		}
-		if (toFill.length > this.size())	{
-			for (int i = index; i < toFill.length; i++){
-				toFill[i] = null;
+		if (newtoFill.length > this.size())	{
+			for (int i = index; i < newtoFill.length; i++){
+				newtoFill[i] = null;
 			}
 		}
 			
-		return toFill;
+		return newtoFill;
 	}
 
 	@Override
