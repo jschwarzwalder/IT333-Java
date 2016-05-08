@@ -230,7 +230,65 @@ public class ListTesterPartTwo
 	
 	public static void testRetainAll()
 	{
-		//this method tests list.retainAll(collection)
+		LinkedList<Integer> test5a = new LinkedList<Integer>();
+		for (int i = 0; i < 10; i++){
+			test5a.add(i);
+		}
+		
+		LinkedList<Integer> test5b = new LinkedList<Integer>();
+		for (int i = 0; i < 11; i += 2){
+			test5b.add(i);
+		}
+		
+		LinkedList<Integer> test5c = new LinkedList<Integer>();
+		for (int i = 10; i < 21; i++){
+			test5c.add(i);
+		} 
+		
+		LinkedList<Integer> test5d = new LinkedList<Integer>();
+		
+		System.out.println("Build a list 0-9 ");
+		System.out.print("Size:  " );
+		System.out.println(test5a.size());
+		Object[] arrayTest5a = test5a.toArray();
+		System.out.println(Arrays.toString(arrayTest5a));
+		System.out.println("Build an second list with only even numbers ");
+		System.out.print("Size:  " );
+		System.out.println(test5b.size());
+		Object[] arrayTest5b = test5b.toArray();
+		System.out.println(Arrays.toString(arrayTest5b));
+		System.out.print("Retain all elements from first list that are in second list? ");
+		System.out.println(test5a.retainAll(test5b));
+		System.out.print("Size:  " );
+		System.out.println(test5a.size());
+		Object[] arrayTest5a2 = test5a.toArray();
+		System.out.println(Arrays.toString(arrayTest5a2));
+		
+		System.out.print("Retain all elements from third list that are in an empty list? ");
+		System.out.println(test5a.retainAll(test5d));
+		System.out.print("Size:  " );
+		System.out.println(test5a.size());
+		Object[] arrayTest5a3 = test5a.toArray();
+		System.out.println(Arrays.toString(arrayTest5a3));
+		
+		System.out.println("");
+		System.out.println("Build a third list with numbers 10 to 20 ");
+		System.out.print("Size:  " );
+		System.out.println(test5c.size());
+		Object[] arrayTest5c = test5c.toArray();
+		System.out.println(Arrays.toString(arrayTest5c));
+		System.out.print("Retain all elements from third list that are in an empty list? ");
+		System.out.println(test5c.retainAll(test5d));
+		System.out.print("Size:  " );
+		System.out.println(test5c.size());
+		Object[] arrayTest5c2 = test5c.toArray();
+		System.out.println(Arrays.toString(arrayTest5c2));
+		System.out.print("Retain all elements from first list that are in third list? ");
+		System.out.println(test5a.retainAll(test5c));
+		System.out.print("Size:  " );
+		System.out.println(test5a.size());
+		Object[] arrayTest5a5 = test5a.toArray();
+		System.out.println(Arrays.toString(arrayTest5a5));
 	}
 	
 	public static void testSubList()
