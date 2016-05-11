@@ -7,8 +7,18 @@ public class myBinaryHeap<AnyType extends Comparable<? super AnyType>> {
 	public myBinaryHeap(int capacity) {
 		/* See online code */ }
 
+	/**
+	 * Construct the binary heap given an array of items.
+	 */
 	public myBinaryHeap(AnyType[] items) {
-		/* Figure 6.14 */ }
+		currentSize = items.length;
+		array = (AnyType[]) new Comparable[(currentSize + 2) * 11 / 10];
+
+		int i = 1;
+		for (AnyType item : items)
+			array[i++] = item;
+		buildHeap();
+	}
 
 	/**
 	 * Insert into the priority queue, maintaining heap order. Duplicates are
@@ -80,8 +90,14 @@ public class myBinaryHeap<AnyType extends Comparable<? super AnyType>> {
 		array[hole] = tmp;
 	}
 
+	/**
+	 * Establish heap order property from an arbitrary arrangement of items.
+	 * Runs in linear time.
+	 */
 	private void buildHeap() {
-		/* Figure 6.14 */ }
+		for (int i = currentSize / 2; i > 0; i--)
+			percolateDown(i);
+	}
 
 	private void enlargeArray(int newSize) {
 		/* See online code */ }
