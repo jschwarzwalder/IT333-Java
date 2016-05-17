@@ -48,7 +48,7 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 		
 		
 		EmptyHeap<Integer> numHeap = new EmptyHeap<Integer>();
-		System.out.println(numHeap);
+		//System.out.println(numHeap);
 		numHeap.add(15);
 		//System.out.println(numHeap);
 		numHeap.add(14);
@@ -135,7 +135,7 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 	@Override
 	public T peek() // findMin() operation
 	{
-		return null;
+		return heapArray.get(1);
 	}
 
 	@Override
@@ -156,7 +156,8 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 
 	@Override
 	public void clear() {
-
+		heapArray.clear();
+		heapSize = 0;
 	}
 	
 	public String toString() {
