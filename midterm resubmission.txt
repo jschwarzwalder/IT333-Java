@@ -1,0 +1,155 @@
+algorithm joinList (A[0...n-1],B[0...m-1])
+//input Linked List A of length n-1 
+//input Linked List B of length m-1
+//output Linked List AB a join of both linked lists
+
+AB <-- new Linked List
+head <-- A.head
+CurrentNode <--- head
+
+for i<--0 to n-1 
+	Node <-- new Node
+	Node <-- Copy A[i]
+	if CurrentNode.next != null
+		Node.next <-- CurrentNode.next
+	else 
+		Node.next <-- B.head
+	Node.value <--CurrentNode.value
+	
+
+	
+PrevNode <-- new Node
+Node <-- new Node
+AB <-- new LinkedList
+for i<--0 to n-1
+	if i = 0
+		Node <-- A.head
+		AB.head <-- Node
+		Node.data <-- A.head.data
+===================================================================================================================
+Jami Schwarzwalder
+IT333
+Midterm Resubmission
+
+
+Misc. 2 correct answer is a, b, c & d
+	 Options e. HashMap & f. TreeMap use the Map interface which has key value pairs.
+		HashSet & TreeSet are Sets which inherit from Collection
+		ArrayList & Linked List are Lists which inherit from Collection.
+
+
+AA 2. logn + n and 3n + n are both O(n) so belong in the same grouping
+	  7n^2 and 12n^2 + 13n are both O(n^2) so belong in the same grouping
+	  
+AA 4. PseudoCode Algorithm
+
+AA 5.
+We have to go through all of the nodes in both linked lists if we have no access to an add function, 
+so it would be the length of each linked list for a worst case scenario of O(n+m).  
+Since you said that the length of both a and b was n, the big-oh would be 2n or O(n)
+
+
+AA 6.
+(I think my original answer was correct for part a) Big Omega is the tightest LOWER bound.  It is the amount of work for the best-case scenario of the algorithm.
+b) Big Theta is the tighest upper and lower bound of an algorithm.  In the worst case scenario, the algorithm at a rate that is within a constant multiplied by that group of n.  It will have the same growth rate, same speed, and a similar run-time.
+
+List 1  add(element)			O(1)
+		add(index, element)		O(n)
+		addFirst (element)		O(n)
+		addLast (element)		O(1)
+		remove (element)		O(n)
+		remove (index)			O(n)
+		removeFirst(element)	O(n)
+		removeLast(element)		O(1)
+		contains(element)		O(n)
+		get(index), set(index)	O(1)
+List 3.
+The Iterator design pattern allows the programmer to utilize a for each loop without knowing how the list or collection will determine which element comes next.
+
+Searching 3.
+I thought the method would return true or false. According to the API it returns the index.
+Since we didn't find the index we would return -1.
+
+Searching 4.
+Unlike a binary search, interpolation search resembles a more human-like approach.  Just as we would estimate which part of the dictionary we would open to find a word that begins with the letter 'C', we utilize interpolation search to estimate where we should start looking in our input array, reducing needless comparisons and reducing our search area at an almost constant rate.
+
+Hashing 2b.
+The advantages of a low load factor is that you would have very few collisions, so adding can be O(1).  But, there will be a significant amount of wasted space in your array, since you are leaving so many potential spots when you rehash.
+
+Hashing 3.
+C, null, null, B, A
+null, E, null, B, C, A, null, D, null, null
+null, null, null, B, A, null, null, F, null, null, null, E, null, null, C, null, null, D, null, null
+
+Originall I thought that we would rehash when we were adding and the table was over 50%. Instead I rehased if the value I'm adding to the table will bring it over the load factor.
+
+Trees 1.
+Root 71
+Height 5
+Depth 0
+
+Left 8
+Height 1
+Depth 1
+
+Height 0: 7, 10, 73, 95
+Height 1: 8, 75
+Height 2: 72
+Hieght 3: 85
+Height 4: 97
+Height 5: 71
+
+Depth 0: 71
+Depth 1: 8, 97
+Depth 2: 7, 10, 85
+Depth 3: 72, 95
+Depth 4: 75
+Depth 5: 73
+
+Depth is the distance of connection away from the parent node.
+Height is the distance of connections to the furthest leaf below the current node.
+
+Tree 2. 
+This page intentially left blank
+
+Tree 3.
+Add 53 to queue[53]
+Get children of 53
+Add 39 to queue[53, 39]
+Add 72 to queue[53, 39, 72]
+Remove 53 from queue[39, 72]
+Get Children of 39
+Add 21 to queue[39, 72, 21]
+Add 48 to queue[39, 72, 21, 48]
+Remove 39 from queue[72, 21, 48]
+Get Children of 72
+Add 65 to queue[72, 21, 48, 65]
+Add 94 to queue[72, 21, 48, 65, 94]
+Remove 72 from queue[21, 48, 65, 94]
+Get Children of 21
+21 has no children, queue unchanged
+Remove 21 from queue[48, 65, 94]
+Get Children of 48
+48 has one child
+Add 43 to queue[48, 65, 94, 43]
+Remove 48 from queue[65, 94, 43]
+Get Children of 65
+65 has no children, queue unchanged
+Remove 65 from queue[94, 43]
+Get Children of 94
+94 has no children, queue unchanged
+Remove 94 from queue[43]
+Get Children of 43
+43 has no children, queue unchanged
+Remove 43 from queue[]
+Queue is empty, return
+
+Extra Credit 1
+In an array you do not have to go through all of the elements if you are adding to the end of the list.
+Also if you want to update a value with Set it will be a O(1).
+If you have a tail and head pointer in a Linked List Adding to the begining or end will be O(1)
+
+
+
+Extra Credit 2
+transitive if A.equals(B) and B.equals(C) than A.equals(C)
