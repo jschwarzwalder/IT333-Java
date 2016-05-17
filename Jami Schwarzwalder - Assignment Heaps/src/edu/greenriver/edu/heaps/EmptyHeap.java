@@ -23,27 +23,91 @@ import java.util.Queue;
  */
 
 public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
-	private ArrayList<T> heapArray = new ArrayList<T> ();
-	private int heapSize;
-	
-	public EmptyHeap() {
+
+	/**
+	 * Testing inside class due to inclusion of private methods.
+	 * 
+	 * 
+	 */
+	public static void main(String[] args) {
+		EmptyHeap<String> heap = new EmptyHeap<String>();
+		heap.add("F");
+		//System.out.println(heap);
+		heap.percolateUp(1);
+		heap.add("G");
+		heap.add("H");
+		//System.out.println(heap);
+		heap.add("D"); //this should move up via percolateUp function
+		//System.out.println(heap);
+		heap.add("A");//this should move up via percolateUp function
+		//System.out.println(heap);
+		heap.add("C");
+		//System.out.println(heap);
+		heap.add("B");
+		//System.out.println(heap);
 		
+		
+		EmptyHeap<Integer> numHeap = new EmptyHeap<Integer>();
+		System.out.println(numHeap);
+		numHeap.add(15);
+		//System.out.println(numHeap);
+		numHeap.add(14);
+		//System.out.println(numHeap);
+		numHeap.add(13);
+		//System.out.println(numHeap);
+		numHeap.add(12);
+		//System.out.println(numHeap);
+		numHeap.add(11);
+		//System.out.println(numHeap);
+		numHeap.add(10);
+		//System.out.println(numHeap);
+		numHeap.add(9);
+		//System.out.println(numHeap);
+		numHeap.add(8);
+		//System.out.println(numHeap);
+		numHeap.add(7);
+		//System.out.println(numHeap);
+		numHeap.add(6);
+		//System.out.println(numHeap);
+		numHeap.add(5);
+		//System.out.println(numHeap);
+		numHeap.add(4);
+		//System.out.println(numHeap);
+		numHeap.add(3);
+		//System.out.println(numHeap);
+		numHeap.add(2);
+		//System.out.println(numHeap);
+		numHeap.add(1);
+		//System.out.println(numHeap);
+		numHeap.add(0);
+		//System.out.println(numHeap);
+	}
+
+	private ArrayList<T> heapArray = new ArrayList<T>();
+	private int heapSize;
+
+	public EmptyHeap() {
+
 	}
 
 	@Override
 	public boolean add(T newElement) // insert() operation
-	{	if (heapSize <=0){
-		heapArray.add(1, newElement);
-		heapSize ++;
-		return true;
-	} else {
-		heapArray.add(newElement);
-		heapSize ++;
-		percolateUp();
-	}
-	
-	
-		
+	{
+		if (heapSize <= 0) {
+			heapArray.add(null);
+			heapArray.add(1, newElement);
+			heapSize++;
+			return true;
+		} else {
+			boolean results = heapArray.add(newElement);
+			if (results != true){
+				return false;
+			}
+			heapSize++;
+			percolateUp(heapSize);
+			return true;
+		}
+
 	}
 
 	/**
@@ -52,42 +116,22 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 	 * @param childIndex
 	 *            the index at which the percolate begins.
 	 */
-	private void percolateUp(int childIndex){
-		int parentIndex = (childIndex +1)/3;
-		if (childIndex <= 1){
+	private void percolateUp(int childIndex) {
+		int parentIndex = (childIndex + 1) / 3;
+		if (childIndex <= 1) {
 			return;
 		}
-		if(heapArray.get(parentIndex).compareTo(heapArray.get(childIndex)) > 0){
+		if (heapArray.get(parentIndex).compareTo(heapArray.get(childIndex)) > 0) {
 			T temp = heapArray.get(childIndex);
-			heapArray.set(childIndex, heapArray.get(parentIndex) );
+			heapArray.set(childIndex, heapArray.get(parentIndex));
 			heapArray.set(parentIndex, temp);
 			percolateUp(parentIndex);
-				
-		}
-	}
-	
-	/**
-	 * Internal method to percolate down in the heap.
-	 * 
-	 * @param hole
-	 *            the index at which the percolate begins.
-	 */
-	private void percolateDown(int hole) {
-		int child;
-		T tmp = heapArray.get(hole);
 
-		for (; hole * 2 <= heapSize; hole = child) {
-			child = hole * 2;
-			if (child != heapSize && heapArray.get(child + 1).compareTo(heapArray.get(child)) < 0)
-				child++;
-			if (heapArray.get(child).compareTo(tmp) < 0)
-				heapArray.set(hole, heapArray.get(child));
-			else
-				break;
 		}
-		heapArray.get(tmp);
 	}
-	
+
+
+
 	@Override
 	public T peek() // findMin() operation
 	{
@@ -114,7 +158,10 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 	public void clear() {
 
 	}
-
+	
+	public String toString() {
+		return heapArray.toString();
+	}
 	// ignore methods below this
 
 	@Override
