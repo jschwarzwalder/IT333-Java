@@ -44,7 +44,9 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 		heap.add("C");
 		//System.out.println(heap);
 		heap.add("B");
-		//System.out.println(heap);
+		System.out.println(heap);
+		heap.remove();
+		System.out.println(heap);
 		
 		
 		EmptyHeap<Integer> numHeap = new EmptyHeap<Integer>();
@@ -141,7 +143,60 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 	@Override
 	public T remove() // deleteMin() operation
 	{
-		return null;
+		T removedNode = peek();
+		T lastNode = heapArray.get(heapSize);
+		heapArray.remove(heapSize);
+		heapArray.set(1, lastNode);
+		heapSize --;
+		percolateDown(1);
+		return removedNode;
+	}
+	
+	/**
+	 * Internal method to percolate down in the heap.
+	 * 
+	 * @param childIndex
+	 *            the index at which the percolate begins.
+	 */
+	private void percolateDown(int parentIndex) {
+		
+		if (parentIndex < 1 || parentIndex > heapSize) {
+			throw new IndexOutOfBoundsException("Error, Index is not valid for this heap. You entered " + parentIndex);
+		}
+		
+		int childLeftIndex = (3 * parentIndex ) - 1;
+		int childMiddleIndex = 3 * parentIndex;
+		int childRightIndex = (3 * parentIndex ) + 1;
+		int smallestChildIndex;
+		
+		T childLeft = heapArray.get(childLeftIndex);
+		T childMiddle = heapArray.get(childMiddleIndex);
+		T childRight = heapArray.get(childRightIndex);
+		T parentValue = heapArray.get(parentIndex);
+		
+		if (childLeft.compareTo(childMiddle) < 0){ //childLeft is smaller
+			if (childLeft.compareTo(childRight) < 0){ //childLeft is smallest
+				smallestChildIndex = childLeftIndex;
+			} else { //childRight is smallest
+				smallestChildIndex = childRightIndex;
+			}
+		} else if (childMiddle.compareTo(childRight) < 0){ //childMiddle is smallest
+			smallestChildIndex = childMiddleIndex;
+		} else { //childRight is smallest
+			smallestChildIndex = childRightIndex;
+		}
+		
+		if (parentValue.compareTo(heapArray.get(smallestChildIndex)) > 0 ){ //parent is larger than smallest child
+			
+			heapArray.set(parentIndex, heapArray.get(smallestChildIndex));
+			heapArray.set(smallestChildIndex, parentValue);
+			
+			percolateDown(smallestChildIndex);
+
+		}
+		
+		
+		
 	}
 
 	@Override
