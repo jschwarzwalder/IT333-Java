@@ -21,6 +21,7 @@ import java.util.Queue;
  * 
  * 
  */
+import java.util.Random;
 
 public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 
@@ -95,6 +96,16 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 			//System.out.print( numHeap.size() + );
 
 		}
+		System.out.println();
+		
+		
+		EmptyHeap<Integer> emptyHeap = new EmptyHeap<Integer>();
+		System.out.println("Removing from an empty Tree");
+		System.out.println(emptyHeap.remove());
+		emptyHeap.add(5);
+		System.out.println("Removing from a Tree with one element");
+		System.out.println(emptyHeap.remove());
+		Random numGenerator = new Random(); 
 
 	}
 
@@ -161,12 +172,14 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 	{
 		T removedNode = peek();
 		T lastNode = heapArray.get(heapSize);
-		heapArray.remove(heapSize);
+		
 		if (heapSize > 1) {
+			heapArray.remove(heapSize);
 			heapArray.set(1, lastNode);
 			heapSize--;
 			percolateDown(1);
-		} else {
+		} else if (heapSize == 1) {
+			heapArray.remove(heapSize);
 			heapSize--;
 		}
 		return removedNode;
