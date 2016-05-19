@@ -105,8 +105,37 @@ public class EmptyHeap<T extends Comparable<T>> implements Queue<T> {
 		emptyHeap.add(5);
 		System.out.println("Removing from a Tree with one element");
 		System.out.println(emptyHeap.remove());
-		Random numGenerator = new Random(); 
+		
+		
+		testRandom(100);
+		testRandom(1000);
+		testRandom(10000);
+		testRandom(100000);
+		
 
+	}
+
+	private static void testRandom(int sizeN) {
+		//Adding n random values to the queue and retrieving them in sorted order from the queue. 
+		//Your elements should be retrieved in ascending order.
+		
+		Random numGenerator = new Random(); 
+		
+		EmptyHeap<Integer> randomHeap = new EmptyHeap<Integer>();
+	
+		for (int i = 1; i < sizeN; i++){
+			randomHeap.add(numGenerator.nextInt());
+		}
+		int prev;
+		int next = randomHeap.remove();
+		while (!randomHeap.isEmpty()){
+			prev = next;
+			next = randomHeap.remove();
+			if (next < prev){
+				throw new IllegalStateException("next: " + next + " prev: "+ prev);				
+			}
+		}
+		System.out.println(sizeN + " threw no errors ");
 	}
 
 	private ArrayList<T> heapArray = new ArrayList<T>();
