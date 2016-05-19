@@ -1,0 +1,20 @@
+What are the advantages/disadvantages of your design above?
+Advantage - The ternary heap is shallower than a binary heap.
+Disadvantage - You have to do more comparisons between siblings when adding or removing 
+
+Would you use a ternary heap or binary heap in your own code? Why?
+A binary heap while deeper requires less comparisons than the ternary heap, and thus is easier to read and understand. 
+Performance isn't improved by having 3 child nodes instead of 2. 
+Both take up the same amount of space, since it is stored as an array
+
+What is the big-oh for each of the operations on a ternary heap?
+
+add(element) - O(logn)
+peek() - O(1)
+remove() - O(logn)
+size() - O(1)
+isEmpty() - O(1)
+clear() - O(1)
+
+How is the big-oh estimation for these functions different from the estimates for a binary heap.
+A heap is a complete binary tree so it runs very efficiently O(logn). A binary tree can run for O(n) if the data is not inserted in properly and the tree is not self balancing. 
