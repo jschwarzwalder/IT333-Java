@@ -17,4 +17,6 @@ isEmpty() - O(1)
 clear() - O(1)
 
 How is the big-oh estimation for these functions different from the estimates for a binary heap.
-A heap is a complete binary tree so it runs very efficiently O(logn). A binary tree can run for O(n) if the data is not inserted in properly and the tree is not self balancing. 
+A heap is a complete binary tree and only focuses on ensuring that the parent is the lowest(min) or hightest(max)element comparied to its children so it runs very efficiently O(logn). 
+The big O estimation for a ternary and binary heaps are the same because they only differ by a constant multiple. 
+A binary tree can run for O(n) if the data is not inserted in properly and the tree is not self balancing. 
