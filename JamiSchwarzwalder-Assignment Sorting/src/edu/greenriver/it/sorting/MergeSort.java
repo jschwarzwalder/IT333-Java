@@ -1,10 +1,13 @@
 package edu.greenriver.it.sorting;
 
+import java.util.Arrays;
+
 public abstract class MergeSort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Integer[] testArray = {1, 6, 5, 7, -1, 8};
+		merge(testArray, 0, 1, 2, 3, 4, 5);
 	}
 
 	/**
@@ -35,7 +38,7 @@ public abstract class MergeSort {
 		int tempArrayLength = (high1 - low1) + (high2 - low2) + (high3 - low3) + 3;
 		// build temporary array the length of all
 		@SuppressWarnings("unchecked")
-		T[] tempArray = (T[]) new Object[tempArrayLength];
+		T[] tempArray = (T[]) new Comparable[tempArrayLength];
 		int insertIndex = 0;
 		// compare the element at the beginning of subarrays 1,2, and 3
 		int start1 = low1;
@@ -54,7 +57,7 @@ public abstract class MergeSort {
 				if (first.compareTo(third) < 0) { // first is smallest
 					tempArray[insertIndex] = first;
 					insertIndex++;
-					if (end1 > start1 + 1) {
+					if (end1 > start1) {
 						start1++;
 						first = input[start1];
 					} else // first subarray is empty, 
@@ -68,7 +71,7 @@ public abstract class MergeSort {
 				} else { // third is smallest
 					tempArray[insertIndex] = third;
 					insertIndex++;
-					if (end3 > start3 + 1) {
+					if (end3 > start3) {
 						start3++;
 						third = input[start3];
 					} else // third subarray is empty
@@ -79,7 +82,7 @@ public abstract class MergeSort {
 			} else if (second.compareTo(third) < 0) { // second is smallest
 				tempArray[insertIndex] = second;
 				insertIndex++;
-				if (end2 > start2 + 1) {
+				if (end2 > start2) {
 					start2++;
 					second = input[start2];
 				} else // second subarray is empty, 
@@ -93,7 +96,7 @@ public abstract class MergeSort {
 			} else { // third is smallest
 				tempArray[insertIndex] = third;
 				insertIndex++;
-				if (end3 > start3 + 1) {
+				if (end3 > start3) {
 					start3++;
 					third = input[start3];
 				} else // third subarray is empty
@@ -107,6 +110,6 @@ public abstract class MergeSort {
 		// left to be merged
 		// add remaining elements from last subarray
 		// copy temporary array into input
-
+		System.out.println(Arrays.toString(tempArray));
 	}
 }
