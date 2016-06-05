@@ -6,40 +6,40 @@ public abstract class MergeSort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Integer[] testArray = {1, 6, 5, 7, -1, 8};
-		merge(testArray, 0, 1, 2, 3, 4, 5);
-		
-		System.out.println(Arrays.toString(testArray));
-		
-		testArray = new Integer[]{1, 2, 3, 4, 5, 6};
-		merge(testArray, 0, 1, 2, 3, 4, 5);
-		
-		System.out.println(Arrays.toString(testArray));
-		
-		testArray = new Integer[]{6, 5, 4, 3, 2, 1};
-		merge(testArray, 0, 1, 2, 3, 4, 5);
-		
-		System.out.println(Arrays.toString(testArray));
-		
-		testArray = new Integer[]{5, 6, 3, 4, 1, 2};
-		merge(testArray, 0, 1, 2, 3, 4, 5);
-		
-		System.out.println(Arrays.toString(testArray));
-		
-		testArray = new Integer[]{5, 6, 3, 4, 1};
-		merge(testArray, 0, 1, 2, 3, 4, 4);
-		
-		System.out.println(Arrays.toString(testArray));
-		
-		testArray = new Integer[]{5, 6, 3, 1, 4};
-		merge(testArray, 0, 1, 2, 2, 3, 4);
-		
-		System.out.println(Arrays.toString(testArray));
-		
-		String[] strings = {"a", "z", "b", "y", "c", "w"};
-		merge(strings, 0, 1, 2, 3, 4, 5);
-		
-		System.out.println(Arrays.toString(strings));
+//		Integer[] testArray = {1, 6, 5, 7, -1, 8};
+//		merge(testArray, 0, 1, 2, 3, 4, 5);
+//		
+//		System.out.println(Arrays.toString(testArray));
+//		
+//		testArray = new Integer[]{1, 2, 3, 4, 5, 6};
+//		merge(testArray, 0, 1, 2, 3, 4, 5);
+//		
+//		System.out.println(Arrays.toString(testArray));
+//		
+//		testArray = new Integer[]{6, 5, 4, 3, 2, 1};
+//		merge(testArray, 0, 1, 2, 3, 4, 5);
+//		
+//		System.out.println(Arrays.toString(testArray));
+//		
+//		testArray = new Integer[]{5, 6, 3, 4, 1, 2};
+//		merge(testArray, 0, 1, 2, 3, 4, 5);
+//		
+//		System.out.println(Arrays.toString(testArray));
+//		
+//		testArray = new Integer[]{5, 6, 3, 4, 1};
+//		merge(testArray, 0, 1, 2, 3, 4, 4);
+//		
+//		System.out.println(Arrays.toString(testArray));
+//		
+//		testArray = new Integer[]{5, 6, 3, 1, 4};
+//		merge(testArray, 0, 1, 2, 2, 3, 4);
+//		
+//		System.out.println(Arrays.toString(testArray));
+//		
+//		String[] strings = {"a", "z", "b", "y", "c", "w"};
+//		merge(strings, 0, 1, 2, 3, 4, 5);
+//		
+//		System.out.println(Arrays.toString(strings));
 		
 	}
 	
