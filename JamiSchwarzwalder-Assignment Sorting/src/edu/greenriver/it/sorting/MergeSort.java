@@ -26,11 +26,25 @@ public abstract class MergeSort {
 		
 		System.out.println(Arrays.toString(testArray));
 		
+		testArray = new Integer[]{5, 6, 3, 4, 1};
+		merge(testArray, 0, 1, 2, 3, 4, 4);
+		
+		System.out.println(Arrays.toString(testArray));
+		
+		testArray = new Integer[]{5, 6, 3, 1, 4};
+		merge(testArray, 0, 1, 2, 2, 3, 4);
+		
+		System.out.println(Arrays.toString(testArray));
+		
 		String[] strings = {"a", "z", "b", "y", "c", "w"};
 		merge(strings, 0, 1, 2, 3, 4, 5);
 		
 		System.out.println(Arrays.toString(strings));
 		
+	}
+	
+	public static <T extends Comparable<T>> void mergeSort(T[] input){
+		mergeSort(input, 0, input.length - 1);
 	}
 
 	/**
@@ -44,13 +58,50 @@ public abstract class MergeSort {
 	 *            index where subarray to be sorted ends (inclusive)
 	 * @return the array with elements in subarray sorted into correct order
 	 */
-	public static <T extends Comparable<T>> void mergeSort(T[] input, int begin, int end) {
+	private static <T extends Comparable<T>> void mergeSort(T[] input, int begin, int end) {
+		int numberOfElements = end - begin + 1;
+
 		// if more than 3 elements then break it up into smaller arrays and call
 		// recursively on each smaller array
+		
+		/*
+		 * opption 1: if the subarray has more than three elements break it up
+		 * else merge with other elements you had broken up to sort it
+		 * option 2: sort what is in substring and then merge all three
+		 * option C: do it the right way
+		 */
+		if (numberOfElements > 2)
+		{
+			int mid1 = begin + numberOfElements / 3 - 1;
+			int mid2 = begin + 2 * numberOfElements / 3 - 1;
+			
+			mergeSort(input, begin, mid1);
+			mergeSort(input, mid1 + 1, mid2);
+			mergeSort(input, mid2 + 1, end);
+			
+			merge(input, begin, mid1, mid1 + 1, mid2, mid2 + 1, end);
+		}
 
 		// if subarray has two elements swap if out of order
-
+		else if (numberOfElements == 2)
+		{
+			if (input[begin].compareTo(input[end]) < 0)
+			{
+				return;
+			}
+			else
+			{
+				T temp = input[begin];
+				input[begin] = input[end];
+				input[end] = temp;
+			}
+		}
 		// if subarray has one element return
+		else if (numberOfElements == 1)
+		{
+			return;
+		}
+
 
 	}
 
