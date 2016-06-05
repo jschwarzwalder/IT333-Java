@@ -43,12 +43,18 @@ public abstract class MergeSort {
 
 	}
 
+	/**
+	 * Takes an array of any length and sorts it using a three-way merge sort
+	 * 
+	 * @param input
+	 *            the array to be sorted
+	 */
 	public static <T extends Comparable<T>> void mergeSort(T[] input) {
 		mergeSort(input, 0, input.length - 1);
 	}
 
 	/**
-	 * Takes a subarray and returns the elements in sorted order
+	 * Takes a subarray  and sorts it using a three-way merge sort
 	 * 
 	 * @param input
 	 *            the array to be sorted
@@ -56,7 +62,6 @@ public abstract class MergeSort {
 	 *            index where subarray to be sorted begins
 	 * @param end
 	 *            index where subarray to be sorted ends (inclusive)
-	 * @return the array with elements in subarray sorted into correct order
 	 */
 	private static <T extends Comparable<T>> void mergeSort(T[] input, int begin, int end) {
 		int numberOfElements = end - begin + 1;
@@ -98,6 +103,19 @@ public abstract class MergeSort {
 
 	}
 
+	/**
+	 * compares the elements in three subarrays 
+	 * and generates a new array with these elements in order 
+	 * before copying back into the original array.
+	 * 
+	 * @param input the original whole array to be sorted
+	 * @param low1	start index for subarray 1
+	 * @param high1	end index for subarray 1
+	 * @param low2	start index for subarray 2
+	 * @param high2 end index for subarray 2
+	 * @param low3  start index for subarray 3
+	 * @param high3 end index for subarray 3
+	 */
 	private static <T extends Comparable<T>> void merge(T[] input, int low1, int high1, 
 																	int low2, int high2, 
 																	int low3, int high3) {
