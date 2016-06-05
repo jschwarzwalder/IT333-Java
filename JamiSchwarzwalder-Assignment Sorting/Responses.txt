@@ -1,0 +1,16 @@
+What are the advantages/disadvantages of your design above?
+
+The three-way merge sort has extra complexity that introduces the possibility for errors during implementation.  It may have fewer recursive calls, but I beleive it requires more comparisons.  So I'm not sure if there are benefits to a three-way merge sort.  We still have to create an equal amount of space when calling merge.
+
+Would you use your three-way merge sort or the typical two-way merge sort? Why?
+
+I think using the two-way merge sort will always be the better option.  Because, there will be more straightforward comparisons of elements and I don't have to worry about needlessly complex situations with odd number inputs.  In class we talked about how when merge sort gets down to a small number of elements it's actually better to run a quicksort and I think that that may be a better option than using the three-way merge sort on a small number of elements.
+
+What is the big-oh for your mergeSort() algorithm in terms of:
+Time?
+O(n*log(n))
+Even though we're dividng it up into thirds, the halving principle still applies and we still have to process n elements for each step
+
+Space?
+O(n)
+merge has to create a temporary array before it adds everything back to the original array, so at the end when you're merging the entire list you need to create a temporary array that is the size of the original list.
