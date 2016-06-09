@@ -23,4 +23,20 @@ public class Sort {
 
 	}
 
+	public static <T extends Comparable<T>> void insertionSort (T[] input){
+		//compare first unsorted to previously sorted
+		for (int i = 1; i < input.length; i++) {
+			T element = input[i];
+			int j = i;
+			//compare first unsorted to previously sorted
+			while(( j > 0) && (input[j-1].compareTo(element) > 0)) {
+				//if less than previous, swap places
+				input[j]= input[j-1];
+				j = j-1;	
+			}
+			input[j] = element;
+
+		}
+
+	}
 }
