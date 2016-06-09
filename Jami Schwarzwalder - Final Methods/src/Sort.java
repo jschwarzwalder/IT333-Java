@@ -1,6 +1,33 @@
+import java.util.Arrays;
 
 public class Sort {
-
+	
+	public static void main(String[] args){
+		
+		Integer[] test1 = {5, 4, 3, 2, 1};
+		Integer[] test2 = {6, 4, 5, 2, 7};
+		String[] test3 = {"z", "y", "x", "c", "b", "a"};
+		System.out.println("Selection");
+		selectionSort(test1);
+		System.out.println(Arrays.toString(test1));
+		selectionSort(test2);
+		System.out.println(Arrays.toString(test2));
+		selectionSort(test3);
+		System.out.println(Arrays.toString(test3));
+		
+		test1 = new Integer[]{5, 4, 3, 2, 1};
+		test2 = new Integer[]{6, 4, 5, 2, 7};
+		test3 = new String[]{"z", "y", "x", "c", "b", "a"};
+		System.out.println("Insertion");
+		insertionSort(test1);
+		System.out.println(Arrays.toString(test1));
+		insertionSort(test2);
+		System.out.println(Arrays.toString(test2));
+		insertionSort(test3);
+		System.out.println(Arrays.toString(test3));
+		
+	}
+	
 	public static <T extends Comparable<T>> void selectionSort(T[] input) {
 
 		for (int i = 0; i < input.length; i++) {
